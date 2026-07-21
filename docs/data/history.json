@@ -484,8 +484,7 @@
           "date": "2026-07-21",
           "price": 26000
         }
-      ],
-      "missing_since": "2026-07-21"
+      ]
     },
     "2abaf5a9-cfdd-4d41-be92-db9aa0e73e21": {
       "id": "2abaf5a9-cfdd-4d41-be92-db9aa0e73e21",
@@ -566,7 +565,8 @@
           "date": "2026-07-21",
           "price": 25000
         }
-      ]
+      ],
+      "missing_since": "2026-07-21"
     },
     "bd7e75c9-1ae9-465b-9136-92c4524078f6": {
       "id": "bd7e75c9-1ae9-465b-9136-92c4524078f6",
@@ -998,8 +998,7 @@
           "date": "2026-07-21",
           "price": 29300
         }
-      ],
-      "missing_since": "2026-07-21"
+      ]
     },
     "76d8c67f-4949-4e4c-8636-9d33ee092275": {
       "id": "76d8c67f-4949-4e4c-8636-9d33ee092275",
@@ -1080,7 +1079,8 @@
           "date": "2026-07-21",
           "price": 35000
         }
-      ]
+      ],
+      "missing_since": "2026-07-21"
     },
     "d053aa5e-f8d9-46fc-88ef-c6b21672afdc": {
       "id": "d053aa5e-f8d9-46fc-88ef-c6b21672afdc",
@@ -1244,6 +1244,13 @@
     {
       "date": "2026-07-21",
       "count": 41,
+      "new_ids": [],
+      "removed_ids": [],
+      "reappeared_ids": []
+    },
+    {
+      "date": "2026-07-21",
+      "count": 43,
       "new_ids": [],
       "removed_ids": [],
       "reappeared_ids": []
