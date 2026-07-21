@@ -930,14 +930,14 @@
       "country": "IT",
       "seller_type": "dealer",
       "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-orange-limited-edition-cerchi-17-benzina-arancione-cat_ma70mo20150-12beb9f6-49ee-46eb-b166-15154faea25e",
-      "image": "https://prod.pictures.autoscout24.net/listing-images/12beb9f6-49ee-46eb-b166-15154faea25e_ff82a3e1-c952-47bb-87e2-73a419ecccaa.jpg/250x188.webp",
+      "image": "data/images/12beb9f6-49ee-46eb-b166-15154faea25e.webp",
       "transmission": "Manuale",
       "fuel": "Benzina",
       "lat": 45.628668,
       "lon": 9.2737557,
       "first_seen": "2026-07-21",
       "last_seen": "2026-07-21",
-      "status": "removed",
+      "status": "active",
       "price_history": [
         {
           "date": "2026-07-21",
@@ -1223,6 +1223,15 @@
         "12beb9f6-49ee-46eb-b166-15154faea25e"
       ],
       "reappeared_ids": []
+    },
+    {
+      "date": "2026-07-21",
+      "count": 43,
+      "new_ids": [],
+      "removed_ids": [],
+      "reappeared_ids": [
+        "12beb9f6-49ee-46eb-b166-15154faea25e"
+      ]
     }
   ]
 }
