@@ -24,7 +24,7 @@ jobs:
         run: pip install -r scraper/requirements.txt
 
       - name: Run scraper
-        run: python scraper/scrape_gt86.py --dump-schema
+        run: python scraper/scrape_gt86.py
 
       - name: Upload debug page (solo se il parsing non trova annunci)
         if: always()

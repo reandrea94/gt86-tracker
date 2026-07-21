@@ -101,95 +101,69 @@ def find_listing_arrays(node, found):
             find_listing_arrays(item, found)
 
 
-def dig(d, *keys):
-    for key in keys:
-        if isinstance(d, dict) and key in d and d[key] is not None:
-            return d[key]
-    return None
-
-
-def deep_find_number(d, name_fragment):
-    """Cerca nel dict/lista annidati la prima chiave che contiene name_fragment
-    con valore numerico (int/float o stringa numerica)."""
-    if isinstance(d, dict):
-        for k, v in d.items():
-            if name_fragment in k.lower():
-                if isinstance(v, (int, float)):
-                    return v
-                if isinstance(v, str):
-                    m = re.search(r"[\d.]+", v.replace(",", ""))
-                    if m:
-                        try:
-                            return float(m.group())
-                        except ValueError:
-                            pass
-            result = deep_find_number(v, name_fragment)
-            if result is not None:
-                return result
-    elif isinstance(d, list):
-        for item in d:
-            result = deep_find_number(item, name_fragment)
-            if result is not None:
-                return result
-    return None
-
-
-def deep_find_string(d, name_fragments):
-    if isinstance(d, dict):
-        for k, v in d.items():
-            if isinstance(v, str) and any(f in k.lower() for f in name_fragments):
-                return v
-            result = deep_find_string(v, name_fragments)
-            if result is not None:
-                return result
-    elif isinstance(d, list):
-        for item in d:
-            result = deep_find_string(item, name_fragments)
-            if result is not None:
-                return result
-    return None
-
-
 def parse_listing(raw: dict):
-    listing_id = str(dig(raw, "id", "guid", "listingId") or "")
+    """Mappa un elemento dell'array risultati sullo schema reale di AutoScout24.it
+    (verificato via --dump-schema): raw['price']['priceRaw'], raw['vehicle'],
+    raw['location'], raw['seller'], raw['tracking']['firstRegistration']."""
+    listing_id = str(raw.get("id") or "")
     if not listing_id:
         return None
 
-    price = deep_find_number(raw, "price")
-    mileage = deep_find_number(raw, "mileage")
-    year = deep_find_number(raw, "firstregistration") or deep_find_number(raw, "year")
-    if year and year > 3000:
-        # spesso arriva come timestamp o come MMYYYY/YYYYMMDD: prova a isolare l'anno
-        m = re.search(r"(19|20)\d{2}", str(int(year)))
-        year = int(m.group()) if m else None
+    price = (raw.get("price") or {}).get("priceRaw")
 
-    city = deep_find_string(raw, ["city", "location"])
-    zipcode = deep_find_string(raw, ["zip", "postcode", "postalcode"])
-    country = deep_find_string(raw, ["countrycode", "country"]) or "IT"
-    seller_type = deep_find_string(raw, ["sellertype", "customertype", "dealertype"])
+    tracking = raw.get("tracking") or {}
+    vehicle = raw.get("vehicle") or {}
+    location = raw.get("location") or {}
+    seller = raw.get("seller") or {}
 
-    slug_url = dig(raw, "url", "link", "detailPageUrl")
+    mileage = None
+    mileage_raw = tracking.get("mileage") or vehicle.get("mileageInKm")
+    if mileage_raw is not None:
+        m = re.search(r"[\d.]+", str(mileage_raw).replace(".", "").replace(",", ""))
+        # sopra rimuoviamo separatori delle migliaia prima di cercare le cifre
+        if m:
+            try:
+                mileage = int(m.group())
+            except ValueError:
+                mileage = None
+
+    year = None
+    first_reg = tracking.get("firstRegistration")  # es. "11-2018"
+    if first_reg:
+        m = re.search(r"(19|20)\d{2}", str(first_reg))
+        if m:
+            year = int(m.group())
+
+    slug_url = raw.get("url")
     if slug_url and slug_url.startswith("/"):
         slug_url = f"https://www.autoscout24.it{slug_url}"
     if not slug_url:
         slug_url = f"https://www.autoscout24.it/annunci/{listing_id}"
 
-    title = deep_find_string(raw, ["title", "make", "modelname"]) or "Toyota GT86"
-    image = deep_find_string(raw, ["imageurl", "image"])
+    model_bits = [vehicle.get("make"), vehicle.get("model"), vehicle.get("modelVersionInput")]
+    title = " ".join(b for b in model_bits if b) or "Toyota GT86"
+
+    seller_type_raw = seller.get("type") or ""
+    seller_type = "private" if "private" in seller_type_raw.lower() else ("dealer" if seller_type_raw else None)
+
+    images = raw.get("images") or []
+    image = images[0] if images else None
 
     return {
         "id": listing_id,
         "title": title,
-        "price": int(price) if price else None,
+        "price": int(price) if price is not None else None,
         "currency": "EUR",
-        "year": int(year) if year else None,
-        "mileage": int(mileage) if mileage else None,
-        "city": city,
-        "zip": zipcode,
-        "country": country,
+        "year": year,
+        "mileage": mileage,
+        "city": location.get("city"),
+        "zip": location.get("zip"),
+        "country": location.get("countryCode") or "IT",
         "seller_type": seller_type,
         "url": slug_url,
         "image": image,
+        "transmission": vehicle.get("transmission"),
+        "fuel": vehicle.get("fuel"),
     }
 
 

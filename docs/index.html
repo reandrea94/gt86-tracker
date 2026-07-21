@@ -363,9 +363,11 @@
         weight: 1.5,
       }).addTo(map);
       const priceTxt = l.price ? fmtEUR.format(l.price) : 'Prezzo n.d.';
+      const specs = [l.fuel, l.transmission].filter(Boolean).join(' · ');
       marker.bindPopup(
         `<strong>${escapeHtml(l.title || 'Toyota GT86')}</strong><br>` +
         `${priceTxt} · ${l.year || '–'} · ${l.mileage ? fmtNum.format(l.mileage) + ' km' : 'km n.d.'}<br>` +
+        `${specs ? escapeHtml(specs) + '<br>' : ''}` +
         `${escapeHtml(l.city || '')}<br>` +
         `<a href="${l.url}" target="_blank" rel="noopener">Vedi annuncio ↗</a>`
       );
