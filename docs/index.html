@@ -179,6 +179,24 @@
     border: 1px solid var(--border);
     margin-bottom: 10px;
   }
+  .value-marker-icon { background: transparent; border: none; }
+  .value-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 22px;
+    min-width: 22px;
+    padding: 0 6px;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    border: 2px solid rgba(255,255,255,0.9);
+  }
+  .value-marker.is-new { border-color: var(--series-1); border-width: 3px; }
   .legend {
     display: flex;
     gap: 18px;
@@ -405,9 +423,10 @@
 
     <div id="map"></div>
     <div class="legend">
-      <span><span class="swatch" style="background:var(--series-1)"></span>Cambio automatico</span>
-      <span><span class="swatch" style="background:var(--series-2)"></span>Cambio manuale</span>
-      <span><span class="swatch" style="background:transparent; border:2px solid var(--status-good);"></span>Nuovo oggi (bordo verde)</span>
+      <span><span class="swatch" style="background:var(--status-good)"></span>Buon affare (sotto prezzo atteso)</span>
+      <span><span class="swatch" style="background:var(--text-muted)"></span>Nella media</span>
+      <span><span class="swatch" style="background:var(--status-critical)"></span>Sopra prezzo atteso</span>
+      <span><span class="swatch" style="background:transparent; border:2px solid var(--series-1);"></span>Nuovo oggi (bordo blu)</span>
     </div>
 
     <section>
@@ -482,10 +501,19 @@
     return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   }
 
-  function transmissionColor(t) {
-    if (t === 'Automatico') return cssVar('--series-1');
-    if (t === 'Manuale') return cssVar('--series-2');
+  function dealColor(l) {
+    if (typeof l.value !== 'number') return cssVar('--text-muted');
+    const pct = Math.round(l.value * 100);
+    if (pct > 3) return cssVar('--status-good');
+    if (pct < -3) return cssVar('--status-critical');
     return cssVar('--text-muted');
+  }
+
+  function dealPercentText(l) {
+    if (typeof l.value !== 'number') return 'n.d.';
+    const pct = Math.round(l.value * 100);
+    const sign = pct > 0 ? '−' : pct < 0 ? '+' : '';
+    return `${sign}${Math.abs(pct)}%`;
   }
 
   function transmissionBadge(t) {
@@ -592,15 +620,14 @@
     listings.filter(matchesFilters).forEach(l => {
       if (typeof l.lat !== 'number' || typeof l.lon !== 'number') return;
       const isNew = newIdsGlobal.has(l.id);
-      const fill = transmissionColor(l.transmission);
-      const stroke = isNew ? cssVar('--status-good') : fill;
-      const marker = L.circleMarker([l.lat, l.lon], {
-        radius: 7,
-        color: stroke,
-        fillColor: fill,
-        fillOpacity: 0.8,
-        weight: isNew ? 3 : 1.5,
-      }).addTo(markersLayer);
+      const icon = L.divIcon({
+        className: 'value-marker-icon',
+        html: `<div class="value-marker${isNew ? ' is-new' : ''}" style="background:${dealColor(l)};">${dealPercentText(l)}</div>`,
+        iconSize: [46, 24],
+        iconAnchor: [23, 12],
+        popupAnchor: [0, -12],
+      });
+      const marker = L.marker([l.lat, l.lon], { icon }).addTo(markersLayer);
       const priceTxt = l.price ? fmtEUR.format(l.price) : 'Prezzo n.d.';
       const sellerLabel = l.seller_type === 'private' ? 'Privato' : l.seller_type === 'dealer' ? 'Concessionario' : null;
       const specs = [l.fuel, l.transmission, sellerLabel].filter(Boolean).join(' · ');
