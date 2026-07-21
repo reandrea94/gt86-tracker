@@ -44,6 +44,7 @@ CURRENT_PATH = DATA_DIR / "current.json"
 HISTORY_PATH = DATA_DIR / "history.json"
 GEOCACHE_PATH = DATA_DIR / "geocode_cache.json"
 DEBUG_HTML_PATH = DATA_DIR / "debug_last_page.html"
+IMAGES_DIR = DATA_DIR / "images"
 
 session = requests.Session()
 session.headers.update(
@@ -248,6 +249,32 @@ def geocode(city, zipcode, country, cache: dict):
     return None, None
 
 
+def download_cover_image(listing_id: str, image_url: str | None) -> str | None:
+    """Scarica la foto di copertina e la salva nel repo (docs/data/images/), cosi'
+    la dashboard non dipende dal CDN di AutoScout24 (bloccato da alcuni filtri di
+    rete/firewall aziendali). Ritorna il path relativo a docs/, o l'URL originale
+    come fallback se il download fallisce. Non riscarica se il file esiste gia'."""
+    if not image_url:
+        return None
+
+    filename = f"{listing_id}.webp"
+    local_path = IMAGES_DIR / filename
+    relative_path = f"data/images/{filename}"
+    if local_path.exists():
+        return relative_path
+
+    try:
+        resp = session.get(image_url, timeout=20)
+        resp.raise_for_status()
+        if not resp.headers.get("Content-Type", "").startswith("image/"):
+            return image_url
+        IMAGES_DIR.mkdir(parents=True, exist_ok=True)
+        local_path.write_bytes(resp.content)
+        return relative_path
+    except requests.RequestException:
+        return image_url
+
+
 def dump_schema():
     """Stampa la struttura del primo annuncio trovato in pagina 1, per debug
     quando lo schema JSON di AutoScout24 cambia e i campi vanno rimappati."""
@@ -286,6 +313,7 @@ def main():
         lat, lon = geocode(item["city"], item["zip"], item["country"], geocache)
         item["lat"] = lat
         item["lon"] = lon
+        item["image"] = download_cover_image(item["id"], item["image"])
 
         existing = history_listings.get(item["id"])
         if existing is None:
