@@ -42,3 +42,4 @@ jobs:
           git add docs/data/current.json docs/data/history.json docs/data/geocode_cache.json
           git diff --cached --quiet && echo "Nessuna modifica ai dati" || git commit -m "Aggiornamento dati GT86 $(date -u +%Y-%m-%d)"
           git push
+
