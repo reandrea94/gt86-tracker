@@ -18,6 +18,8 @@
     --border:         rgba(11,11,11,0.10);
     --series-1:       #2a78d6; /* cambio automatico */
     --series-2:       #eb6834; /* cambio manuale */
+    --series-3:       #1baf7a; /* venditore privato */
+    --series-4:       #eda100; /* venditore concessionario */
     --status-good:    #0ca30c; /* nuovi */
     --status-critical:#d03b3b; /* rimossi/venduti */
     --status-warning: #fab219;
@@ -35,6 +37,8 @@
       --border:         rgba(255,255,255,0.10);
       --series-1:       #3987e5;
       --series-2:       #d95926;
+      --series-3:       #199e70;
+      --series-4:       #c98500;
       --status-good:    #0ca30c;
       --status-critical:#e66767;
       --status-warning: #fab219;
@@ -52,6 +56,8 @@
     --border:         rgba(255,255,255,0.10);
     --series-1:       #3987e5;
     --series-2:       #d95926;
+    --series-3:       #199e70;
+    --series-4:       #c98500;
     --status-good:    #0ca30c;
     --status-critical:#e66767;
     --status-warning: #fab219;
@@ -107,6 +113,8 @@
   .stat-tile.critical .value { color: var(--status-critical); }
   .stat-tile.automatic .value { color: var(--series-1); }
   .stat-tile.manual .value { color: var(--series-2); }
+  .stat-tile.private .value { color: var(--series-3); }
+  .stat-tile.dealer .value { color: var(--series-4); }
 
   .transmission-filter {
     display: flex;
@@ -273,6 +281,8 @@
   .badge.price-up { background: color-mix(in srgb, var(--status-critical) 18%, transparent); color: var(--status-critical); }
   .badge.transmission-automatico { background: color-mix(in srgb, var(--series-1) 18%, transparent); color: var(--series-1); margin-left: 0; }
   .badge.transmission-manuale { background: color-mix(in srgb, var(--series-2) 18%, transparent); color: var(--series-2); margin-left: 0; }
+  .badge.seller-private { background: color-mix(in srgb, var(--series-3) 18%, transparent); color: var(--series-3); margin-left: 0; }
+  .badge.seller-dealer { background: color-mix(in srgb, var(--series-4) 18%, transparent); color: var(--series-4); margin-left: 0; }
   .badge.value-good { background: color-mix(in srgb, var(--status-good) 18%, transparent); color: var(--status-good); margin-left: 0; }
   .badge.value-bad { background: color-mix(in srgb, var(--status-critical) 18%, transparent); color: var(--status-critical); margin-left: 0; }
   .badge.value-neutral { background: color-mix(in srgb, var(--text-muted) 18%, transparent); color: var(--text-muted); margin-left: 0; }
@@ -357,6 +367,14 @@
         <div class="label">Cambio manuale</div>
         <div class="value" id="stat-manual">–</div>
       </div>
+      <div class="stat-tile private">
+        <div class="label">Venditori privati</div>
+        <div class="value" id="stat-private">–</div>
+      </div>
+      <div class="stat-tile dealer">
+        <div class="label">Concessionari</div>
+        <div class="value" id="stat-dealer">–</div>
+      </div>
     </div>
 
     <div class="transmission-filter" id="transmission-filter">
@@ -364,6 +382,13 @@
       <button class="tf-btn" type="button" data-value="all" data-active="true">Tutti</button>
       <button class="tf-btn" type="button" data-value="Automatico"><span class="dot" style="background:var(--series-1)"></span>Automatico</button>
       <button class="tf-btn" type="button" data-value="Manuale"><span class="dot" style="background:var(--series-2)"></span>Manuale</button>
+    </div>
+
+    <div class="transmission-filter" id="seller-filter">
+      <span class="flabel">Venditore:</span>
+      <button class="tf-btn" type="button" data-value="all" data-active="true">Tutti</button>
+      <button class="tf-btn" type="button" data-value="private"><span class="dot" style="background:var(--series-3)"></span>Privato</button>
+      <button class="tf-btn" type="button" data-value="dealer"><span class="dot" style="background:var(--series-4)"></span>Concessionario</button>
     </div>
 
     <div class="range-filters" id="range-filters">
@@ -403,6 +428,7 @@
             <th data-key="year" class="num">Anno</th>
             <th data-key="mileage" class="num">Km</th>
             <th data-key="transmission">Cambio</th>
+            <th data-key="seller_type">Venditore</th>
             <th data-key="city">Città</th>
             <th data-key="days_listed" class="num">Giorni annuncio</th>
           </tr>
@@ -447,6 +473,7 @@
   let listings = [];
   let newIdsGlobal = new Set();
   let transmissionFilter = 'all';
+  let sellerFilter = 'all';
   let kmMin = null, kmMax = null, yearMin = null, yearMax = null;
   let leafletMap = null;
   let markersLayer = null;
@@ -464,6 +491,12 @@
   function transmissionBadge(t) {
     if (t === 'Automatico') return '<span class="badge transmission-automatico">Automatico</span>';
     if (t === 'Manuale') return '<span class="badge transmission-manuale">Manuale</span>';
+    return '–';
+  }
+
+  function sellerBadge(s) {
+    if (s === 'private') return '<span class="badge seller-private">Privato</span>';
+    if (s === 'dealer') return '<span class="badge seller-dealer">Concessionario</span>';
     return '–';
   }
 
@@ -514,6 +547,7 @@
 
   function matchesFilters(l) {
     if (transmissionFilter !== 'all' && l.transmission !== transmissionFilter) return false;
+    if (sellerFilter !== 'all' && l.seller_type !== sellerFilter) return false;
     if (kmMin != null && !(typeof l.mileage === 'number' && l.mileage >= kmMin)) return false;
     if (kmMax != null && !(typeof l.mileage === 'number' && l.mileage <= kmMax)) return false;
     if (yearMin != null && !(typeof l.year === 'number' && l.year >= yearMin)) return false;
@@ -527,6 +561,8 @@
     document.getElementById('stat-removed').textContent = (current.removed_ids || []).length;
     document.getElementById('stat-automatic').textContent = current.listings.filter(l => l.transmission === 'Automatico').length;
     document.getElementById('stat-manual').textContent = current.listings.filter(l => l.transmission === 'Manuale').length;
+    document.getElementById('stat-private').textContent = current.listings.filter(l => l.seller_type === 'private').length;
+    document.getElementById('stat-dealer').textContent = current.listings.filter(l => l.seller_type === 'dealer').length;
     const prices = current.listings.map(l => l.price).filter(p => typeof p === 'number');
     if (prices.length) {
       const sorted = [...prices].sort((a, b) => a - b);
@@ -566,7 +602,8 @@
         weight: isNew ? 3 : 1.5,
       }).addTo(markersLayer);
       const priceTxt = l.price ? fmtEUR.format(l.price) : 'Prezzo n.d.';
-      const specs = [l.fuel, l.transmission].filter(Boolean).join(' · ');
+      const sellerLabel = l.seller_type === 'private' ? 'Privato' : l.seller_type === 'dealer' ? 'Concessionario' : null;
+      const specs = [l.fuel, l.transmission, sellerLabel].filter(Boolean).join(' · ');
       const popupImg = l.image ? `<img class="popup-thumb" src="${l.image}" alt="" loading="lazy" onerror="this.remove()">` : '';
       marker.bindPopup(
         popupImg +
@@ -588,11 +625,11 @@
     return String(str).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
   }
 
-  function setupTransmissionFilter() {
-    const buttons = document.querySelectorAll('#transmission-filter .tf-btn');
+  function setupToggleFilter(containerId, onSelect) {
+    const buttons = document.querySelectorAll(`#${containerId} .tf-btn`);
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
-        transmissionFilter = btn.getAttribute('data-value');
+        onSelect(btn.getAttribute('data-value'));
         buttons.forEach(b => b.setAttribute('data-active', String(b === btn)));
         applyFilterAndSort();
         updateMapMarkers();
@@ -658,8 +695,8 @@
         if (av == null) return 1;
         if (bv == null) return -1;
       } else {
-        if (av == null) av = ['title', 'city', 'transmission'].includes(sortKey) ? '' : Infinity;
-        if (bv == null) bv = ['title', 'city', 'transmission'].includes(sortKey) ? '' : Infinity;
+        if (av == null) av = ['title', 'city', 'transmission', 'seller_type'].includes(sortKey) ? '' : Infinity;
+        if (bv == null) bv = ['title', 'city', 'transmission', 'seller_type'].includes(sortKey) ? '' : Infinity;
       }
       if (typeof av === 'string') return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
       return sortAsc ? av - bv : bv - av;
@@ -695,6 +732,7 @@
         <td class="num">${l.year ?? '–'}</td>
         <td class="num">${l.mileage ? fmtNum.format(l.mileage) : '–'}</td>
         <td>${transmissionBadge(l.transmission)}</td>
+        <td>${sellerBadge(l.seller_type)}</td>
         <td>${escapeHtml(l.city || '–')}</td>
         <td class="num">${l.days_listed ?? '–'}</td>
       `;
@@ -733,7 +771,8 @@
       initMap();
       renderTable(current);
       updateMapMarkers();
-      setupTransmissionFilter();
+      setupToggleFilter('transmission-filter', v => { transmissionFilter = v; });
+      setupToggleFilter('seller-filter', v => { sellerFilter = v; });
       setupRangeFilters();
       renderRemoved(history);
     })
