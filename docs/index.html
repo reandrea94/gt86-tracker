@@ -135,6 +135,36 @@
     font-weight: 600;
   }
 
+  .range-filters {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .range-filters .flabel { font-size: 13px; color: var(--text-secondary); margin-right: 2px; }
+  .range-filters .sep { color: var(--text-muted); font-size: 13px; }
+  .range-filters input[type="number"] {
+    width: 84px;
+    padding: 5px 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-1);
+    color: var(--text-primary);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+  #range-reset {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  #range-reset:hover { color: var(--text-primary); border-color: var(--text-primary); }
+
   #map {
     height: 460px;
     border-radius: 12px;
@@ -333,6 +363,18 @@
       <button class="tf-btn" type="button" data-value="Manuale"><span class="dot" style="background:var(--series-2)"></span>Manuale</button>
     </div>
 
+    <div class="range-filters" id="range-filters">
+      <span class="flabel">Km:</span>
+      <input type="number" id="km-min" placeholder="da" min="0" step="1000">
+      <span class="sep">–</span>
+      <input type="number" id="km-max" placeholder="a" min="0" step="1000">
+      <span class="flabel">Anno:</span>
+      <input type="number" id="year-min" placeholder="da" min="1990" max="2100" step="1">
+      <span class="sep">–</span>
+      <input type="number" id="year-max" placeholder="a" min="1990" max="2100" step="1">
+      <button id="range-reset" type="button">Azzera</button>
+    </div>
+
     <div id="map"></div>
     <div class="legend">
       <span><span class="swatch" style="background:var(--series-1)"></span>Cambio automatico</span>
@@ -398,6 +440,7 @@
   let listings = [];
   let newIdsGlobal = new Set();
   let transmissionFilter = 'all';
+  let kmMin = null, kmMax = null, yearMin = null, yearMax = null;
   let leafletMap = null;
   let markersLayer = null;
 
@@ -417,8 +460,13 @@
     return '–';
   }
 
-  function matchesTransmission(l) {
-    return transmissionFilter === 'all' || l.transmission === transmissionFilter;
+  function matchesFilters(l) {
+    if (transmissionFilter !== 'all' && l.transmission !== transmissionFilter) return false;
+    if (kmMin != null && !(typeof l.mileage === 'number' && l.mileage >= kmMin)) return false;
+    if (kmMax != null && !(typeof l.mileage === 'number' && l.mileage <= kmMax)) return false;
+    if (yearMin != null && !(typeof l.year === 'number' && l.year >= yearMin)) return false;
+    if (yearMax != null && !(typeof l.year === 'number' && l.year <= yearMax)) return false;
+    return true;
   }
 
   function renderStats(current) {
@@ -453,7 +501,7 @@
   function updateMapMarkers() {
     markersLayer.clearLayers();
     const points = [];
-    listings.filter(matchesTransmission).forEach(l => {
+    listings.filter(matchesFilters).forEach(l => {
       if (typeof l.lat !== 'number' || typeof l.lon !== 'number') return;
       const isNew = newIdsGlobal.has(l.id);
       const fill = transmissionColor(l.transmission);
@@ -500,6 +548,34 @@
     });
   }
 
+  function setupRangeFilters() {
+    const kmMinEl = document.getElementById('km-min');
+    const kmMaxEl = document.getElementById('km-max');
+    const yearMinEl = document.getElementById('year-min');
+    const yearMaxEl = document.getElementById('year-max');
+
+    function toNumberOrNull(el) {
+      const v = el.value.trim();
+      return v === '' ? null : Number(v);
+    }
+
+    function onChange() {
+      kmMin = toNumberOrNull(kmMinEl);
+      kmMax = toNumberOrNull(kmMaxEl);
+      yearMin = toNumberOrNull(yearMinEl);
+      yearMax = toNumberOrNull(yearMaxEl);
+      applyFilterAndSort();
+      updateMapMarkers();
+    }
+
+    [kmMinEl, kmMaxEl, yearMinEl, yearMaxEl].forEach(el => el.addEventListener('input', onChange));
+
+    document.getElementById('range-reset').addEventListener('click', () => {
+      kmMinEl.value = ''; kmMaxEl.value = ''; yearMinEl.value = ''; yearMaxEl.value = '';
+      onChange();
+    });
+  }
+
   function renderTable(current) {
     listings = current.listings.slice();
     newIdsGlobal = new Set(current.new_ids || []);
@@ -517,7 +593,7 @@
 
   function applyFilterAndSort() {
     const query = document.getElementById('search-box').value.trim().toLowerCase();
-    let rows = listings.filter(matchesTransmission).filter(l => {
+    let rows = listings.filter(matchesFilters).filter(l => {
       if (!query) return true;
       return [l.title, l.city, l.year, l.seller_type].some(v => String(v ?? '').toLowerCase().includes(query));
     });
@@ -597,6 +673,7 @@
       renderTable(current);
       updateMapMarkers();
       setupTransmissionFilter();
+      setupRangeFilters();
       renderRemoved(history);
     })
     .catch(err => {
