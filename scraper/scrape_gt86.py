@@ -1,0 +1,367 @@
+#!/usr/bin/env python3
+"""Scarica gli annunci Toyota GT86 da AutoScout24.it e aggiorna lo storico giornaliero.
+
+Pensato per girare via GitHub Actions (rete non filtrata). Scrive:
+  docs/data/current.json    -> annunci attivi oggi (usato dalla dashboard)
+  docs/data/history.json    -> database completo (attivi + rimossi) con storico prezzi
+  docs/data/geocode_cache.json -> cache geocoding citta -> lat/lon
+  docs/data/debug_last_page.html -> dump pagina se il parsing non trova nulla (debug)
+"""
+import json
+import re
+import sys
+import time
+import urllib.parse
+from datetime import datetime, timezone
+from pathlib import Path
+
+import requests
+from bs4 import BeautifulSoup
+
+BASE_URL = "https://www.autoscout24.it/lst/toyota/gt86"
+SEARCH_PARAMS = {
+    "atype": "C",
+    "cy": "I",       # Italia
+    "damaged_listing": "exclude",
+    "desc": "0",
+    "sort": "standard",
+    "source": "listpage_pagination",
+    "ustate": "N,U",  # nuove e usate
+    "size": "20",
+}
+MAX_PAGES = 15
+REQUEST_DELAY_SEC = 1.5
+NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
+NOMINATIM_DELAY_SEC = 1.1
+USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+)
+
+ROOT = Path(__file__).resolve().parent.parent
+DATA_DIR = ROOT / "docs" / "data"
+CURRENT_PATH = DATA_DIR / "current.json"
+HISTORY_PATH = DATA_DIR / "history.json"
+GEOCACHE_PATH = DATA_DIR / "geocode_cache.json"
+DEBUG_HTML_PATH = DATA_DIR / "debug_last_page.html"
+
+session = requests.Session()
+session.headers.update(
+    {
+        "User-Agent": USER_AGENT,
+        "Accept-Language": "it-IT,it;q=0.9,en;q=0.5",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    }
+)
+
+
+def load_json(path: Path, default):
+    if path.exists():
+        try:
+            return json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            return default
+    return default
+
+
+def save_json(path: Path, data):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def fetch_page(page: int) -> str:
+    params = dict(SEARCH_PARAMS)
+    params["page"] = str(page)
+    url = f"{BASE_URL}?{urllib.parse.urlencode(params)}"
+    resp = session.get(url, timeout=30)
+    resp.raise_for_status()
+    return resp.text
+
+
+def find_listing_arrays(node, found):
+    """Cerca ricorsivamente nel JSON __NEXT_DATA__ liste di dict che sembrano annunci.
+
+    Lo schema esatto di AutoScout24 puo' cambiare nel tempo: invece di un path
+    fisso, cerchiamo array di oggetti che hanno contemporaneamente qualcosa
+    che somiglia a un prezzo e qualcosa che somiglia a un chilometraggio/id.
+    """
+    if isinstance(node, dict):
+        for value in node.values():
+            find_listing_arrays(value, found)
+    elif isinstance(node, list):
+        if node and all(isinstance(item, dict) for item in node):
+            sample_keys = set()
+            for item in node[:3]:
+                sample_keys |= set(k.lower() for k in item.keys())
+            has_price = any("price" in k for k in sample_keys)
+            has_id = any(k in sample_keys for k in ("id", "guid", "listingid"))
+            if has_price and has_id:
+                found.append(node)
+        for item in node:
+            find_listing_arrays(item, found)
+
+
+def dig(d, *keys):
+    for key in keys:
+        if isinstance(d, dict) and key in d and d[key] is not None:
+            return d[key]
+    return None
+
+
+def deep_find_number(d, name_fragment):
+    """Cerca nel dict/lista annidati la prima chiave che contiene name_fragment
+    con valore numerico (int/float o stringa numerica)."""
+    if isinstance(d, dict):
+        for k, v in d.items():
+            if name_fragment in k.lower():
+                if isinstance(v, (int, float)):
+                    return v
+                if isinstance(v, str):
+                    m = re.search(r"[\d.]+", v.replace(",", ""))
+                    if m:
+                        try:
+                            return float(m.group())
+                        except ValueError:
+                            pass
+            result = deep_find_number(v, name_fragment)
+            if result is not None:
+                return result
+    elif isinstance(d, list):
+        for item in d:
+            result = deep_find_number(item, name_fragment)
+            if result is not None:
+                return result
+    return None
+
+
+def deep_find_string(d, name_fragments):
+    if isinstance(d, dict):
+        for k, v in d.items():
+            if isinstance(v, str) and any(f in k.lower() for f in name_fragments):
+                return v
+            result = deep_find_string(v, name_fragments)
+            if result is not None:
+                return result
+    elif isinstance(d, list):
+        for item in d:
+            result = deep_find_string(item, name_fragments)
+            if result is not None:
+                return result
+    return None
+
+
+def parse_listing(raw: dict):
+    listing_id = str(dig(raw, "id", "guid", "listingId") or "")
+    if not listing_id:
+        return None
+
+    price = deep_find_number(raw, "price")
+    mileage = deep_find_number(raw, "mileage")
+    year = deep_find_number(raw, "firstregistration") or deep_find_number(raw, "year")
+    if year and year > 3000:
+        # spesso arriva come timestamp o come MMYYYY/YYYYMMDD: prova a isolare l'anno
+        m = re.search(r"(19|20)\d{2}", str(int(year)))
+        year = int(m.group()) if m else None
+
+    city = deep_find_string(raw, ["city", "location"])
+    zipcode = deep_find_string(raw, ["zip", "postcode", "postalcode"])
+    country = deep_find_string(raw, ["countrycode", "country"]) or "IT"
+    seller_type = deep_find_string(raw, ["sellertype", "customertype", "dealertype"])
+
+    slug_url = dig(raw, "url", "link", "detailPageUrl")
+    if slug_url and slug_url.startswith("/"):
+        slug_url = f"https://www.autoscout24.it{slug_url}"
+    if not slug_url:
+        slug_url = f"https://www.autoscout24.it/annunci/{listing_id}"
+
+    title = deep_find_string(raw, ["title", "make", "modelname"]) or "Toyota GT86"
+    image = deep_find_string(raw, ["imageurl", "image"])
+
+    return {
+        "id": listing_id,
+        "title": title,
+        "price": int(price) if price else None,
+        "currency": "EUR",
+        "year": int(year) if year else None,
+        "mileage": int(mileage) if mileage else None,
+        "city": city,
+        "zip": zipcode,
+        "country": country,
+        "seller_type": seller_type,
+        "url": slug_url,
+        "image": image,
+    }
+
+
+def parse_next_data(html: str):
+    soup = BeautifulSoup(html, "lxml")
+    script = soup.find("script", id="__NEXT_DATA__")
+    if not script or not script.string:
+        return []
+    try:
+        data = json.loads(script.string)
+    except json.JSONDecodeError:
+        return []
+
+    arrays = []
+    find_listing_arrays(data, arrays)
+    if not arrays:
+        return []
+    # prendi l'array piu' numeroso plausibile (di solito e' quello dei risultati)
+    arrays.sort(key=len, reverse=True)
+    best = arrays[0]
+
+    parsed = []
+    for raw in best:
+        item = parse_listing(raw)
+        if item:
+            parsed.append(item)
+    return parsed
+
+
+def scrape_all_listings():
+    all_listings = {}
+    for page in range(1, MAX_PAGES + 1):
+        html = fetch_page(page)
+        listings = parse_next_data(html)
+        if not listings:
+            if page == 1:
+                save_json_html_debug(html)
+            break
+        new_on_page = 0
+        for item in listings:
+            if item["id"] not in all_listings:
+                all_listings[item["id"]] = item
+                new_on_page += 1
+        if new_on_page == 0:
+            break
+        time.sleep(REQUEST_DELAY_SEC)
+    return list(all_listings.values())
+
+
+def save_json_html_debug(html: str):
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    DEBUG_HTML_PATH.write_text(html, encoding="utf-8")
+
+
+def geocode(city, zipcode, country, cache: dict):
+    if not city and not zipcode:
+        return None, None
+    key = f"{zipcode or ''}|{city or ''}|{country or 'IT'}".strip("|").lower()
+    if key in cache:
+        entry = cache[key]
+        return entry.get("lat"), entry.get("lon")
+
+    query = ", ".join(p for p in [zipcode, city, "Italia" if country == "IT" else country] if p)
+    try:
+        resp = session.get(
+            NOMINATIM_URL,
+            params={"q": query, "format": "json", "limit": 1},
+            headers={"User-Agent": "gt86-tracker/1.0 (personal use)"},
+            timeout=20,
+        )
+        resp.raise_for_status()
+        results = resp.json()
+    except (requests.RequestException, ValueError):
+        results = []
+    time.sleep(NOMINATIM_DELAY_SEC)
+
+    if results:
+        lat, lon = float(results[0]["lat"]), float(results[0]["lon"])
+        cache[key] = {"lat": lat, "lon": lon}
+        return lat, lon
+    cache[key] = {"lat": None, "lon": None}
+    return None, None
+
+
+def main():
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    now_iso = datetime.now(timezone.utc).isoformat()
+
+    scraped = scrape_all_listings()
+    scraped_ids = {item["id"] for item in scraped}
+
+    history = load_json(HISTORY_PATH, {"listings": {}, "daily_snapshots": []})
+    geocache = load_json(GEOCACHE_PATH, {})
+
+    history_listings = history.setdefault("listings", {})
+
+    new_ids, removed_ids, reappeared_ids = [], [], []
+
+    for item in scraped:
+        lat, lon = geocode(item["city"], item["zip"], item["country"], geocache)
+        item["lat"] = lat
+        item["lon"] = lon
+
+        existing = history_listings.get(item["id"])
+        if existing is None:
+            item["first_seen"] = today
+            item["last_seen"] = today
+            item["status"] = "active"
+            item["price_history"] = [{"date": today, "price": item["price"]}]
+            history_listings[item["id"]] = item
+            new_ids.append(item["id"])
+        else:
+            if existing.get("status") == "removed":
+                reappeared_ids.append(item["id"])
+            was_price = existing.get("price")
+            price_history = existing.get("price_history", [])
+            if item["price"] is not None and item["price"] != was_price:
+                price_history.append({"date": today, "price": item["price"]})
+            existing.update(item)
+            existing["last_seen"] = today
+            existing["status"] = "active"
+            existing["price_history"] = price_history
+            history_listings[item["id"]] = existing
+
+    for listing_id, existing in history_listings.items():
+        if listing_id not in scraped_ids and existing.get("status") == "active":
+            existing["status"] = "removed"
+            existing["removed_on"] = today
+            removed_ids.append(listing_id)
+
+    history["daily_snapshots"] = history.get("daily_snapshots", [])
+    history["daily_snapshots"].append(
+        {
+            "date": today,
+            "count": len(scraped_ids),
+            "new_ids": new_ids,
+            "removed_ids": removed_ids,
+            "reappeared_ids": reappeared_ids,
+        }
+    )
+    # tieni al massimo 365 snapshot giornaliere
+    history["daily_snapshots"] = history["daily_snapshots"][-365:]
+
+    active_listings = []
+    for listing_id in scraped_ids:
+        entry = dict(history_listings[listing_id])
+        try:
+            first_seen = datetime.strptime(entry["first_seen"], "%Y-%m-%d")
+            entry["days_listed"] = (datetime.strptime(today, "%Y-%m-%d") - first_seen).days + 1
+        except (KeyError, ValueError):
+            entry["days_listed"] = None
+        active_listings.append(entry)
+    active_listings.sort(key=lambda x: (x["price"] is None, x["price"]))
+
+    current = {
+        "updated_at": now_iso,
+        "count": len(active_listings),
+        "new_ids": new_ids,
+        "removed_ids": removed_ids,
+        "listings": active_listings,
+    }
+
+    save_json(CURRENT_PATH, current)
+    save_json(HISTORY_PATH, history)
+    save_json(GEOCACHE_PATH, geocache)
+
+    print(f"OK: {len(active_listings)} annunci attivi, {len(new_ids)} nuovi, {len(removed_ids)} rimossi oggi.")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except requests.RequestException as exc:
+        print(f"Errore di rete durante lo scraping: {exc}", file=sys.stderr)
+        sys.exit(1)

@@ -1,0 +1,44 @@
+name: Scrape GT86 AutoScout24
+
+on:
+  schedule:
+    - cron: "17 6 * * *"   # ogni giorno alle ~06:17 UTC (~08:17 ora italiana estiva)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scraper/requirements.txt
+
+      - name: Run scraper
+        run: python scraper/scrape_gt86.py
+
+      - name: Upload debug page (solo se il parsing non trova annunci)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-page
+          path: docs/data/debug_last_page.html
+          if-no-files-found: ignore
+          retention-days: 5
+
+      - name: Commit updated data
+        run: |
+          git config user.name "gt86-tracker-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/data/current.json docs/data/history.json docs/data/geocode_cache.json
+          git diff --cached --quiet && echo "Nessuna modifica ai dati" || git commit -m "Aggiornamento dati GT86 $(date -u +%Y-%m-%d)"
+          git push

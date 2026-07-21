@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GT86 Tracker — Annunci AutoScout24</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+  :root {
+    color-scheme: light;
+    --surface-1:      #fcfcfb;
+    --page-plane:     #f9f9f7;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --gridline:       #e1e0d9;
+    --baseline:       #c3c2b7;
+    --border:         rgba(11,11,11,0.10);
+    --series-1:       #2a78d6; /* attivi */
+    --status-good:    #0ca30c; /* nuovi */
+    --status-critical:#d03b3b; /* rimossi/venduti */
+    --status-warning: #fab219;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --surface-1:      #1a1a19;
+      --page-plane:     #0d0d0d;
+      --text-primary:   #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted:     #898781;
+      --gridline:       #2c2c2a;
+      --baseline:       #383835;
+      --border:         rgba(255,255,255,0.10);
+      --series-1:       #3987e5;
+      --status-good:    #0ca30c;
+      --status-critical:#e66767;
+      --status-warning: #fab219;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-1:      #1a1a19;
+    --page-plane:     #0d0d0d;
+    --text-primary:   #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted:     #898781;
+    --gridline:       #2c2c2a;
+    --baseline:       #383835;
+    --border:         rgba(255,255,255,0.10);
+    --series-1:       #3987e5;
+    --status-good:    #0ca30c;
+    --status-critical:#e66767;
+    --status-warning: #fab219;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--page-plane);
+    color: var(--text-primary);
+  }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  header h1 { font-size: 20px; margin: 0; }
+  header .updated { color: var(--text-secondary); font-size: 13px; }
+  #theme-toggle {
+    border: 1px solid var(--border);
+    background: var(--surface-1);
+    color: var(--text-primary);
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  main { padding: 20px 28px 48px; max-width: 1280px; margin: 0 auto; }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .stat-tile {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .stat-tile .label { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+  .stat-tile .value { font-size: 26px; font-weight: 600; }
+  .stat-tile.good .value { color: var(--status-good); }
+  .stat-tile.critical .value { color: var(--status-critical); }
+
+  #map {
+    height: 460px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+  }
+  .legend {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+  .legend .swatch {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  section h2 { font-size: 16px; margin: 28px 0 12px; }
+
+  .controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .controls input[type="search"] {
+    flex: 1;
+    min-width: 180px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-1);
+    color: var(--text-primary);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--gridline);
+  }
+  th {
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+  th:hover { color: var(--text-primary); }
+  td.num, th.num { font-variant-numeric: tabular-nums; text-align: right; }
+  tr:last-child td { border-bottom: none; }
+  a.listing-link { color: var(--series-1); text-decoration: none; }
+  a.listing-link:hover { text-decoration: underline; }
+
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-left: 6px;
+  }
+  .badge.new { background: color-mix(in srgb, var(--status-good) 18%, transparent); color: var(--status-good); }
+  .badge.price-down { background: color-mix(in srgb, var(--status-good) 18%, transparent); color: var(--status-good); }
+  .badge.price-up { background: color-mix(in srgb, var(--status-critical) 18%, transparent); color: var(--status-critical); }
+
+  #removed-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  #removed-list li {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--gridline);
+    font-size: 14px;
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  #removed-list li:last-child { border-bottom: none; }
+  #removed-list .rl-title { color: var(--text-primary); }
+
+  .empty-state, .error-state {
+    padding: 40px;
+    text-align: center;
+    color: var(--text-secondary);
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .error-state code {
+    background: var(--gridline);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  footer {
+    padding: 20px 28px 40px;
+    color: var(--text-muted);
+    font-size: 12px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>🚗 GT86 Tracker — annunci AutoScout24.it</h1>
+  <div style="display:flex; align-items:center; gap:14px;">
+    <span class="updated" id="updated-label">Caricamento...</span>
+    <button id="theme-toggle" type="button">🌓 Tema</button>
+  </div>
+</header>
+
+<main>
+  <div id="content" style="display:none;">
+    <div class="stat-row">
+      <div class="stat-tile">
+        <div class="label">Annunci attivi</div>
+        <div class="value" id="stat-count">–</div>
+      </div>
+      <div class="stat-tile good">
+        <div class="label">Nuovi oggi</div>
+        <div class="value" id="stat-new">–</div>
+      </div>
+      <div class="stat-tile critical">
+        <div class="label">Rimossi oggi</div>
+        <div class="value" id="stat-removed">–</div>
+      </div>
+      <div class="stat-tile">
+        <div class="label">Prezzo medio</div>
+        <div class="value" id="stat-avg-price">–</div>
+      </div>
+      <div class="stat-tile">
+        <div class="label">Prezzo mediano</div>
+        <div class="value" id="stat-median-price">–</div>
+      </div>
+    </div>
+
+    <div id="map"></div>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--series-1)"></span>Annuncio attivo</span>
+      <span><span class="swatch" style="background:var(--status-good)"></span>Nuovo oggi</span>
+    </div>
+
+    <section>
+      <h2>Annunci attivi</h2>
+      <div class="controls">
+        <input type="search" id="search-box" placeholder="Filtra per città, anno, allestimento...">
+      </div>
+      <table id="listings-table">
+        <thead>
+          <tr>
+            <th data-key="title">Annuncio</th>
+            <th data-key="price" class="num">Prezzo</th>
+            <th data-key="year" class="num">Anno</th>
+            <th data-key="mileage" class="num">Km</th>
+            <th data-key="city">Città</th>
+            <th data-key="days_listed" class="num">Giorni annuncio</th>
+          </tr>
+        </thead>
+        <tbody id="listings-body"></tbody>
+      </table>
+      <div class="empty-state" id="empty-state" style="display:none;">Nessun annuncio trovato con questo filtro.</div>
+    </section>
+
+    <section>
+      <h2>Rimossi di recente (probabilmente venduti)</h2>
+      <ul id="removed-list"></ul>
+    </section>
+  </div>
+
+  <div class="error-state" id="error-state" style="display:none;">
+    <p><strong>Impossibile caricare i dati.</strong></p>
+    <p>Questa pagina deve essere aperta dall'URL di GitHub Pages (es. <code>https://tuo-utente.github.io/tuo-repo/</code>), non aperta come file locale con doppio click — il browser blocca la lettura di <code>data/current.json</code> da <code>file://</code>.</p>
+    <p>Se il repo è appena stato creato, i dati compariranno dopo la prima esecuzione automatica dello scraper (workflow GitHub Actions).</p>
+  </div>
+</main>
+
+<footer>
+  Dati raccolti automaticamente una volta al giorno da AutoScout24.it (solo ricerche pubbliche, uso personale). Le coordinate sono approssimative (geocoding della città dell'annuncio, non l'indirizzo esatto del venditore).
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function () {
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', () => {
+    const root = document.documentElement;
+    const current = root.getAttribute('data-theme');
+    root.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+  });
+
+  const fmtEUR = new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+  const fmtNum = new Intl.NumberFormat('it-IT');
+
+  let sortKey = 'price';
+  let sortAsc = true;
+  let listings = [];
+
+  function renderStats(current) {
+    document.getElementById('stat-count').textContent = current.count ?? 0;
+    document.getElementById('stat-new').textContent = (current.new_ids || []).length;
+    document.getElementById('stat-removed').textContent = (current.removed_ids || []).length;
+    const prices = current.listings.map(l => l.price).filter(p => typeof p === 'number');
+    if (prices.length) {
+      const avg = prices.reduce((a, b) => a + b, 0) / prices.length;
+      const sorted = [...prices].sort((a, b) => a - b);
+      const median = sorted[Math.floor(sorted.length / 2)];
+      document.getElementById('stat-avg-price').textContent = fmtEUR.format(avg);
+      document.getElementById('stat-median-price').textContent = fmtEUR.format(median);
+    } else {
+      document.getElementById('stat-avg-price').textContent = '–';
+      document.getElementById('stat-median-price').textContent = '–';
+    }
+    const updated = current.updated_at ? new Date(current.updated_at) : null;
+    document.getElementById('updated-label').textContent = updated
+      ? `Aggiornato: ${updated.toLocaleString('it-IT')}`
+      : 'Nessun aggiornamento ancora eseguito';
+  }
+
+  function renderMap(current) {
+    const map = L.map('map', { scrollWheelZoom: false }).setView([42.5, 12.5], 5.3);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors',
+      maxZoom: 18,
+    }).addTo(map);
+
+    const points = [];
+    current.listings.forEach(l => {
+      if (typeof l.lat !== 'number' || typeof l.lon !== 'number') return;
+      const isNew = (current.new_ids || []).includes(l.id);
+      const color = isNew ? getComputedStyle(document.documentElement).getPropertyValue('--status-good').trim()
+                           : getComputedStyle(document.documentElement).getPropertyValue('--series-1').trim();
+      const marker = L.circleMarker([l.lat, l.lon], {
+        radius: 7,
+        color: color,
+        fillColor: color,
+        fillOpacity: 0.75,
+        weight: 1.5,
+      }).addTo(map);
+      const priceTxt = l.price ? fmtEUR.format(l.price) : 'Prezzo n.d.';
+      marker.bindPopup(
+        `<strong>${escapeHtml(l.title || 'Toyota GT86')}</strong><br>` +
+        `${priceTxt} · ${l.year || '–'} · ${l.mileage ? fmtNum.format(l.mileage) + ' km' : 'km n.d.'}<br>` +
+        `${escapeHtml(l.city || '')}<br>` +
+        `<a href="${l.url}" target="_blank" rel="noopener">Vedi annuncio ↗</a>`
+      );
+      points.push([l.lat, l.lon]);
+    });
+    if (points.length) {
+      map.fitBounds(points, { padding: [30, 30], maxZoom: 8 });
+    }
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+  }
+
+  function renderTable(current) {
+    listings = current.listings.slice();
+    const newIds = new Set(current.new_ids || []);
+    applyFilterAndSort(newIds);
+
+    document.querySelectorAll('#listings-table th[data-key]').forEach(th => {
+      th.addEventListener('click', () => {
+        const key = th.getAttribute('data-key');
+        if (sortKey === key) { sortAsc = !sortAsc; } else { sortKey = key; sortAsc = true; }
+        applyFilterAndSort(newIds);
+      });
+    });
+    document.getElementById('search-box').addEventListener('input', () => applyFilterAndSort(newIds));
+  }
+
+  function applyFilterAndSort(newIds) {
+    const query = document.getElementById('search-box').value.trim().toLowerCase();
+    let rows = listings.filter(l => {
+      if (!query) return true;
+      return [l.title, l.city, l.year, l.seller_type].some(v => String(v ?? '').toLowerCase().includes(query));
+    });
+    rows.sort((a, b) => {
+      let av = a[sortKey], bv = b[sortKey];
+      if (av == null) av = sortKey === 'title' || sortKey === 'city' ? '' : Infinity;
+      if (bv == null) bv = sortKey === 'title' || sortKey === 'city' ? '' : Infinity;
+      if (typeof av === 'string') return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+      return sortAsc ? av - bv : bv - av;
+    });
+
+    const tbody = document.getElementById('listings-body');
+    tbody.innerHTML = '';
+    document.getElementById('empty-state').style.display = rows.length ? 'none' : 'block';
+    document.getElementById('listings-table').style.display = rows.length ? '' : 'none';
+
+    rows.forEach(l => {
+      const tr = document.createElement('tr');
+      const isNew = newIds.has(l.id);
+      const priceHistory = l.price_history || [];
+      let priceBadge = '';
+      if (priceHistory.length > 1) {
+        const prev = priceHistory[priceHistory.length - 2].price;
+        const curr = priceHistory[priceHistory.length - 1].price;
+        if (prev != null && curr != null && curr !== prev) {
+          priceBadge = curr < prev
+            ? `<span class="badge price-down">-${fmtEUR.format(prev - curr)}</span>`
+            : `<span class="badge price-up">+${fmtEUR.format(curr - prev)}</span>`;
+        }
+      }
+      tr.innerHTML = `
+        <td><a class="listing-link" href="${l.url}" target="_blank" rel="noopener">${escapeHtml(l.title || 'Toyota GT86')}</a>${isNew ? '<span class="badge new">nuovo</span>' : ''}</td>
+        <td class="num">${l.price ? fmtEUR.format(l.price) : '–'}${priceBadge}</td>
+        <td class="num">${l.year ?? '–'}</td>
+        <td class="num">${l.mileage ? fmtNum.format(l.mileage) : '–'}</td>
+        <td>${escapeHtml(l.city || '–')}</td>
+        <td class="num">${l.days_listed ?? '–'}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function renderRemoved(history) {
+    const ul = document.getElementById('removed-list');
+    ul.innerHTML = '';
+    const entries = Object.values(history.listings || {})
+      .filter(l => l.status === 'removed')
+      .sort((a, b) => (b.removed_on || '').localeCompare(a.removed_on || ''))
+      .slice(0, 30);
+    if (!entries.length) {
+      ul.innerHTML = '<li>Nessun annuncio rimosso registrato finora.</li>';
+      return;
+    }
+    entries.forEach(l => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <span class="rl-title">${escapeHtml(l.title || 'Toyota GT86')} — ${escapeHtml(l.city || '')}</span>
+        <span>${l.price ? fmtEUR.format(l.price) : '–'} · rimosso il ${l.removed_on || '–'}</span>
+      `;
+      ul.appendChild(li);
+    });
+  }
+
+  Promise.all([
+    fetch('data/current.json').then(r => { if (!r.ok) throw new Error('current.json'); return r.json(); }),
+    fetch('data/history.json').then(r => { if (!r.ok) throw new Error('history.json'); return r.json(); }),
+  ])
+    .then(([current, history]) => {
+      document.getElementById('content').style.display = 'block';
+      renderStats(current);
+      renderMap(current);
+      renderTable(current);
+      renderRemoved(history);
+    })
+    .catch(err => {
+      console.error(err);
+      document.getElementById('error-state').style.display = 'block';
+    });
+})();
+</script>
+</body>
+</html>
