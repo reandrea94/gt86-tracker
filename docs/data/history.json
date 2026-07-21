@@ -484,7 +484,8 @@
           "date": "2026-07-21",
           "price": 26000
         }
-      ]
+      ],
+      "missing_since": "2026-07-21"
     },
     "2abaf5a9-cfdd-4d41-be92-db9aa0e73e21": {
       "id": "2abaf5a9-cfdd-4d41-be92-db9aa0e73e21",
@@ -943,8 +944,7 @@
           "date": "2026-07-21",
           "price": 23899
         }
-      ],
-      "removed_on": "2026-07-21"
+      ]
     },
     "505d2bd3-649e-4cb6-8401-e54c1c1bf9f4": {
       "id": "505d2bd3-649e-4cb6-8401-e54c1c1bf9f4",
@@ -1232,6 +1232,13 @@
       "reappeared_ids": [
         "12beb9f6-49ee-46eb-b166-15154faea25e"
       ]
+    },
+    {
+      "date": "2026-07-21",
+      "count": 42,
+      "new_ids": [],
+      "removed_ids": [],
+      "reappeared_ids": []
     }
   ]
 }

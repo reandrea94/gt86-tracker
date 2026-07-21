@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-21T10:57:57.267754+00:00",
-  "count": 43,
+  "updated_at": "2026-07-21T11:05:01.859954+00:00",
+  "count": 42,
   "new_ids": [],
   "removed_ids": [],
   "listings": [
@@ -201,6 +201,34 @@
       "days_listed": 1
     },
     {
+      "id": "9421bf44-8c5c-482b-baf4-50cfc081c8da",
+      "title": "Toyota GT86 1 Edizione",
+      "price": 20000,
+      "currency": "EUR",
+      "year": 2011,
+      "mileage": 6000,
+      "city": "udine",
+      "zip": "33100",
+      "country": "IT",
+      "seller_type": "private",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-1-edizione-benzina-nero-cat_ma70mo20150-9421bf44-8c5c-482b-baf4-50cfc081c8da",
+      "image": "data/images/9421bf44-8c5c-482b-baf4-50cfc081c8da.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 46.065254,
+      "lon": 13.2397201,
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-07-21",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-21",
+          "price": 20000
+        }
+      ],
+      "days_listed": 1
+    },
+    {
       "id": "a402080c-e17c-4cea-96d7-511e5bad391b",
       "title": "Toyota GT86 2.0",
       "price": 20000,
@@ -245,34 +273,6 @@
       "fuel": "Benzina",
       "lat": 45.4629435,
       "lon": 11.4545974,
-      "first_seen": "2026-07-21",
-      "last_seen": "2026-07-21",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-07-21",
-          "price": 20000
-        }
-      ],
-      "days_listed": 1
-    },
-    {
-      "id": "9421bf44-8c5c-482b-baf4-50cfc081c8da",
-      "title": "Toyota GT86 1 Edizione",
-      "price": 20000,
-      "currency": "EUR",
-      "year": 2011,
-      "mileage": 6000,
-      "city": "udine",
-      "zip": "33100",
-      "country": "IT",
-      "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-1-edizione-benzina-nero-cat_ma70mo20150-9421bf44-8c5c-482b-baf4-50cfc081c8da",
-      "image": "data/images/9421bf44-8c5c-482b-baf4-50cfc081c8da.webp",
-      "transmission": "Manuale",
-      "fuel": "Benzina",
-      "lat": 46.065254,
-      "lon": 13.2397201,
       "first_seen": "2026-07-21",
       "last_seen": "2026-07-21",
       "status": "active",
@@ -341,18 +341,18 @@
       "days_listed": 1
     },
     {
-      "id": "245a0784-5b51-4e7a-a9a0-8ff6933b578c",
-      "title": "Toyota GT86 2.0 REMUS MAXSTON DESIGN MANUALE",
+      "id": "65ad98e1-0b6c-4978-a43f-3537b6e6ce25",
+      "title": "Toyota GT86 2.0 1ST EDITION LIGHTNING RED IN SEDE MANUALE MAM",
       "price": 21900,
       "currency": "EUR",
-      "year": 2014,
-      "mileage": 141900,
+      "year": 2012,
+      "mileage": 132900,
       "city": "San Paolo D'Argon - Bergamo",
       "zip": "24069",
       "country": "IT",
       "seller_type": "dealer",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-remus-maxston-design-manuale-benzina-rosso-cat_ma70mo20150-245a0784-5b51-4e7a-a9a0-8ff6933b578c",
-      "image": "data/images/245a0784-5b51-4e7a-a9a0-8ff6933b578c.webp",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-1st-edition-lightning-red-in-sede-manuale-mam-benzina-rosso-cat_ma70mo20150-65ad98e1-0b6c-4978-a43f-3537b6e6ce25",
+      "image": "data/images/65ad98e1-0b6c-4978-a43f-3537b6e6ce25.webp",
       "transmission": "Manuale",
       "fuel": "Benzina",
       "lat": 45.6885572,
@@ -369,18 +369,18 @@
       "days_listed": 1
     },
     {
-      "id": "65ad98e1-0b6c-4978-a43f-3537b6e6ce25",
-      "title": "Toyota GT86 2.0 1ST EDITION LIGHTNING RED IN SEDE MANUALE MAM",
+      "id": "245a0784-5b51-4e7a-a9a0-8ff6933b578c",
+      "title": "Toyota GT86 2.0 REMUS MAXSTON DESIGN MANUALE",
       "price": 21900,
       "currency": "EUR",
-      "year": 2012,
-      "mileage": 132900,
+      "year": 2014,
+      "mileage": 141900,
       "city": "San Paolo D'Argon - Bergamo",
       "zip": "24069",
       "country": "IT",
       "seller_type": "dealer",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-1st-edition-lightning-red-in-sede-manuale-mam-benzina-rosso-cat_ma70mo20150-65ad98e1-0b6c-4978-a43f-3537b6e6ce25",
-      "image": "data/images/65ad98e1-0b6c-4978-a43f-3537b6e6ce25.webp",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-remus-maxston-design-manuale-benzina-rosso-cat_ma70mo20150-245a0784-5b51-4e7a-a9a0-8ff6933b578c",
+      "image": "data/images/245a0784-5b51-4e7a-a9a0-8ff6933b578c.webp",
       "transmission": "Manuale",
       "fuel": "Benzina",
       "lat": 45.6885572,
@@ -562,7 +562,6 @@
           "price": 23899
         }
       ],
-      "removed_on": "2026-07-21",
       "days_listed": 1
     },
     {
@@ -594,34 +593,6 @@
       "days_listed": 1
     },
     {
-      "id": "8b6a20d3-4ce1-4d78-8314-5b3715bdbff1",
-      "title": "Toyota GT86 2.0",
-      "price": 24000,
-      "currency": "EUR",
-      "year": 2013,
-      "mileage": 63000,
-      "city": "Catania",
-      "zip": "95122",
-      "country": "IT",
-      "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-benzina-cat_ma70mo20150-8b6a20d3-4ce1-4d78-8314-5b3715bdbff1",
-      "image": "data/images/8b6a20d3-4ce1-4d78-8314-5b3715bdbff1.webp",
-      "transmission": "Manuale",
-      "fuel": "Benzina",
-      "lat": 37.5060407,
-      "lon": 15.0508039,
-      "first_seen": "2026-07-21",
-      "last_seen": "2026-07-21",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-07-21",
-          "price": 24000
-        }
-      ],
-      "days_listed": 1
-    },
-    {
       "id": "76d8c67f-4949-4e4c-8636-9d33ee092275",
       "title": "Toyota GT86 2.0",
       "price": 24000,
@@ -638,6 +609,34 @@
       "fuel": "Benzina",
       "lat": 43.2588589,
       "lon": 13.5068436,
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-07-21",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-21",
+          "price": 24000
+        }
+      ],
+      "days_listed": 1
+    },
+    {
+      "id": "8b6a20d3-4ce1-4d78-8314-5b3715bdbff1",
+      "title": "Toyota GT86 2.0",
+      "price": 24000,
+      "currency": "EUR",
+      "year": 2013,
+      "mileage": 63000,
+      "city": "Catania",
+      "zip": "95122",
+      "country": "IT",
+      "seller_type": "private",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-benzina-cat_ma70mo20150-8b6a20d3-4ce1-4d78-8314-5b3715bdbff1",
+      "image": "data/images/8b6a20d3-4ce1-4d78-8314-5b3715bdbff1.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 37.5060407,
+      "lon": 15.0508039,
       "first_seen": "2026-07-21",
       "last_seen": "2026-07-21",
       "status": "active",
@@ -762,34 +761,6 @@
       "days_listed": 1
     },
     {
-      "id": "634e5a41-50a6-41e2-b601-2fe1456feb38",
-      "title": "Toyota GT86 2.0",
-      "price": 26000,
-      "currency": "EUR",
-      "year": 2015,
-      "mileage": 104000,
-      "city": "San Polo dei Cavalieri",
-      "zip": "00010",
-      "country": "IT",
-      "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-benzina-cat_ma70mo20150-634e5a41-50a6-41e2-b601-2fe1456feb38",
-      "image": "data/images/634e5a41-50a6-41e2-b601-2fe1456feb38.webp",
-      "transmission": "Manuale",
-      "fuel": "Benzina",
-      "lat": null,
-      "lon": null,
-      "first_seen": "2026-07-21",
-      "last_seen": "2026-07-21",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-07-21",
-          "price": 26000
-        }
-      ],
-      "days_listed": 1
-    },
-    {
       "id": "f6e49049-2de1-496d-ace2-e4ed60aceacb",
       "title": "Toyota GT86 2.0 Rock&Road - Lista Modifiche In Descrizione",
       "price": 27500,
@@ -846,22 +817,22 @@
       "days_listed": 1
     },
     {
-      "id": "c5726afb-1a43-4266-b172-f99c645631f4",
-      "title": "Toyota GT86 Racing Edition",
+      "id": "8784c124-a2af-4149-a5df-6ff14dc08199",
+      "title": "Toyota GT86 2.0",
       "price": 28000,
       "currency": "EUR",
-      "year": 2019,
-      "mileage": 90000,
-      "city": "Cerveno",
-      "zip": "25040",
+      "year": 2013,
+      "mileage": 13000,
+      "city": "Verona",
+      "zip": "37135",
       "country": "IT",
       "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-racing-edition-benzina-cat_ma70mo20150-c5726afb-1a43-4266-b172-f99c645631f4",
-      "image": "data/images/c5726afb-1a43-4266-b172-f99c645631f4.webp",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-benzina-cat_ma70mo20150-8784c124-a2af-4149-a5df-6ff14dc08199",
+      "image": "data/images/8784c124-a2af-4149-a5df-6ff14dc08199.webp",
       "transmission": "Manuale",
       "fuel": "Benzina",
-      "lat": 45.9785297,
-      "lon": 10.2795299,
+      "lat": 45.3983336,
+      "lon": 10.985279,
       "first_seen": "2026-07-21",
       "last_seen": "2026-07-21",
       "status": "active",
@@ -902,22 +873,22 @@
       "days_listed": 1
     },
     {
-      "id": "8784c124-a2af-4149-a5df-6ff14dc08199",
-      "title": "Toyota GT86 2.0",
+      "id": "c5726afb-1a43-4266-b172-f99c645631f4",
+      "title": "Toyota GT86 Racing Edition",
       "price": 28000,
       "currency": "EUR",
-      "year": 2013,
-      "mileage": 13000,
-      "city": "Verona",
-      "zip": "37135",
+      "year": 2019,
+      "mileage": 90000,
+      "city": "Cerveno",
+      "zip": "25040",
       "country": "IT",
       "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-benzina-cat_ma70mo20150-8784c124-a2af-4149-a5df-6ff14dc08199",
-      "image": "data/images/8784c124-a2af-4149-a5df-6ff14dc08199.webp",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-racing-edition-benzina-cat_ma70mo20150-c5726afb-1a43-4266-b172-f99c645631f4",
+      "image": "data/images/c5726afb-1a43-4266-b172-f99c645631f4.webp",
       "transmission": "Manuale",
       "fuel": "Benzina",
-      "lat": 45.3983336,
-      "lon": 10.985279,
+      "lat": 45.9785297,
+      "lon": 10.2795299,
       "first_seen": "2026-07-21",
       "last_seen": "2026-07-21",
       "status": "active",
@@ -1154,34 +1125,6 @@
       "days_listed": 1
     },
     {
-      "id": "5c768111-c0bd-42f0-9b3d-ab56fe15c35d",
-      "title": "Toyota GT86 2.0",
-      "price": 35000,
-      "currency": "EUR",
-      "year": 2013,
-      "mileage": 50000,
-      "city": "Francavilla al mare",
-      "zip": "66023",
-      "country": "IT",
-      "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-benzina-cat_ma70mo20150-5c768111-c0bd-42f0-9b3d-ab56fe15c35d",
-      "image": "data/images/5c768111-c0bd-42f0-9b3d-ab56fe15c35d.webp",
-      "transmission": "Manuale",
-      "fuel": "Benzina",
-      "lat": 42.4228198,
-      "lon": 14.2781954,
-      "first_seen": "2026-07-21",
-      "last_seen": "2026-07-21",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-07-21",
-          "price": 35000
-        }
-      ],
-      "days_listed": 1
-    },
-    {
       "id": "df6510fb-fe14-42e7-9b3a-6d8604744339",
       "title": "Toyota GT86 2.0 Rock&Road my19",
       "price": 35000,
@@ -1198,6 +1141,34 @@
       "fuel": "Benzina",
       "lat": 43.1331981,
       "lon": 12.2088404,
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-07-21",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-21",
+          "price": 35000
+        }
+      ],
+      "days_listed": 1
+    },
+    {
+      "id": "5c768111-c0bd-42f0-9b3d-ab56fe15c35d",
+      "title": "Toyota GT86 2.0",
+      "price": 35000,
+      "currency": "EUR",
+      "year": 2013,
+      "mileage": 50000,
+      "city": "Francavilla al mare",
+      "zip": "66023",
+      "country": "IT",
+      "seller_type": "private",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-benzina-cat_ma70mo20150-5c768111-c0bd-42f0-9b3d-ab56fe15c35d",
+      "image": "data/images/5c768111-c0bd-42f0-9b3d-ab56fe15c35d.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 42.4228198,
+      "lon": 14.2781954,
       "first_seen": "2026-07-21",
       "last_seen": "2026-07-21",
       "status": "active",
