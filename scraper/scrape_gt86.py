@@ -195,6 +195,18 @@ def parse_next_data(html: str):
 
 
 def scrape_all_listings():
+    """Scarica tutte le pagine dei risultati.
+
+    Importante: la pagina si ferma solo quando un risultato torna vuoto o
+    piu' corto della page size (= ultima pagina), MAI quando una pagina non
+    contiene id "nuovi". Con sort=standard l'ordinamento di AutoScout24 puo'
+    spostare leggermente gli annunci (specialmente quelli sponsorizzati dei
+    concessionari) tra una richiesta e l'altra della stessa scansione: se ci
+    si fermasse al primo "0 nuovi" si rischia di saltare pagine successive
+    che contengono annunci reali mai visti, facendoli risultare erroneamente
+    "rimossi/venduti" il giorno dopo.
+    """
+    page_size = int(SEARCH_PARAMS["size"])
     all_listings = {}
     for page in range(1, MAX_PAGES + 1):
         html = fetch_page(page)
@@ -203,12 +215,9 @@ def scrape_all_listings():
             if page == 1:
                 save_json_html_debug(html)
             break
-        new_on_page = 0
         for item in listings:
-            if item["id"] not in all_listings:
-                all_listings[item["id"]] = item
-                new_on_page += 1
-        if new_on_page == 0:
+            all_listings.setdefault(item["id"], item)
+        if len(listings) < page_size:
             break
         time.sleep(REQUEST_DELAY_SEC)
     return list(all_listings.values())
@@ -334,10 +343,20 @@ def main():
             existing["last_seen"] = today
             existing["status"] = "active"
             existing["price_history"] = price_history
+            existing.pop("missing_since", None)
+            existing.pop("removed_on", None)
             history_listings[item["id"]] = existing
 
     for listing_id, existing in history_listings.items():
-        if listing_id not in scraped_ids and existing.get("status") == "active":
+        if listing_id in scraped_ids or existing.get("status") != "active":
+            continue
+        # richiede assenza confermata in almeno due scansioni di giorni diversi
+        # prima di segnare come rimosso, per non farsi ingannare da un singolo
+        # intoppo di rete/paginazione (vedi nota in scrape_all_listings)
+        missing_since = existing.get("missing_since")
+        if missing_since is None:
+            existing["missing_since"] = today
+        elif missing_since != today:
             existing["status"] = "removed"
             existing["removed_on"] = today
             removed_ids.append(listing_id)
