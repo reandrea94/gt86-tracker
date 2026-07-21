@@ -464,7 +464,7 @@
       }).addTo(markersLayer);
       const priceTxt = l.price ? fmtEUR.format(l.price) : 'Prezzo n.d.';
       const specs = [l.fuel, l.transmission].filter(Boolean).join(' · ');
-      const popupImg = l.image ? `<img class="popup-thumb" src="${l.image}" alt="" loading="lazy">` : '';
+      const popupImg = l.image ? `<img class="popup-thumb" src="${l.image}" alt="" loading="lazy" onerror="this.remove()">` : '';
       marker.bindPopup(
         popupImg +
         `<strong>${escapeHtml(l.title || 'Toyota GT86')}</strong><br>` +
