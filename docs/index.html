@@ -75,7 +75,7 @@
   }
   header h1 { font-size: 20px; margin: 0; }
   header .updated { color: var(--text-secondary); font-size: 13px; }
-  #theme-toggle {
+  #theme-toggle, #refresh-btn {
     border: 1px solid var(--border);
     background: var(--surface-1);
     color: var(--text-primary);
@@ -84,6 +84,8 @@
     cursor: pointer;
     font-size: 13px;
   }
+  #refresh-btn { display: flex; align-items: center; gap: 6px; text-decoration: none; }
+  #refresh-btn:hover { border-color: var(--series-1); color: var(--series-1); }
 
   main { padding: 20px 28px 48px; max-width: 1280px; margin: 0 auto; }
 
@@ -290,6 +292,7 @@
   <h1>🚗 GT86 Tracker — annunci AutoScout24.it</h1>
   <div style="display:flex; align-items:center; gap:14px;">
     <span class="updated" id="updated-label">Caricamento...</span>
+    <a id="refresh-btn" href="https://github.com/reandrea94/gt86-tracker/actions/workflows/scrape.yml" target="_blank" rel="noopener" title="Apre la pagina Actions di GitHub: clicca 'Run workflow' per forzare un aggiornamento subito">🔄 Aggiorna dati</a>
     <button id="theme-toggle" type="button">🌓 Tema</button>
   </div>
 </header>
