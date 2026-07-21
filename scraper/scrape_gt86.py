@@ -361,11 +361,17 @@ def main():
             existing["removed_on"] = today
             removed_ids.append(listing_id)
 
+    # "attivo" = status active in cronologia, non solo cio' che questa singola
+    # scansione e' riuscita a ritrovare: un annuncio in periodo di grazia
+    # (missing_since impostato ma non ancora confermato rimosso) resta attivo
+    # e visibile, altrimenti sparirebbe dalla dashboard senza spiegazione.
+    active_ids = {lid for lid, e in history_listings.items() if e.get("status") == "active"}
+
     history["daily_snapshots"] = history.get("daily_snapshots", [])
     history["daily_snapshots"].append(
         {
             "date": today,
-            "count": len(scraped_ids),
+            "count": len(active_ids),
             "new_ids": new_ids,
             "removed_ids": removed_ids,
             "reappeared_ids": reappeared_ids,
@@ -375,7 +381,7 @@ def main():
     history["daily_snapshots"] = history["daily_snapshots"][-365:]
 
     active_listings = []
-    for listing_id in scraped_ids:
+    for listing_id in active_ids:
         entry = dict(history_listings[listing_id])
         try:
             first_seen = datetime.strptime(entry["first_seen"], "%Y-%m-%d")
