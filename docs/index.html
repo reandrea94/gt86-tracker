@@ -285,10 +285,6 @@
         <div class="value" id="stat-removed">–</div>
       </div>
       <div class="stat-tile">
-        <div class="label">Prezzo medio</div>
-        <div class="value" id="stat-avg-price">–</div>
-      </div>
-      <div class="stat-tile">
         <div class="label">Prezzo mediano</div>
         <div class="value" id="stat-median-price">–</div>
       </div>
@@ -404,13 +400,10 @@
     document.getElementById('stat-manual').textContent = current.listings.filter(l => l.transmission === 'Manuale').length;
     const prices = current.listings.map(l => l.price).filter(p => typeof p === 'number');
     if (prices.length) {
-      const avg = prices.reduce((a, b) => a + b, 0) / prices.length;
       const sorted = [...prices].sort((a, b) => a - b);
       const median = sorted[Math.floor(sorted.length / 2)];
-      document.getElementById('stat-avg-price').textContent = fmtEUR.format(avg);
       document.getElementById('stat-median-price').textContent = fmtEUR.format(median);
     } else {
-      document.getElementById('stat-avg-price').textContent = '–';
       document.getElementById('stat-median-price').textContent = '–';
     }
     const updated = current.updated_at ? new Date(current.updated_at) : null;
