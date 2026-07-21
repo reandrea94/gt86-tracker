@@ -16,7 +16,8 @@
     --gridline:       #e1e0d9;
     --baseline:       #c3c2b7;
     --border:         rgba(11,11,11,0.10);
-    --series-1:       #2a78d6; /* attivi */
+    --series-1:       #2a78d6; /* cambio automatico */
+    --series-2:       #eb6834; /* cambio manuale */
     --status-good:    #0ca30c; /* nuovi */
     --status-critical:#d03b3b; /* rimossi/venduti */
     --status-warning: #fab219;
@@ -33,6 +34,7 @@
       --baseline:       #383835;
       --border:         rgba(255,255,255,0.10);
       --series-1:       #3987e5;
+      --series-2:       #d95926;
       --status-good:    #0ca30c;
       --status-critical:#e66767;
       --status-warning: #fab219;
@@ -49,6 +51,7 @@
     --baseline:       #383835;
     --border:         rgba(255,255,255,0.10);
     --series-1:       #3987e5;
+    --series-2:       #d95926;
     --status-good:    #0ca30c;
     --status-critical:#e66767;
     --status-warning: #fab219;
@@ -100,6 +103,35 @@
   .stat-tile .value { font-size: 26px; font-weight: 600; }
   .stat-tile.good .value { color: var(--status-good); }
   .stat-tile.critical .value { color: var(--status-critical); }
+  .stat-tile.automatic .value { color: var(--series-1); }
+  .stat-tile.manual .value { color: var(--series-2); }
+
+  .transmission-filter {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .transmission-filter .flabel { font-size: 13px; color: var(--text-secondary); margin-right: 2px; }
+  .tf-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface-1);
+    color: var(--text-secondary);
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .tf-btn .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .tf-btn[data-active="true"] {
+    color: var(--text-primary);
+    border-color: currentColor;
+    font-weight: 600;
+  }
 
   #map {
     height: 460px;
@@ -182,6 +214,8 @@
   .badge.new { background: color-mix(in srgb, var(--status-good) 18%, transparent); color: var(--status-good); }
   .badge.price-down { background: color-mix(in srgb, var(--status-good) 18%, transparent); color: var(--status-good); }
   .badge.price-up { background: color-mix(in srgb, var(--status-critical) 18%, transparent); color: var(--status-critical); }
+  .badge.transmission-automatico { background: color-mix(in srgb, var(--series-1) 18%, transparent); color: var(--series-1); margin-left: 0; }
+  .badge.transmission-manuale { background: color-mix(in srgb, var(--series-2) 18%, transparent); color: var(--series-2); margin-left: 0; }
 
   #removed-list {
     list-style: none;
@@ -258,12 +292,28 @@
         <div class="label">Prezzo mediano</div>
         <div class="value" id="stat-median-price">–</div>
       </div>
+      <div class="stat-tile automatic">
+        <div class="label">Cambio automatico</div>
+        <div class="value" id="stat-automatic">–</div>
+      </div>
+      <div class="stat-tile manual">
+        <div class="label">Cambio manuale</div>
+        <div class="value" id="stat-manual">–</div>
+      </div>
+    </div>
+
+    <div class="transmission-filter" id="transmission-filter">
+      <span class="flabel">Cambio:</span>
+      <button class="tf-btn" type="button" data-value="all" data-active="true">Tutti</button>
+      <button class="tf-btn" type="button" data-value="Automatico"><span class="dot" style="background:var(--series-1)"></span>Automatico</button>
+      <button class="tf-btn" type="button" data-value="Manuale"><span class="dot" style="background:var(--series-2)"></span>Manuale</button>
     </div>
 
     <div id="map"></div>
     <div class="legend">
-      <span><span class="swatch" style="background:var(--series-1)"></span>Annuncio attivo</span>
-      <span><span class="swatch" style="background:var(--status-good)"></span>Nuovo oggi</span>
+      <span><span class="swatch" style="background:var(--series-1)"></span>Cambio automatico</span>
+      <span><span class="swatch" style="background:var(--series-2)"></span>Cambio manuale</span>
+      <span><span class="swatch" style="background:transparent; border:2px solid var(--status-good);"></span>Nuovo oggi (bordo verde)</span>
     </div>
 
     <section>
@@ -278,6 +328,7 @@
             <th data-key="price" class="num">Prezzo</th>
             <th data-key="year" class="num">Anno</th>
             <th data-key="mileage" class="num">Km</th>
+            <th data-key="transmission">Cambio</th>
             <th data-key="city">Città</th>
             <th data-key="days_listed" class="num">Giorni annuncio</th>
           </tr>
@@ -320,11 +371,37 @@
   let sortKey = 'price';
   let sortAsc = true;
   let listings = [];
+  let newIdsGlobal = new Set();
+  let transmissionFilter = 'all';
+  let leafletMap = null;
+  let markersLayer = null;
+
+  function cssVar(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
+  function transmissionColor(t) {
+    if (t === 'Automatico') return cssVar('--series-1');
+    if (t === 'Manuale') return cssVar('--series-2');
+    return cssVar('--text-muted');
+  }
+
+  function transmissionBadge(t) {
+    if (t === 'Automatico') return '<span class="badge transmission-automatico">Automatico</span>';
+    if (t === 'Manuale') return '<span class="badge transmission-manuale">Manuale</span>';
+    return '–';
+  }
+
+  function matchesTransmission(l) {
+    return transmissionFilter === 'all' || l.transmission === transmissionFilter;
+  }
 
   function renderStats(current) {
     document.getElementById('stat-count').textContent = current.count ?? 0;
     document.getElementById('stat-new').textContent = (current.new_ids || []).length;
     document.getElementById('stat-removed').textContent = (current.removed_ids || []).length;
+    document.getElementById('stat-automatic').textContent = current.listings.filter(l => l.transmission === 'Automatico').length;
+    document.getElementById('stat-manual').textContent = current.listings.filter(l => l.transmission === 'Manuale').length;
     const prices = current.listings.map(l => l.price).filter(p => typeof p === 'number');
     if (prices.length) {
       const avg = prices.reduce((a, b) => a + b, 0) / prices.length;
@@ -342,26 +419,30 @@
       : 'Nessun aggiornamento ancora eseguito';
   }
 
-  function renderMap(current) {
-    const map = L.map('map', { scrollWheelZoom: false }).setView([42.5, 12.5], 5.3);
+  function initMap() {
+    leafletMap = L.map('map', { scrollWheelZoom: false }).setView([42.5, 12.5], 5.3);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors',
       maxZoom: 18,
-    }).addTo(map);
+    }).addTo(leafletMap);
+    markersLayer = L.layerGroup().addTo(leafletMap);
+  }
 
+  function updateMapMarkers() {
+    markersLayer.clearLayers();
     const points = [];
-    current.listings.forEach(l => {
+    listings.filter(matchesTransmission).forEach(l => {
       if (typeof l.lat !== 'number' || typeof l.lon !== 'number') return;
-      const isNew = (current.new_ids || []).includes(l.id);
-      const color = isNew ? getComputedStyle(document.documentElement).getPropertyValue('--status-good').trim()
-                           : getComputedStyle(document.documentElement).getPropertyValue('--series-1').trim();
+      const isNew = newIdsGlobal.has(l.id);
+      const fill = transmissionColor(l.transmission);
+      const stroke = isNew ? cssVar('--status-good') : fill;
       const marker = L.circleMarker([l.lat, l.lon], {
         radius: 7,
-        color: color,
-        fillColor: color,
-        fillOpacity: 0.75,
-        weight: 1.5,
-      }).addTo(map);
+        color: stroke,
+        fillColor: fill,
+        fillOpacity: 0.8,
+        weight: isNew ? 3 : 1.5,
+      }).addTo(markersLayer);
       const priceTxt = l.price ? fmtEUR.format(l.price) : 'Prezzo n.d.';
       const specs = [l.fuel, l.transmission].filter(Boolean).join(' · ');
       marker.bindPopup(
@@ -374,7 +455,7 @@
       points.push([l.lat, l.lon]);
     });
     if (points.length) {
-      map.fitBounds(points, { padding: [30, 30], maxZoom: 8 });
+      leafletMap.fitBounds(points, { padding: [30, 30], maxZoom: 8 });
     }
   }
 
@@ -382,31 +463,43 @@
     return String(str).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
   }
 
+  function setupTransmissionFilter() {
+    const buttons = document.querySelectorAll('#transmission-filter .tf-btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        transmissionFilter = btn.getAttribute('data-value');
+        buttons.forEach(b => b.setAttribute('data-active', String(b === btn)));
+        applyFilterAndSort();
+        updateMapMarkers();
+      });
+    });
+  }
+
   function renderTable(current) {
     listings = current.listings.slice();
-    const newIds = new Set(current.new_ids || []);
-    applyFilterAndSort(newIds);
+    newIdsGlobal = new Set(current.new_ids || []);
+    applyFilterAndSort();
 
     document.querySelectorAll('#listings-table th[data-key]').forEach(th => {
       th.addEventListener('click', () => {
         const key = th.getAttribute('data-key');
         if (sortKey === key) { sortAsc = !sortAsc; } else { sortKey = key; sortAsc = true; }
-        applyFilterAndSort(newIds);
+        applyFilterAndSort();
       });
     });
-    document.getElementById('search-box').addEventListener('input', () => applyFilterAndSort(newIds));
+    document.getElementById('search-box').addEventListener('input', () => applyFilterAndSort());
   }
 
-  function applyFilterAndSort(newIds) {
+  function applyFilterAndSort() {
     const query = document.getElementById('search-box').value.trim().toLowerCase();
-    let rows = listings.filter(l => {
+    let rows = listings.filter(matchesTransmission).filter(l => {
       if (!query) return true;
       return [l.title, l.city, l.year, l.seller_type].some(v => String(v ?? '').toLowerCase().includes(query));
     });
     rows.sort((a, b) => {
       let av = a[sortKey], bv = b[sortKey];
-      if (av == null) av = sortKey === 'title' || sortKey === 'city' ? '' : Infinity;
-      if (bv == null) bv = sortKey === 'title' || sortKey === 'city' ? '' : Infinity;
+      if (av == null) av = ['title', 'city', 'transmission'].includes(sortKey) ? '' : Infinity;
+      if (bv == null) bv = ['title', 'city', 'transmission'].includes(sortKey) ? '' : Infinity;
       if (typeof av === 'string') return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
       return sortAsc ? av - bv : bv - av;
     });
@@ -418,7 +511,7 @@
 
     rows.forEach(l => {
       const tr = document.createElement('tr');
-      const isNew = newIds.has(l.id);
+      const isNew = newIdsGlobal.has(l.id);
       const priceHistory = l.price_history || [];
       let priceBadge = '';
       if (priceHistory.length > 1) {
@@ -435,6 +528,7 @@
         <td class="num">${l.price ? fmtEUR.format(l.price) : '–'}${priceBadge}</td>
         <td class="num">${l.year ?? '–'}</td>
         <td class="num">${l.mileage ? fmtNum.format(l.mileage) : '–'}</td>
+        <td>${transmissionBadge(l.transmission)}</td>
         <td>${escapeHtml(l.city || '–')}</td>
         <td class="num">${l.days_listed ?? '–'}</td>
       `;
@@ -470,8 +564,10 @@
     .then(([current, history]) => {
       document.getElementById('content').style.display = 'block';
       renderStats(current);
-      renderMap(current);
+      initMap();
       renderTable(current);
+      updateMapMarkers();
+      setupTransmissionFilter();
       renderRemoved(history);
     })
     .catch(err => {
