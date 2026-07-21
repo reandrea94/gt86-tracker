@@ -274,6 +274,26 @@ def geocode(city, zipcode, country, cache: dict):
     return None, None
 
 
+def dump_schema():
+    """Stampa la struttura del primo annuncio trovato in pagina 1, per debug
+    quando lo schema JSON di AutoScout24 cambia e i campi vanno rimappati."""
+    html = fetch_page(1)
+    soup = BeautifulSoup(html, "lxml")
+    script = soup.find("script", id="__NEXT_DATA__")
+    if not script or not script.string:
+        print("NESSUN __NEXT_DATA__ TROVATO")
+        save_json_html_debug(html)
+        return
+    data = json.loads(script.string)
+    arrays = []
+    find_listing_arrays(data, arrays)
+    print(f"Array candidati trovati: {len(arrays)} (lunghezze: {[len(a) for a in arrays]})")
+    if arrays:
+        arrays.sort(key=len, reverse=True)
+        print("--- Primo elemento dell'array piu' numeroso ---")
+        print(json.dumps(arrays[0][0], ensure_ascii=False, indent=2))
+
+
 def main():
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     now_iso = datetime.now(timezone.utc).isoformat()
@@ -361,7 +381,10 @@ def main():
 
 if __name__ == "__main__":
     try:
-        main()
+        if "--dump-schema" in sys.argv:
+            dump_schema()
+        else:
+            main()
     except requests.RequestException as exc:
         print(f"Errore di rete durante lo scraping: {exc}", file=sys.stderr)
         sys.exit(1)
