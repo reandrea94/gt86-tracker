@@ -273,6 +273,9 @@
   .badge.price-up { background: color-mix(in srgb, var(--status-critical) 18%, transparent); color: var(--status-critical); }
   .badge.transmission-automatico { background: color-mix(in srgb, var(--series-1) 18%, transparent); color: var(--series-1); margin-left: 0; }
   .badge.transmission-manuale { background: color-mix(in srgb, var(--series-2) 18%, transparent); color: var(--series-2); margin-left: 0; }
+  .badge.value-good { background: color-mix(in srgb, var(--status-good) 18%, transparent); color: var(--status-good); margin-left: 0; }
+  .badge.value-bad { background: color-mix(in srgb, var(--status-critical) 18%, transparent); color: var(--status-critical); margin-left: 0; }
+  .badge.value-neutral { background: color-mix(in srgb, var(--text-muted) 18%, transparent); color: var(--text-muted); margin-left: 0; }
 
   #removed-list {
     list-style: none;
@@ -384,6 +387,9 @@
 
     <section>
       <h2>Annunci attivi</h2>
+      <p style="color:var(--text-secondary); font-size:13px; margin:0 0 12px;">
+        Ordinati per <strong>Affare</strong>: confronta il prezzo di ogni annuncio con quello atteso per la sua combinazione anno/km rispetto al resto del mercato attivo. Verde = prezzo sotto la media (buon affare), rosso = sopra la media.
+      </p>
       <div class="controls">
         <input type="search" id="search-box" placeholder="Filtra per città, anno, allestimento...">
       </div>
@@ -392,6 +398,7 @@
           <tr>
             <th></th>
             <th data-key="title">Annuncio</th>
+            <th data-key="value" class="num" title="Confronta il prezzo con la media degli annunci di anno/km simili">Affare</th>
             <th data-key="price" class="num">Prezzo</th>
             <th data-key="year" class="num">Anno</th>
             <th data-key="mileage" class="num">Km</th>
@@ -435,8 +442,8 @@
   const fmtEUR = new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
   const fmtNum = new Intl.NumberFormat('it-IT');
 
-  let sortKey = 'price';
-  let sortAsc = true;
+  let sortKey = 'value';
+  let sortAsc = false;
   let listings = [];
   let newIdsGlobal = new Set();
   let transmissionFilter = 'all';
@@ -458,6 +465,51 @@
     if (t === 'Automatico') return '<span class="badge transmission-automatico">Automatico</span>';
     if (t === 'Manuale') return '<span class="badge transmission-manuale">Manuale</span>';
     return '–';
+  }
+
+  function computeValueScores(items) {
+    // Stima "prezzo atteso" per anno/km con una regressione lineare (prezzo ~ anno + km)
+    // sui predittori centrati (piu' stabile numericamente di una 3x3 grezza).
+    // valueScore > 0 = prezzo sotto la media per quell'anno/km (affare migliore).
+    const fit = items.filter(l => typeof l.price === 'number' && typeof l.year === 'number' && typeof l.mileage === 'number');
+    items.forEach(l => { l.value = null; l.expectedPrice = null; });
+    if (fit.length < 6) return;
+
+    const n = fit.length;
+    const meanYear = fit.reduce((s, l) => s + l.year, 0) / n;
+    const meanKm = fit.reduce((s, l) => s + l.mileage, 0) / n / 1000;
+    const meanPrice = fit.reduce((s, l) => s + l.price, 0) / n;
+
+    let s11 = 0, s22 = 0, s12 = 0, sy1 = 0, sy2 = 0;
+    fit.forEach(l => {
+      const x1 = l.year - meanYear;
+      const x2 = l.mileage / 1000 - meanKm;
+      const y = l.price - meanPrice;
+      s11 += x1 * x1;
+      s22 += x2 * x2;
+      s12 += x1 * x2;
+      sy1 += x1 * y;
+      sy2 += x2 * y;
+    });
+    const det = s11 * s22 - s12 * s12;
+    if (Math.abs(det) < 1e-6) return;
+    const b1 = (sy1 * s22 - sy2 * s12) / det; // €/anno
+    const b2 = (sy2 * s11 - sy1 * s12) / det; // €/1000km
+
+    fit.forEach(l => {
+      const predicted = meanPrice + b1 * (l.year - meanYear) + b2 * (l.mileage / 1000 - meanKm);
+      l.expectedPrice = predicted;
+      l.value = predicted > 0 ? (predicted - l.price) / predicted : null;
+    });
+  }
+
+  function valueBadge(l) {
+    if (typeof l.value !== 'number') return '<span class="badge value-neutral">n.d.</span>';
+    const pct = Math.round(l.value * 100);
+    const cls = pct > 3 ? 'value-good' : pct < -3 ? 'value-bad' : 'value-neutral';
+    const sign = pct > 0 ? '−' : pct < 0 ? '+' : '';
+    const title = l.expectedPrice ? `Prezzo atteso per anno/km: ~${fmtEUR.format(Math.round(l.expectedPrice))}` : '';
+    return `<span class="badge ${cls}" title="${title}">${sign}${Math.abs(pct)}%</span>`;
   }
 
   function matchesFilters(l) {
@@ -578,13 +630,14 @@
 
   function renderTable(current) {
     listings = current.listings.slice();
+    computeValueScores(listings);
     newIdsGlobal = new Set(current.new_ids || []);
     applyFilterAndSort();
 
     document.querySelectorAll('#listings-table th[data-key]').forEach(th => {
       th.addEventListener('click', () => {
         const key = th.getAttribute('data-key');
-        if (sortKey === key) { sortAsc = !sortAsc; } else { sortKey = key; sortAsc = true; }
+        if (sortKey === key) { sortAsc = !sortAsc; } else { sortKey = key; sortAsc = key === 'value' ? false : true; }
         applyFilterAndSort();
       });
     });
@@ -599,8 +652,15 @@
     });
     rows.sort((a, b) => {
       let av = a[sortKey], bv = b[sortKey];
-      if (av == null) av = ['title', 'city', 'transmission'].includes(sortKey) ? '' : Infinity;
-      if (bv == null) bv = ['title', 'city', 'transmission'].includes(sortKey) ? '' : Infinity;
+      if (sortKey === 'value') {
+        // gli annunci senza punteggio (anno/km mancanti) vanno sempre in fondo
+        if (av == null && bv == null) return 0;
+        if (av == null) return 1;
+        if (bv == null) return -1;
+      } else {
+        if (av == null) av = ['title', 'city', 'transmission'].includes(sortKey) ? '' : Infinity;
+        if (bv == null) bv = ['title', 'city', 'transmission'].includes(sortKey) ? '' : Infinity;
+      }
       if (typeof av === 'string') return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
       return sortAsc ? av - bv : bv - av;
     });
@@ -630,6 +690,7 @@
       tr.innerHTML = `
         <td class="thumb">${thumb}</td>
         <td><a class="listing-link" href="${l.url}" target="_blank" rel="noopener">${escapeHtml(l.title || 'Toyota GT86')}</a>${isNew ? '<span class="badge new">nuovo</span>' : ''}</td>
+        <td class="num">${valueBadge(l)}</td>
         <td class="num">${l.price ? fmtEUR.format(l.price) : '–'}${priceBadge}</td>
         <td class="num">${l.year ?? '–'}</td>
         <td class="num">${l.mileage ? fmtNum.format(l.mileage) : '–'}</td>
