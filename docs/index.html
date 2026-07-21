@@ -187,6 +187,31 @@
     text-align: left;
     border-bottom: 1px solid var(--gridline);
   }
+  td.thumb { padding: 6px 12px; }
+  .thumb-img, .thumb-placeholder {
+    width: 64px;
+    height: 48px;
+    border-radius: 6px;
+    object-fit: cover;
+    display: block;
+    background: var(--gridline);
+  }
+  .thumb-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 18px;
+  }
+  .popup-thumb {
+    width: 100%;
+    max-width: 220px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    display: block;
+  }
   th {
     color: var(--text-secondary);
     font-weight: 600;
@@ -320,6 +345,7 @@
       <table id="listings-table">
         <thead>
           <tr>
+            <th></th>
             <th data-key="title">Annuncio</th>
             <th data-key="price" class="num">Prezzo</th>
             <th data-key="year" class="num">Anno</th>
@@ -438,12 +464,15 @@
       }).addTo(markersLayer);
       const priceTxt = l.price ? fmtEUR.format(l.price) : 'Prezzo n.d.';
       const specs = [l.fuel, l.transmission].filter(Boolean).join(' · ');
+      const popupImg = l.image ? `<img class="popup-thumb" src="${l.image}" alt="" loading="lazy">` : '';
       marker.bindPopup(
+        popupImg +
         `<strong>${escapeHtml(l.title || 'Toyota GT86')}</strong><br>` +
         `${priceTxt} · ${l.year || '–'} · ${l.mileage ? fmtNum.format(l.mileage) + ' km' : 'km n.d.'}<br>` +
         `${specs ? escapeHtml(specs) + '<br>' : ''}` +
         `${escapeHtml(l.city || '')}<br>` +
-        `<a href="${l.url}" target="_blank" rel="noopener">Vedi annuncio ↗</a>`
+        `<a href="${l.url}" target="_blank" rel="noopener">Vedi annuncio ↗</a>`,
+        { maxWidth: 240 }
       );
       points.push([l.lat, l.lon]);
     });
@@ -516,7 +545,11 @@
             : `<span class="badge price-up">+${fmtEUR.format(curr - prev)}</span>`;
         }
       }
+      const thumb = l.image
+        ? `<a href="${l.url}" target="_blank" rel="noopener"><img class="thumb-img" src="${l.image}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'thumb-placeholder',textContent:'🚗'}))"></a>`
+        : `<div class="thumb-placeholder">🚗</div>`;
       tr.innerHTML = `
+        <td class="thumb">${thumb}</td>
         <td><a class="listing-link" href="${l.url}" target="_blank" rel="noopener">${escapeHtml(l.title || 'Toyota GT86')}</a>${isNew ? '<span class="badge new">nuovo</span>' : ''}</td>
         <td class="num">${l.price ? fmtEUR.format(l.price) : '–'}${priceBadge}</td>
         <td class="num">${l.year ?? '–'}</td>
