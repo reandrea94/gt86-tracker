@@ -390,11 +390,22 @@ def main():
             removed_ids.append(listing_id)
         time.sleep(REQUEST_DELAY_SEC)
 
+    active_prices = sorted(
+        p
+        for lid in confirmed_active_ids
+        if (p := history_listings[lid].get("price")) is not None
+    )
+    median_price = active_prices[len(active_prices) // 2] if active_prices else None
+
     history["daily_snapshots"] = history.get("daily_snapshots", [])
+    # se e' gia' girata una scansione oggi, sostituisci lo snapshot di oggi
+    # invece di accumularne uno per ogni run manuale della stessa giornata
+    history["daily_snapshots"] = [s for s in history["daily_snapshots"] if s.get("date") != today]
     history["daily_snapshots"].append(
         {
             "date": today,
             "count": len(confirmed_active_ids),
+            "median_price": median_price,
             "new_ids": new_ids,
             "removed_ids": removed_ids,
             "reappeared_ids": reappeared_ids,

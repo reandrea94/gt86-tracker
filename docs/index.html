@@ -81,7 +81,8 @@
   }
   header h1 { font-size: 20px; margin: 0; }
   header .updated { color: var(--text-secondary); font-size: 13px; }
-  #theme-toggle, #refresh-btn {
+  .header-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  #theme-toggle, #refresh-btn, #token-manage-btn {
     border: 1px solid var(--border);
     background: var(--surface-1);
     color: var(--text-primary);
@@ -90,8 +91,62 @@
     cursor: pointer;
     font-size: 13px;
   }
-  #refresh-btn { display: flex; align-items: center; gap: 6px; text-decoration: none; }
-  #refresh-btn:hover { border-color: var(--series-1); color: var(--series-1); }
+  #refresh-btn { display: flex; align-items: center; gap: 6px; }
+  #refresh-btn:hover, #token-manage-btn:hover { border-color: var(--series-1); color: var(--series-1); }
+  #refresh-btn:disabled { opacity: 0.6; cursor: default; }
+  #token-manage-btn { padding: 6px 9px; }
+  .refresh-status { font-size: 12px; color: var(--text-secondary); }
+  .refresh-status.success { color: var(--status-good); }
+  .refresh-status.error { color: var(--status-critical); }
+  .refresh-status.warn { color: var(--status-warning); }
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 50;
+  }
+  .modal-overlay[hidden] { display: none; }
+  .modal-box {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 440px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .modal-box h3 { margin: 0 0 10px; font-size: 16px; }
+  .modal-box p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+  .modal-box .token-steps { font-size: 13px; color: var(--text-secondary); padding-left: 20px; line-height: 1.7; }
+  .modal-box .token-steps code { background: var(--gridline); padding: 1px 5px; border-radius: 4px; }
+  .modal-box input[type="password"] {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--page-plane);
+    color: var(--text-primary);
+    font-size: 13px;
+    margin-top: 4px;
+  }
+  .token-note { font-size: 12px; color: var(--text-muted); }
+  .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+  .modal-actions button {
+    border: 1px solid var(--border);
+    background: var(--series-1);
+    color: #fff;
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .modal-actions button.secondary { background: transparent; color: var(--text-secondary); }
 
   main { padding: 20px 28px 48px; max-width: 1280px; margin: 0 auto; }
 
@@ -215,6 +270,36 @@
 
   section h2 { font-size: 16px; margin: 28px 0 12px; }
 
+  #price-chart-wrap {
+    position: relative;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+  }
+  #price-chart { width: 100%; height: 240px; display: block; overflow: visible; }
+  #price-chart .gridline { stroke: var(--gridline); stroke-width: 1; }
+  #price-chart .axis-label { fill: var(--text-muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+  #price-chart .price-line { fill: none; stroke: var(--series-1); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+  #price-chart .price-end-dot { fill: var(--series-1); stroke: var(--surface-1); stroke-width: 2; }
+  #price-chart .price-end-label { fill: var(--text-primary); font-size: 12px; font-weight: 600; }
+  #price-chart .crosshair-line { stroke: var(--baseline); stroke-width: 1; }
+  #price-chart .crosshair-dot { fill: var(--series-1); stroke: var(--surface-1); stroke-width: 2; }
+  #price-chart .hit-layer { fill: transparent; cursor: crosshair; }
+  .chart-tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--text-primary);
+    color: var(--page-plane);
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    transform: translate(-50%, -100%);
+    white-space: nowrap;
+    z-index: 5;
+  }
+  .chart-tooltip strong { font-variant-numeric: tabular-nums; }
+
   .controls {
     display: flex;
     gap: 10px;
@@ -231,8 +316,14 @@
     color: var(--text-primary);
   }
 
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+  }
   table {
     width: 100%;
+    min-width: 720px;
     border-collapse: collapse;
     background: var(--surface-1);
     border: 1px solid var(--border);
@@ -314,16 +405,19 @@
     border-radius: 12px;
   }
   #removed-list li {
-    padding: 10px 14px;
+    padding: 8px 14px;
     border-bottom: 1px solid var(--gridline);
     font-size: 14px;
     color: var(--text-secondary);
     display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 12px;
   }
   #removed-list li:last-child { border-bottom: none; }
+  #removed-list .rl-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
   #removed-list .rl-title { color: var(--text-primary); }
+  #removed-list .rl-right { flex-shrink: 0; white-space: nowrap; }
 
   .empty-state, .error-state {
     padding: 40px;
@@ -346,17 +440,68 @@
     max-width: 1280px;
     margin: 0 auto;
   }
+
+  @media (max-width: 680px) {
+    header { padding: 14px 16px; gap: 8px; }
+    header h1 { font-size: 17px; }
+    .header-actions { gap: 8px; width: 100%; justify-content: flex-start; }
+    .refresh-status { width: 100%; order: 10; }
+    main { padding: 14px 16px 36px; }
+    footer { padding: 16px 16px 32px; }
+
+    .stat-row { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .stat-tile { padding: 10px 12px; }
+    .stat-tile .value { font-size: 21px; }
+
+    #map { height: 300px; }
+    #price-chart-wrap { padding: 8px; }
+    #price-chart { height: 180px; }
+
+    .transmission-filter, .range-filters { gap: 6px; }
+    .range-filters input[type="number"] { width: 64px; }
+
+    section h2 { font-size: 15px; margin: 22px 0 10px; }
+    table { min-width: 620px; font-size: 13px; }
+    th, td { padding: 8px 9px; }
+
+    #removed-list li { flex-wrap: wrap; }
+    #removed-list .rl-right { width: 100%; }
+
+    .modal-box { padding: 18px; }
+  }
 </style>
 </head>
 <body>
 <header>
   <h1>🚗 GT86 Tracker — annunci AutoScout24.it</h1>
-  <div style="display:flex; align-items:center; gap:14px;">
+  <div class="header-actions">
     <span class="updated" id="updated-label">Caricamento...</span>
-    <a id="refresh-btn" href="https://github.com/reandrea94/gt86-tracker/actions/workflows/scrape.yml" target="_blank" rel="noopener" title="Apre la pagina Actions di GitHub: clicca 'Run workflow' per forzare un aggiornamento subito">🔄 Aggiorna dati</a>
+    <span class="refresh-status" id="refresh-status"></span>
+    <button id="refresh-btn" type="button" title="Avvia subito una nuova scansione degli annunci">🔄 Aggiorna dati</button>
+    <button id="token-manage-btn" type="button" title="Gestisci il token di aggiornamento">🔑</button>
     <button id="theme-toggle" type="button">🌓 Tema</button>
   </div>
 </header>
+
+<div class="modal-overlay" id="token-modal" hidden>
+  <div class="modal-box">
+    <h3>Token per l'aggiornamento automatico</h3>
+    <p>Per aggiornare i dati senza uscire da questa pagina serve un <strong>token GitHub</strong> con permesso di avviare la scansione su questo repository. Resta salvato solo in questo browser.</p>
+    <ol class="token-steps">
+      <li>Apri <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new ↗</a></li>
+      <li>Repository access → Only select repositories → <code>gt86-tracker</code></li>
+      <li>Permissions → Actions → <strong>Read and write</strong></li>
+      <li>Genera e incolla qui sotto il token</li>
+    </ol>
+    <input type="password" id="token-input" placeholder="github_pat_...">
+    <p class="token-note" id="token-existing-note" hidden>Un token è già salvato in questo browser.</p>
+    <div class="modal-actions">
+      <button id="token-remove" type="button" class="secondary" hidden>Rimuovi token salvato</button>
+      <button id="token-cancel" type="button" class="secondary">Annulla</button>
+      <button id="token-save" type="button">Salva e aggiorna</button>
+    </div>
+  </div>
+</div>
 
 <main>
   <div id="content" style="display:none;">
@@ -430,6 +575,15 @@
     </div>
 
     <section>
+      <h2>Prezzo mediano giornaliero</h2>
+      <div id="price-chart-wrap">
+        <svg id="price-chart" viewBox="0 0 800 240" preserveAspectRatio="none" role="img" aria-label="Andamento del prezzo mediano nel tempo"></svg>
+        <div id="price-chart-tooltip" class="chart-tooltip" hidden></div>
+      </div>
+      <p class="empty-state" id="price-chart-empty" style="display:none;">Servono almeno due giorni di dati per mostrare l'andamento: torna a controllare da domani.</p>
+    </section>
+
+    <section>
       <h2>Annunci attivi</h2>
       <p style="color:var(--text-secondary); font-size:13px; margin:0 0 12px;">
         Ordinati per <strong>Affare</strong>: confronta il prezzo di ogni annuncio con quello atteso per la sua combinazione anno/km rispetto al resto del mercato attivo. Verde = prezzo sotto la media (buon affare), rosso = sopra la media.
@@ -437,23 +591,25 @@
       <div class="controls">
         <input type="search" id="search-box" placeholder="Filtra per città, anno, allestimento...">
       </div>
-      <table id="listings-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th data-key="title">Annuncio</th>
-            <th data-key="value" class="num" title="Confronta il prezzo con la media degli annunci di anno/km simili">Affare</th>
-            <th data-key="price" class="num">Prezzo</th>
-            <th data-key="year" class="num">Anno</th>
-            <th data-key="mileage" class="num">Km</th>
-            <th data-key="transmission">Cambio</th>
-            <th data-key="seller_type">Venditore</th>
-            <th data-key="city">Città</th>
-            <th data-key="days_listed" class="num">Giorni annuncio</th>
-          </tr>
-        </thead>
-        <tbody id="listings-body"></tbody>
-      </table>
+      <div class="table-scroll">
+        <table id="listings-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th data-key="title">Annuncio</th>
+              <th data-key="value" class="num" title="Confronta il prezzo con la media degli annunci di anno/km simili">Affare</th>
+              <th data-key="price" class="num">Prezzo</th>
+              <th data-key="year" class="num">Anno</th>
+              <th data-key="mileage" class="num">Km</th>
+              <th data-key="transmission">Cambio</th>
+              <th data-key="seller_type">Venditore</th>
+              <th data-key="city">Città</th>
+              <th data-key="days_listed" class="num">Giorni annuncio</th>
+            </tr>
+          </thead>
+          <tbody id="listings-body"></tbody>
+        </table>
+      </div>
       <div class="empty-state" id="empty-state" style="display:none;">Nessun annuncio trovato con questo filtro.</div>
     </section>
 
@@ -482,6 +638,154 @@
     const root = document.documentElement;
     const current = root.getAttribute('data-theme');
     root.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+  });
+
+  // --- Aggiornamento interno (senza uscire dalla pagina) -------------------
+  const GH_REPO = 'reandrea94/gt86-tracker';
+  const GH_WORKFLOW = 'scrape.yml';
+  const TOKEN_KEY = 'gt86_gh_token';
+
+  const refreshBtn = document.getElementById('refresh-btn');
+  const refreshStatus = document.getElementById('refresh-status');
+  const tokenModal = document.getElementById('token-modal');
+  const tokenInput = document.getElementById('token-input');
+  const tokenManageBtn = document.getElementById('token-manage-btn');
+  const tokenRemoveBtn = document.getElementById('token-remove');
+  const tokenExistingNote = document.getElementById('token-existing-note');
+
+  function getSavedToken() { return localStorage.getItem(TOKEN_KEY); }
+  function saveToken(t) { localStorage.setItem(TOKEN_KEY, t); }
+  function removeSavedToken() { localStorage.removeItem(TOKEN_KEY); }
+
+  function setStatus(text, kind) {
+    refreshStatus.textContent = text;
+    refreshStatus.className = 'refresh-status' + (kind ? ' ' + kind : '');
+  }
+
+  function openTokenModal() {
+    tokenInput.value = '';
+    const hasToken = !!getSavedToken();
+    tokenExistingNote.hidden = !hasToken;
+    tokenRemoveBtn.hidden = !hasToken;
+    tokenModal.hidden = false;
+    tokenInput.focus();
+  }
+  function closeTokenModal() { tokenModal.hidden = true; }
+
+  let tokenPromiseResolve = null;
+  function askForToken() {
+    openTokenModal();
+    return new Promise(resolve => { tokenPromiseResolve = resolve; });
+  }
+
+  tokenManageBtn.addEventListener('click', () => { openTokenModal(); });
+  document.getElementById('token-cancel').addEventListener('click', () => {
+    closeTokenModal();
+    if (tokenPromiseResolve) { tokenPromiseResolve(null); tokenPromiseResolve = null; }
+  });
+  tokenRemoveBtn.addEventListener('click', () => {
+    removeSavedToken();
+    closeTokenModal();
+    setStatus('Token rimosso.', '');
+    if (tokenPromiseResolve) { tokenPromiseResolve(null); tokenPromiseResolve = null; }
+  });
+  document.getElementById('token-save').addEventListener('click', () => {
+    const t = tokenInput.value.trim();
+    if (!t) return;
+    saveToken(t);
+    closeTokenModal();
+    if (tokenPromiseResolve) { tokenPromiseResolve(t); tokenPromiseResolve = null; }
+  });
+  tokenModal.addEventListener('click', evt => {
+    if (evt.target === tokenModal) {
+      closeTokenModal();
+      if (tokenPromiseResolve) { tokenPromiseResolve(null); tokenPromiseResolve = null; }
+    }
+  });
+
+  async function ghApi(path, token, options) {
+    return fetch(`https://api.github.com${path}`, {
+      ...(options || {}),
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/vnd.github+json',
+        ...((options && options.headers) || {}),
+      },
+    });
+  }
+
+  async function getLatestRunId(token) {
+    const resp = await ghApi(`/repos/${GH_REPO}/actions/workflows/${GH_WORKFLOW}/runs?per_page=1`, token);
+    if (!resp.ok) return null;
+    const data = await resp.json();
+    return (data.workflow_runs && data.workflow_runs[0] && data.workflow_runs[0].id) || null;
+  }
+
+  function pollForCompletion(token, previousRunId) {
+    const start = Date.now();
+    const maxWaitMs = 3 * 60 * 1000;
+    const tick = async () => {
+      if (Date.now() - start > maxWaitMs) {
+        setStatus('Ci sta mettendo più del solito: controlla su GitHub Actions.', 'warn');
+        refreshBtn.disabled = false;
+        return;
+      }
+      const resp = await ghApi(`/repos/${GH_REPO}/actions/workflows/${GH_WORKFLOW}/runs?per_page=5`, token).catch(() => null);
+      const data = resp && resp.ok ? await resp.json() : null;
+      const run = data && data.workflow_runs && data.workflow_runs.find(r => r.id !== previousRunId);
+      if (!run) { setTimeout(tick, 4000); return; }
+      if (run.status !== 'completed') {
+        setStatus('Scansione in corso…', '');
+        setTimeout(tick, 4000);
+        return;
+      }
+      if (run.conclusion === 'success') {
+        setStatus('Fatto, ricarico i dati…', 'success');
+        setTimeout(() => location.reload(), 1200);
+      } else {
+        setStatus(`Scansione terminata con esito "${run.conclusion}": controlla i log su GitHub.`, 'error');
+        refreshBtn.disabled = false;
+      }
+    };
+    tick();
+  }
+
+  async function startDispatch(token) {
+    refreshBtn.disabled = true;
+    setStatus('Avvio scansione…', '');
+    const previousRunId = await getLatestRunId(token).catch(() => null);
+    const resp = await ghApi(`/repos/${GH_REPO}/actions/workflows/${GH_WORKFLOW}/dispatches`, token, {
+      method: 'POST',
+      body: JSON.stringify({ ref: 'master' }),
+    }).catch(() => null);
+
+    if (!resp) {
+      setStatus('Errore di rete: riprova tra poco.', 'error');
+      refreshBtn.disabled = false;
+      return;
+    }
+    if (resp.status === 401 || resp.status === 403 || resp.status === 404) {
+      removeSavedToken();
+      setStatus('Token non valido o senza permessi su questo repository: reinseriscilo.', 'error');
+      refreshBtn.disabled = false;
+      return;
+    }
+    if (!resp.ok) {
+      setStatus(`Errore (${resp.status}): riprova tra poco.`, 'error');
+      refreshBtn.disabled = false;
+      return;
+    }
+    setStatus('Scansione avviata (~1 minuto)…', '');
+    pollForCompletion(token, previousRunId);
+  }
+
+  refreshBtn.addEventListener('click', async () => {
+    let token = getSavedToken();
+    if (!token) {
+      token = await askForToken();
+      if (!token) return;
+    }
+    startDispatch(token);
   });
 
   const fmtEUR = new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
@@ -652,6 +956,12 @@
     return String(str).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
   }
 
+  function thumbHtml(l) {
+    return l.image
+      ? `<a href="${l.url}" target="_blank" rel="noopener"><img class="thumb-img" src="${l.image}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'thumb-placeholder',textContent:'🚗'}))"></a>`
+      : `<div class="thumb-placeholder">🚗</div>`;
+  }
+
   function setupToggleFilter(containerId, onSelect) {
     const buttons = document.querySelectorAll(`#${containerId} .tf-btn`);
     buttons.forEach(btn => {
@@ -748,9 +1058,7 @@
             : `<span class="badge price-up">+${fmtEUR.format(curr - prev)}</span>`;
         }
       }
-      const thumb = l.image
-        ? `<a href="${l.url}" target="_blank" rel="noopener"><img class="thumb-img" src="${l.image}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'thumb-placeholder',textContent:'🚗'}))"></a>`
-        : `<div class="thumb-placeholder">🚗</div>`;
+      const thumb = thumbHtml(l);
       tr.innerHTML = `
         <td class="thumb">${thumb}</td>
         <td><a class="listing-link" href="${l.url}" target="_blank" rel="noopener">${escapeHtml(l.title || 'Toyota GT86')}</a>${isNew ? '<span class="badge new">nuovo</span>' : ''}</td>
@@ -767,6 +1075,123 @@
     });
   }
 
+  const SVGNS = 'http://www.w3.org/2000/svg';
+
+  function svgEl(tag, attrs) {
+    const e = document.createElementNS(SVGNS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  function renderPriceChart(history) {
+    const svg = document.getElementById('price-chart');
+    const wrap = document.getElementById('price-chart-wrap');
+    const tooltip = document.getElementById('price-chart-tooltip');
+    const emptyMsg = document.getElementById('price-chart-empty');
+    svg.innerHTML = '';
+
+    const points = (history.daily_snapshots || [])
+      .filter(s => typeof s.median_price === 'number')
+      .map(s => ({ date: s.date, price: s.median_price }))
+      .sort((a, b) => a.date.localeCompare(b.date));
+
+    if (points.length < 2) {
+      svg.style.display = 'none';
+      emptyMsg.style.display = 'block';
+      return;
+    }
+    svg.style.display = 'block';
+    emptyMsg.style.display = 'none';
+
+    const W = 800, H = 240;
+    const padL = 64, padR = 20, padT = 16, padB = 28;
+    const plotW = W - padL - padR;
+    const plotH = H - padT - padB;
+
+    const prices = points.map(p => p.price);
+    let minP = Math.min(...prices), maxP = Math.max(...prices);
+    if (minP === maxP) { minP -= 1000; maxP += 1000; }
+    const pad = (maxP - minP) * 0.1;
+    minP -= pad; maxP += pad;
+
+    const xFor = i => padL + (points.length === 1 ? plotW / 2 : (i / (points.length - 1)) * plotW);
+    const yFor = p => padT + plotH - ((p - minP) / (maxP - minP)) * plotH;
+    const fmtDateShort = d => new Date(d).toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit' });
+    const fmtDateLong = d => new Date(d).toLocaleDateString('it-IT', { day: '2-digit', month: 'long', year: 'numeric' });
+
+    const steps = 4;
+    for (let i = 0; i <= steps; i++) {
+      const p = minP + (maxP - minP) * (i / steps);
+      const y = yFor(p);
+      svg.appendChild(svgEl('line', { class: 'gridline', x1: padL, x2: W - padR, y1: y, y2: y }));
+      const label = svgEl('text', { class: 'axis-label', x: padL - 8, y: y + 4, 'text-anchor': 'end' });
+      label.textContent = fmtEUR.format(Math.round(p));
+      svg.appendChild(label);
+    }
+
+    const xTickIdx = new Set([0, points.length - 1]);
+    if (points.length > 2) xTickIdx.add(Math.floor((points.length - 1) / 2));
+    xTickIdx.forEach(i => {
+      const label = svgEl('text', { class: 'axis-label', x: xFor(i), y: H - 6, 'text-anchor': 'middle' });
+      label.textContent = fmtDateShort(points[i].date);
+      svg.appendChild(label);
+    });
+
+    const d = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${xFor(i)} ${yFor(p.price)}`).join(' ');
+    svg.appendChild(svgEl('path', { class: 'price-line', d }));
+
+    const lastX = xFor(points.length - 1), lastY = yFor(points[points.length - 1].price);
+    svg.appendChild(svgEl('circle', { class: 'price-end-dot', cx: lastX, cy: lastY, r: 5 }));
+    const lastLabel = svgEl('text', { class: 'price-end-label', x: lastX, y: lastY - 12, 'text-anchor': 'end' });
+    lastLabel.textContent = fmtEUR.format(points[points.length - 1].price);
+    svg.appendChild(lastLabel);
+
+    const crossLine = svgEl('line', { class: 'crosshair-line', x1: 0, x2: 0, y1: padT, y2: H - padB });
+    crossLine.style.display = 'none';
+    const crossDot = svgEl('circle', { class: 'crosshair-dot', r: 5 });
+    crossDot.style.display = 'none';
+    svg.appendChild(crossLine);
+    svg.appendChild(crossDot);
+
+    const hit = svgEl('rect', { class: 'hit-layer', x: padL, y: padT, width: plotW, height: plotH });
+    svg.appendChild(hit);
+
+    function pointerToIndex(evt) {
+      const rect = svg.getBoundingClientRect();
+      const relX = ((evt.clientX - rect.left) / rect.width) * W;
+      const ratio = (relX - padL) / plotW;
+      const idx = Math.round(ratio * (points.length - 1));
+      return Math.max(0, Math.min(points.length - 1, idx));
+    }
+
+    function showAt(idx) {
+      const x = xFor(idx), y = yFor(points[idx].price);
+      crossLine.setAttribute('x1', x); crossLine.setAttribute('x2', x);
+      crossLine.style.display = '';
+      crossDot.setAttribute('cx', x); crossDot.setAttribute('cy', y);
+      crossDot.style.display = '';
+
+      const rect = svg.getBoundingClientRect();
+      const wrapRect = wrap.getBoundingClientRect();
+      const px = rect.left - wrapRect.left + (x / W) * rect.width;
+      const py = rect.top - wrapRect.top + (y / H) * rect.height;
+      tooltip.style.left = `${px}px`;
+      tooltip.style.top = `${py - 10}px`;
+      tooltip.innerHTML = `<strong>${fmtEUR.format(points[idx].price)}</strong><br>${fmtDateLong(points[idx].date)}`;
+      tooltip.hidden = false;
+    }
+
+    function hideCrosshair() {
+      crossLine.style.display = 'none';
+      crossDot.style.display = 'none';
+      tooltip.hidden = true;
+    }
+
+    hit.addEventListener('pointermove', evt => showAt(pointerToIndex(evt)));
+    hit.addEventListener('pointerleave', hideCrosshair);
+    hit.addEventListener('pointerdown', evt => showAt(pointerToIndex(evt)));
+  }
+
   function renderRemoved(history) {
     const ul = document.getElementById('removed-list');
     ul.innerHTML = '';
@@ -781,8 +1206,8 @@
     entries.forEach(l => {
       const li = document.createElement('li');
       li.innerHTML = `
-        <span class="rl-title">${escapeHtml(l.title || 'Toyota GT86')} — ${escapeHtml(l.city || '')}</span>
-        <span>${l.price ? fmtEUR.format(l.price) : '–'} · rimosso il ${l.removed_on || '–'}</span>
+        <span class="rl-left">${thumbHtml(l)}<span class="rl-title">${escapeHtml(l.title || 'Toyota GT86')} — ${escapeHtml(l.city || '')}</span></span>
+        <span class="rl-right">${l.price ? fmtEUR.format(l.price) : '–'} · rimosso il ${l.removed_on || '–'}</span>
       `;
       ul.appendChild(li);
     });
@@ -801,6 +1226,7 @@
       setupToggleFilter('transmission-filter', v => { transmissionFilter = v; });
       setupToggleFilter('seller-filter', v => { sellerFilter = v; });
       setupRangeFilters();
+      renderPriceChart(history);
       renderRemoved(history);
     })
     .catch(err => {
