@@ -1257,54 +1257,8 @@
     },
     {
       "date": "2026-07-22",
-      "count": 43,
-      "new_ids": [],
-      "removed_ids": [],
-      "reappeared_ids": []
-    },
-    {
-      "date": "2026-07-22",
-      "count": 43,
-      "new_ids": [],
-      "removed_ids": [],
-      "reappeared_ids": []
-    },
-    {
-      "date": "2026-07-22",
-      "count": 43,
-      "new_ids": [],
-      "removed_ids": [],
-      "reappeared_ids": []
-    },
-    {
-      "date": "2026-07-22",
-      "count": 41,
-      "new_ids": [],
-      "removed_ids": [
-        "21083cf6-7a0e-4ded-b06e-c59fc98291c8",
-        "12beb9f6-49ee-46eb-b166-15154faea25e"
-      ],
-      "reappeared_ids": []
-    },
-    {
-      "date": "2026-07-22",
       "count": 42,
-      "new_ids": [],
-      "removed_ids": [],
-      "reappeared_ids": [
-        "21083cf6-7a0e-4ded-b06e-c59fc98291c8"
-      ]
-    },
-    {
-      "date": "2026-07-22",
-      "count": 42,
-      "new_ids": [],
-      "removed_ids": [],
-      "reappeared_ids": []
-    },
-    {
-      "date": "2026-07-22",
-      "count": 42,
+      "median_price": 24000,
       "new_ids": [],
       "removed_ids": [],
       "reappeared_ids": []
