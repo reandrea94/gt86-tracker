@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-22T19:38:24.263664+00:00",
+  "updated_at": "2026-07-22T19:51:10.731414+00:00",
   "count": 42,
   "new_ids": [],
   "removed_ids": [
@@ -203,6 +203,34 @@
       "days_listed": 2
     },
     {
+      "id": "a402080c-e17c-4cea-96d7-511e5bad391b",
+      "title": "Toyota GT86 2.0",
+      "price": 20000,
+      "currency": "EUR",
+      "year": 2013,
+      "mileage": 150000,
+      "city": "Nembro",
+      "zip": "24027",
+      "country": "IT",
+      "seller_type": "private",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-benzina-cat_ma70mo20150-a402080c-e17c-4cea-96d7-511e5bad391b",
+      "image": "data/images/a402080c-e17c-4cea-96d7-511e5bad391b.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 45.7422895,
+      "lon": 9.7593489,
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-07-22",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-21",
+          "price": 20000
+        }
+      ],
+      "days_listed": 2
+    },
+    {
       "id": "9421bf44-8c5c-482b-baf4-50cfc081c8da",
       "title": "Toyota GT86 1 Edizione",
       "price": 20000,
@@ -247,34 +275,6 @@
       "fuel": "Benzina",
       "lat": 45.4629435,
       "lon": 11.4545974,
-      "first_seen": "2026-07-21",
-      "last_seen": "2026-07-22",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-07-21",
-          "price": 20000
-        }
-      ],
-      "days_listed": 2
-    },
-    {
-      "id": "a402080c-e17c-4cea-96d7-511e5bad391b",
-      "title": "Toyota GT86 2.0",
-      "price": 20000,
-      "currency": "EUR",
-      "year": 2013,
-      "mileage": 150000,
-      "city": "Nembro",
-      "zip": "24027",
-      "country": "IT",
-      "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-benzina-cat_ma70mo20150-a402080c-e17c-4cea-96d7-511e5bad391b",
-      "image": "data/images/a402080c-e17c-4cea-96d7-511e5bad391b.webp",
-      "transmission": "Manuale",
-      "fuel": "Benzina",
-      "lat": 45.7422895,
-      "lon": 9.7593489,
       "first_seen": "2026-07-21",
       "last_seen": "2026-07-22",
       "status": "active",
@@ -707,34 +707,6 @@
       "days_listed": 2
     },
     {
-      "id": "f3105267-b84b-4fa2-b91f-fed932efe765",
-      "title": "Toyota GT86 full optional",
-      "price": 26000,
-      "currency": "EUR",
-      "year": 2012,
-      "mileage": 66000,
-      "city": "Torino",
-      "zip": "10100",
-      "country": "IT",
-      "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-full-optional-benzina-cat_ma70mo20150-f3105267-b84b-4fa2-b91f-fed932efe765",
-      "image": "data/images/f3105267-b84b-4fa2-b91f-fed932efe765.webp",
-      "transmission": null,
-      "fuel": "Benzina",
-      "lat": 45.0833713,
-      "lon": 7.6865402,
-      "first_seen": "2026-07-21",
-      "last_seen": "2026-07-22",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-07-21",
-          "price": 26000
-        }
-      ],
-      "days_listed": 2
-    },
-    {
       "id": "634e5a41-50a6-41e2-b601-2fe1456feb38",
       "title": "Toyota GT86 2.0",
       "price": 26000,
@@ -751,6 +723,34 @@
       "fuel": "Benzina",
       "lat": null,
       "lon": null,
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-07-22",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-21",
+          "price": 26000
+        }
+      ],
+      "days_listed": 2
+    },
+    {
+      "id": "f3105267-b84b-4fa2-b91f-fed932efe765",
+      "title": "Toyota GT86 full optional",
+      "price": 26000,
+      "currency": "EUR",
+      "year": 2012,
+      "mileage": 66000,
+      "city": "Torino",
+      "zip": "10100",
+      "country": "IT",
+      "seller_type": "private",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-full-optional-benzina-cat_ma70mo20150-f3105267-b84b-4fa2-b91f-fed932efe765",
+      "image": "data/images/f3105267-b84b-4fa2-b91f-fed932efe765.webp",
+      "transmission": null,
+      "fuel": "Benzina",
+      "lat": 45.0833713,
+      "lon": 7.6865402,
       "first_seen": "2026-07-21",
       "last_seen": "2026-07-22",
       "status": "active",
