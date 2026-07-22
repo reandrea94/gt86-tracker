@@ -425,11 +425,22 @@ def main():
         active_listings.append(entry)
     active_listings.sort(key=lambda x: (x["price"] is None, x["price"]))
 
+    # "Nuovi/rimossi oggi" per la dashboard = tutta l'attivita' della giornata
+    # letta da history_listings, non solo il delta dell'ultima scansione: con
+    # il tasto "Aggiorna" si puo' rilanciare piu' volte lo stesso giorno, e un
+    # run successivo senza novita' azzererebbe altrimenti il conteggio anche
+    # se qualcosa era stato aggiunto/rimosso in una scansione precedente dello
+    # stesso giorno.
+    new_ids_today = [lid for lid, e in history_listings.items() if e.get("first_seen") == today]
+    removed_ids_today = [
+        lid for lid, e in history_listings.items() if e.get("status") == "removed" and e.get("removed_on") == today
+    ]
+
     current = {
         "updated_at": now_iso,
         "count": len(active_listings),
-        "new_ids": new_ids,
-        "removed_ids": removed_ids,
+        "new_ids": new_ids_today,
+        "removed_ids": removed_ids_today,
         "listings": active_listings,
     }
 
