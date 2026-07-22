@@ -152,7 +152,7 @@
 
   .stat-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 12px;
     margin-bottom: 20px;
   }
@@ -171,11 +171,27 @@
   .stat-tile.private .value { color: var(--series-3); }
   .stat-tile.dealer .value { color: var(--series-4); }
 
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+  }
+  .filter-divider {
+    width: 1px;
+    align-self: stretch;
+    background: var(--border);
+    min-height: 22px;
+  }
   .transmission-filter {
     display: flex;
     gap: 8px;
     align-items: center;
-    margin-bottom: 14px;
     flex-wrap: wrap;
   }
   .transmission-filter .flabel { font-size: 13px; color: var(--text-secondary); margin-right: 2px; }
@@ -184,7 +200,7 @@
     align-items: center;
     gap: 6px;
     border: 1px solid var(--border);
-    background: var(--surface-1);
+    background: var(--page-plane);
     color: var(--text-secondary);
     border-radius: 999px;
     padding: 5px 12px;
@@ -202,7 +218,6 @@
     display: flex;
     gap: 8px;
     align-items: center;
-    margin-bottom: 14px;
     flex-wrap: wrap;
   }
   .range-filters .flabel { font-size: 13px; color: var(--text-secondary); margin-right: 2px; }
@@ -212,7 +227,7 @@
     padding: 5px 8px;
     border-radius: 8px;
     border: 1px solid var(--border);
-    background: var(--surface-1);
+    background: var(--page-plane);
     color: var(--text-primary);
     font-size: 13px;
     font-variant-numeric: tabular-nums;
@@ -232,7 +247,7 @@
     height: 460px;
     border-radius: 12px;
     border: 1px solid var(--border);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
   .value-marker-icon { background: transparent; border: none; }
   .value-marker {
@@ -258,7 +273,7 @@
     align-items: center;
     font-size: 13px;
     color: var(--text-secondary);
-    margin-bottom: 24px;
+    margin-bottom: 8px;
   }
   .legend .swatch {
     display: inline-block;
@@ -457,6 +472,8 @@
     #price-chart-wrap { padding: 8px; }
     #price-chart { height: 180px; }
 
+    .filter-bar { padding: 12px; gap: 12px; }
+    .filter-divider { display: none; }
     .transmission-filter, .range-filters { gap: 6px; }
     .range-filters input[type="number"] { width: 64px; }
 
@@ -540,30 +557,36 @@
       </div>
     </div>
 
-    <div class="transmission-filter" id="transmission-filter">
-      <span class="flabel">Cambio:</span>
-      <button class="tf-btn" type="button" data-value="all" data-active="true">Tutti</button>
-      <button class="tf-btn" type="button" data-value="Automatico"><span class="dot" style="background:var(--series-1)"></span>Automatico</button>
-      <button class="tf-btn" type="button" data-value="Manuale"><span class="dot" style="background:var(--series-2)"></span>Manuale</button>
-    </div>
+    <div class="filter-bar">
+      <div class="transmission-filter" id="transmission-filter">
+        <span class="flabel">Cambio:</span>
+        <button class="tf-btn" type="button" data-value="all" data-active="true">Tutti</button>
+        <button class="tf-btn" type="button" data-value="Automatico"><span class="dot" style="background:var(--series-1)"></span>Automatico</button>
+        <button class="tf-btn" type="button" data-value="Manuale"><span class="dot" style="background:var(--series-2)"></span>Manuale</button>
+      </div>
 
-    <div class="transmission-filter" id="seller-filter">
-      <span class="flabel">Venditore:</span>
-      <button class="tf-btn" type="button" data-value="all" data-active="true">Tutti</button>
-      <button class="tf-btn" type="button" data-value="private"><span class="dot" style="background:var(--series-3)"></span>Privato</button>
-      <button class="tf-btn" type="button" data-value="dealer"><span class="dot" style="background:var(--series-4)"></span>Concessionario</button>
-    </div>
+      <div class="filter-divider"></div>
 
-    <div class="range-filters" id="range-filters">
-      <span class="flabel">Km:</span>
-      <input type="number" id="km-min" placeholder="da" min="0" step="1000">
-      <span class="sep">–</span>
-      <input type="number" id="km-max" placeholder="a" min="0" step="1000">
-      <span class="flabel">Anno:</span>
-      <input type="number" id="year-min" placeholder="da" min="1990" max="2100" step="1">
-      <span class="sep">–</span>
-      <input type="number" id="year-max" placeholder="a" min="1990" max="2100" step="1">
-      <button id="range-reset" type="button">Azzera</button>
+      <div class="transmission-filter" id="seller-filter">
+        <span class="flabel">Venditore:</span>
+        <button class="tf-btn" type="button" data-value="all" data-active="true">Tutti</button>
+        <button class="tf-btn" type="button" data-value="private"><span class="dot" style="background:var(--series-3)"></span>Privato</button>
+        <button class="tf-btn" type="button" data-value="dealer"><span class="dot" style="background:var(--series-4)"></span>Concessionario</button>
+      </div>
+
+      <div class="filter-divider"></div>
+
+      <div class="range-filters" id="range-filters">
+        <span class="flabel">Km:</span>
+        <input type="number" id="km-min" placeholder="da" min="0" step="1000">
+        <span class="sep">–</span>
+        <input type="number" id="km-max" placeholder="a" min="0" step="1000">
+        <span class="flabel">Anno:</span>
+        <input type="number" id="year-min" placeholder="da" min="1990" max="2100" step="1">
+        <span class="sep">–</span>
+        <input type="number" id="year-max" placeholder="a" min="1990" max="2100" step="1">
+        <button id="range-reset" type="button">Azzera</button>
+      </div>
     </div>
 
     <div id="map"></div>
