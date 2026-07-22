@@ -343,35 +343,24 @@ def main():
             existing["last_seen"] = today
             existing["status"] = "active"
             existing["price_history"] = price_history
-            existing.pop("missing_since", None)
             existing.pop("removed_on", None)
             history_listings[item["id"]] = existing
 
+    # non trovato in questa scansione = rimosso subito. La paginazione (vedi
+    # scrape_all_listings) e' stata corretta per non saltare piu' annunci
+    # reali per un riordino dei risultati, quindi qui "assente" significa
+    # davvero assente dal sito.
     for listing_id, existing in history_listings.items():
-        if listing_id in scraped_ids or existing.get("status") != "active":
-            continue
-        # richiede assenza confermata in almeno due scansioni di giorni diversi
-        # prima di segnare come rimosso, per non farsi ingannare da un singolo
-        # intoppo di rete/paginazione (vedi nota in scrape_all_listings)
-        missing_since = existing.get("missing_since")
-        if missing_since is None:
-            existing["missing_since"] = today
-        elif missing_since != today:
+        if listing_id not in scraped_ids and existing.get("status") == "active":
             existing["status"] = "removed"
             existing["removed_on"] = today
             removed_ids.append(listing_id)
-
-    # "attivo" = status active in cronologia, non solo cio' che questa singola
-    # scansione e' riuscita a ritrovare: un annuncio in periodo di grazia
-    # (missing_since impostato ma non ancora confermato rimosso) resta attivo
-    # e visibile, altrimenti sparirebbe dalla dashboard senza spiegazione.
-    active_ids = {lid for lid, e in history_listings.items() if e.get("status") == "active"}
 
     history["daily_snapshots"] = history.get("daily_snapshots", [])
     history["daily_snapshots"].append(
         {
             "date": today,
-            "count": len(active_ids),
+            "count": len(scraped_ids),
             "new_ids": new_ids,
             "removed_ids": removed_ids,
             "reappeared_ids": reappeared_ids,
@@ -381,7 +370,7 @@ def main():
     history["daily_snapshots"] = history["daily_snapshots"][-365:]
 
     active_listings = []
-    for listing_id in active_ids:
+    for listing_id in scraped_ids:
         entry = dict(history_listings[listing_id])
         try:
             first_seen = datetime.strptime(entry["first_seen"], "%Y-%m-%d")

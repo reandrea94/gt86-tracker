@@ -197,7 +197,6 @@
     border: 2px solid rgba(255,255,255,0.9);
   }
   .value-marker.is-new { border-color: var(--series-1); border-width: 3px; }
-  .value-marker.is-pending { opacity: 0.55; border-style: dashed; border-color: var(--status-warning); }
   .legend {
     display: flex;
     gap: 18px;
@@ -296,7 +295,6 @@
     margin-left: 6px;
   }
   .badge.new { background: color-mix(in srgb, var(--status-good) 18%, transparent); color: var(--status-good); }
-  .badge.pending { background: color-mix(in srgb, var(--status-warning) 22%, transparent); color: color-mix(in srgb, var(--status-warning) 65%, var(--text-primary)); }
   .badge.price-down { background: color-mix(in srgb, var(--status-good) 18%, transparent); color: var(--status-good); }
   .badge.price-up { background: color-mix(in srgb, var(--status-critical) 18%, transparent); color: var(--status-critical); }
   .badge.transmission-automatico { background: color-mix(in srgb, var(--series-1) 18%, transparent); color: var(--series-1); margin-left: 0; }
@@ -624,7 +622,7 @@
       const isNew = newIdsGlobal.has(l.id);
       const icon = L.divIcon({
         className: 'value-marker-icon',
-        html: `<div class="value-marker${isNew ? ' is-new' : ''}${l.missing_since ? ' is-pending' : ''}" style="background:${dealColor(l)};" title="${l.missing_since ? 'In verifica: non trovato nell\'ultima scansione' : ''}">${dealPercentText(l)}</div>`,
+        html: `<div class="value-marker${isNew ? ' is-new' : ''}" style="background:${dealColor(l)};">${dealPercentText(l)}</div>`,
         iconSize: [46, 24],
         iconAnchor: [23, 12],
         popupAnchor: [0, -12],
@@ -634,16 +632,12 @@
       const sellerLabel = l.seller_type === 'private' ? 'Privato' : l.seller_type === 'dealer' ? 'Concessionario' : null;
       const specs = [l.fuel, l.transmission, sellerLabel].filter(Boolean).join(' · ');
       const popupImg = l.image ? `<img class="popup-thumb" src="${l.image}" alt="" loading="lazy" onerror="this.remove()">` : '';
-      const pendingNote = l.missing_since
-        ? `<span style="color:var(--status-warning);">⚠ In verifica: non trovato nell'ultima scansione</span><br>`
-        : '';
       marker.bindPopup(
         popupImg +
         `<strong>${escapeHtml(l.title || 'Toyota GT86')}</strong><br>` +
         `${priceTxt} · ${l.year || '–'} · ${l.mileage ? fmtNum.format(l.mileage) + ' km' : 'km n.d.'}<br>` +
         `${specs ? escapeHtml(specs) + '<br>' : ''}` +
         `${escapeHtml(l.city || '')}<br>` +
-        pendingNote +
         `<a href="${l.url}" target="_blank" rel="noopener">Vedi annuncio ↗</a>`,
         { maxWidth: 240 }
       );
@@ -759,7 +753,7 @@
         : `<div class="thumb-placeholder">🚗</div>`;
       tr.innerHTML = `
         <td class="thumb">${thumb}</td>
-        <td><a class="listing-link" href="${l.url}" target="_blank" rel="noopener">${escapeHtml(l.title || 'Toyota GT86')}</a>${isNew ? '<span class="badge new">nuovo</span>' : ''}${l.missing_since ? '<span class="badge pending" title="Non trovato nell\'ultima scansione: se resta assente anche domani verra\' segnato come rimosso">in verifica</span>' : ''}</td>
+        <td><a class="listing-link" href="${l.url}" target="_blank" rel="noopener">${escapeHtml(l.title || 'Toyota GT86')}</a>${isNew ? '<span class="badge new">nuovo</span>' : ''}</td>
         <td class="num">${valueBadge(l)}</td>
         <td class="num">${l.price ? fmtEUR.format(l.price) : '–'}${priceBadge}</td>
         <td class="num">${l.year ?? '–'}</td>
