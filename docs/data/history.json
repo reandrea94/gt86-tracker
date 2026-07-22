@@ -559,14 +559,13 @@
       "lon": 10.985279,
       "first_seen": "2026-07-21",
       "last_seen": "2026-07-22",
-      "status": "removed",
+      "status": "active",
       "price_history": [
         {
           "date": "2026-07-21",
           "price": 25000
         }
-      ],
-      "removed_on": "2026-07-22"
+      ]
     },
     "bd7e75c9-1ae9-465b-9136-92c4524078f6": {
       "id": "bd7e75c9-1ae9-465b-9136-92c4524078f6",
@@ -1286,6 +1285,15 @@
         "12beb9f6-49ee-46eb-b166-15154faea25e"
       ],
       "reappeared_ids": []
+    },
+    {
+      "date": "2026-07-22",
+      "count": 42,
+      "new_ids": [],
+      "removed_ids": [],
+      "reappeared_ids": [
+        "21083cf6-7a0e-4ded-b06e-c59fc98291c8"
+      ]
     }
   ]
 }

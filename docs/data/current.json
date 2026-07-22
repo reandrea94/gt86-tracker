@@ -1,11 +1,8 @@
 {
-  "updated_at": "2026-07-22T07:58:00.006164+00:00",
-  "count": 41,
+  "updated_at": "2026-07-22T08:07:02.210954+00:00",
+  "count": 42,
   "new_ids": [],
-  "removed_ids": [
-    "21083cf6-7a0e-4ded-b06e-c59fc98291c8",
-    "12beb9f6-49ee-46eb-b166-15154faea25e"
-  ],
+  "removed_ids": [],
   "listings": [
     {
       "id": "8c660103-6038-4d5e-b6e4-3ac0515ca128",
@@ -568,34 +565,6 @@
       "days_listed": 2
     },
     {
-      "id": "76d8c67f-4949-4e4c-8636-9d33ee092275",
-      "title": "Toyota GT86 2.0",
-      "price": 24000,
-      "currency": "EUR",
-      "year": 2012,
-      "mileage": 130000,
-      "city": "Corridonia",
-      "zip": "62014",
-      "country": "IT",
-      "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-benzina-cat_ma70mo20150-76d8c67f-4949-4e4c-8636-9d33ee092275",
-      "image": "data/images/76d8c67f-4949-4e4c-8636-9d33ee092275.webp",
-      "transmission": "Manuale",
-      "fuel": "Benzina",
-      "lat": 43.2588589,
-      "lon": 13.5068436,
-      "first_seen": "2026-07-21",
-      "last_seen": "2026-07-22",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-07-21",
-          "price": 24000
-        }
-      ],
-      "days_listed": 2
-    },
-    {
       "id": "8b6a20d3-4ce1-4d78-8314-5b3715bdbff1",
       "title": "Toyota GT86 2.0",
       "price": 24000,
@@ -612,6 +581,34 @@
       "fuel": "Benzina",
       "lat": 37.5060407,
       "lon": 15.0508039,
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-07-22",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-21",
+          "price": 24000
+        }
+      ],
+      "days_listed": 2
+    },
+    {
+      "id": "76d8c67f-4949-4e4c-8636-9d33ee092275",
+      "title": "Toyota GT86 2.0",
+      "price": 24000,
+      "currency": "EUR",
+      "year": 2012,
+      "mileage": 130000,
+      "city": "Corridonia",
+      "zip": "62014",
+      "country": "IT",
+      "seller_type": "private",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-benzina-cat_ma70mo20150-76d8c67f-4949-4e4c-8636-9d33ee092275",
+      "image": "data/images/76d8c67f-4949-4e4c-8636-9d33ee092275.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 43.2588589,
+      "lon": 13.5068436,
       "first_seen": "2026-07-21",
       "last_seen": "2026-07-22",
       "status": "active",
@@ -652,6 +649,34 @@
       "days_listed": 2
     },
     {
+      "id": "21083cf6-7a0e-4ded-b06e-c59fc98291c8",
+      "title": "Toyota GT86 2.0 Rock&Road auto",
+      "price": 25000,
+      "currency": "EUR",
+      "year": 2017,
+      "mileage": 104781,
+      "city": "Verona",
+      "zip": "37135",
+      "country": "IT",
+      "seller_type": "private",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-rockroad-auto-benzina-cat_ma70mo20150-21083cf6-7a0e-4ded-b06e-c59fc98291c8",
+      "image": "data/images/21083cf6-7a0e-4ded-b06e-c59fc98291c8.webp",
+      "transmission": "Automatico",
+      "fuel": "Benzina",
+      "lat": 45.3983336,
+      "lon": 10.985279,
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-07-22",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-21",
+          "price": 25000
+        }
+      ],
+      "days_listed": 2
+    },
+    {
       "id": "4ada6869-3202-47d6-a844-67678a8db2b8",
       "title": "Toyota GT86 2.0 Racing Edition auto",
       "price": 25800,
@@ -680,34 +705,6 @@
       "days_listed": 2
     },
     {
-      "id": "f3105267-b84b-4fa2-b91f-fed932efe765",
-      "title": "Toyota GT86 full optional",
-      "price": 26000,
-      "currency": "EUR",
-      "year": 2012,
-      "mileage": 66000,
-      "city": "Torino",
-      "zip": "10100",
-      "country": "IT",
-      "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-full-optional-benzina-cat_ma70mo20150-f3105267-b84b-4fa2-b91f-fed932efe765",
-      "image": "data/images/f3105267-b84b-4fa2-b91f-fed932efe765.webp",
-      "transmission": null,
-      "fuel": "Benzina",
-      "lat": 45.0833713,
-      "lon": 7.6865402,
-      "first_seen": "2026-07-21",
-      "last_seen": "2026-07-22",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-07-21",
-          "price": 26000
-        }
-      ],
-      "days_listed": 2
-    },
-    {
       "id": "634e5a41-50a6-41e2-b601-2fe1456feb38",
       "title": "Toyota GT86 2.0",
       "price": 26000,
@@ -724,6 +721,34 @@
       "fuel": "Benzina",
       "lat": null,
       "lon": null,
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-07-22",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-21",
+          "price": 26000
+        }
+      ],
+      "days_listed": 2
+    },
+    {
+      "id": "f3105267-b84b-4fa2-b91f-fed932efe765",
+      "title": "Toyota GT86 full optional",
+      "price": 26000,
+      "currency": "EUR",
+      "year": 2012,
+      "mileage": 66000,
+      "city": "Torino",
+      "zip": "10100",
+      "country": "IT",
+      "seller_type": "private",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-full-optional-benzina-cat_ma70mo20150-f3105267-b84b-4fa2-b91f-fed932efe765",
+      "image": "data/images/f3105267-b84b-4fa2-b91f-fed932efe765.webp",
+      "transmission": null,
+      "fuel": "Benzina",
+      "lat": 45.0833713,
+      "lon": 7.6865402,
       "first_seen": "2026-07-21",
       "last_seen": "2026-07-22",
       "status": "active",
