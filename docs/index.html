@@ -431,8 +431,12 @@
   }
   #removed-list li:last-child { border-bottom: none; }
   #removed-list .rl-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  #removed-list .rl-info { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
   #removed-list .rl-title { color: var(--text-primary); }
-  #removed-list .rl-right { flex-shrink: 0; white-space: nowrap; }
+  #removed-list .rl-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 12px; color: var(--text-muted); }
+  #removed-list .rl-meta .badge { margin-left: 0; }
+  #removed-list .rl-right { flex-shrink: 0; white-space: nowrap; text-align: right; }
+  #removed-list .rl-right .rl-removed-on { display: block; font-size: 12px; color: var(--text-muted); }
 
   .empty-state, .error-state {
     padding: 40px;
@@ -1228,9 +1232,22 @@
     }
     entries.forEach(l => {
       const li = document.createElement('li');
+      const metaParts = [
+        l.year ?? null,
+        l.mileage ? `${fmtNum.format(l.mileage)} km` : null,
+      ].filter(Boolean).map(escapeHtml);
+      const meta = [...metaParts, transmissionBadge(l.transmission), sellerBadge(l.seller_type), escapeHtml(l.city || '')]
+        .filter(Boolean)
+        .join(' · ');
       li.innerHTML = `
-        <span class="rl-left">${thumbHtml(l)}<span class="rl-title">${escapeHtml(l.title || 'Toyota GT86')} — ${escapeHtml(l.city || '')}</span></span>
-        <span class="rl-right">${l.price ? fmtEUR.format(l.price) : '–'} · rimosso il ${l.removed_on || '–'}</span>
+        <span class="rl-left">
+          ${thumbHtml(l)}
+          <span class="rl-info">
+            <span class="rl-title">${escapeHtml(l.title || 'Toyota GT86')}</span>
+            <span class="rl-meta">${meta}</span>
+          </span>
+        </span>
+        <span class="rl-right">${l.price ? fmtEUR.format(l.price) : '–'}<span class="rl-removed-on">rimosso il ${l.removed_on || '–'}</span></span>
       `;
       ul.appendChild(li);
     });
