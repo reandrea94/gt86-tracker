@@ -859,13 +859,13 @@
     return '–';
   }
 
-  function computeValueScores(items) {
+  let valueModel = null;
+
+  function fitValueModel(items) {
     // Stima "prezzo atteso" per anno/km con una regressione lineare (prezzo ~ anno + km)
     // sui predittori centrati (piu' stabile numericamente di una 3x3 grezza).
-    // valueScore > 0 = prezzo sotto la media per quell'anno/km (affare migliore).
     const fit = items.filter(l => typeof l.price === 'number' && typeof l.year === 'number' && typeof l.mileage === 'number');
-    items.forEach(l => { l.value = null; l.expectedPrice = null; });
-    if (fit.length < 6) return;
+    if (fit.length < 6) return null;
 
     const n = fit.length;
     const meanYear = fit.reduce((s, l) => s + l.year, 0) / n;
@@ -884,15 +884,30 @@
       sy2 += x2 * y;
     });
     const det = s11 * s22 - s12 * s12;
-    if (Math.abs(det) < 1e-6) return;
-    const b1 = (sy1 * s22 - sy2 * s12) / det; // €/anno
-    const b2 = (sy2 * s11 - sy1 * s12) / det; // €/1000km
+    if (Math.abs(det) < 1e-6) return null;
+    return {
+      meanYear, meanKm, meanPrice,
+      b1: (sy1 * s22 - sy2 * s12) / det, // €/anno
+      b2: (sy2 * s11 - sy1 * s12) / det, // €/1000km
+    };
+  }
 
-    fit.forEach(l => {
-      const predicted = meanPrice + b1 * (l.year - meanYear) + b2 * (l.mileage / 1000 - meanKm);
-      l.expectedPrice = predicted;
-      l.value = predicted > 0 ? (predicted - l.price) / predicted : null;
-    });
+  function applyValueModel(l, model) {
+    l.value = null;
+    l.expectedPrice = null;
+    if (!model || typeof l.price !== 'number' || typeof l.year !== 'number' || typeof l.mileage !== 'number') return;
+    const predicted = model.meanPrice + model.b1 * (l.year - model.meanYear) + model.b2 * (l.mileage / 1000 - model.meanKm);
+    l.expectedPrice = predicted;
+    l.value = predicted > 0 ? (predicted - l.price) / predicted : null;
+  }
+
+  function computeValueScores(items) {
+    // valueScore > 0 = prezzo sotto la media per quell'anno/km (affare migliore).
+    // Il modello resta anche per applicarlo retroattivamente agli annunci
+    // rimossi/venduti (vedi renderRemoved), confrontandoli con il mercato
+    // attivo di oggi.
+    valueModel = fitValueModel(items);
+    items.forEach(l => applyValueModel(l, valueModel));
   }
 
   function valueBadge(l) {
@@ -1230,13 +1245,14 @@
       ul.innerHTML = '<li>Nessun annuncio rimosso registrato finora.</li>';
       return;
     }
+    entries.forEach(l => applyValueModel(l, valueModel));
     entries.forEach(l => {
       const li = document.createElement('li');
       const metaParts = [
         l.year ?? null,
         l.mileage ? `${fmtNum.format(l.mileage)} km` : null,
       ].filter(Boolean).map(escapeHtml);
-      const meta = [...metaParts, transmissionBadge(l.transmission), sellerBadge(l.seller_type), escapeHtml(l.city || '')]
+      const meta = [valueBadge(l), ...metaParts, transmissionBadge(l.transmission), sellerBadge(l.seller_type), escapeHtml(l.city || '')]
         .filter(Boolean)
         .join(' · ');
       li.innerHTML = `
