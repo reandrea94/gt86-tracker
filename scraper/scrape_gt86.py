@@ -258,6 +258,32 @@ def geocode(city, zipcode, country, cache: dict):
     return None, None
 
 
+def verify_listing_still_active(listing_id: str, url: str) -> bool:
+    """Verifica diretta se un annuncio dato per assente dalla lista paginata sia
+    davvero sparito, aprendo la sua pagina invece di fidarsi solo dell'elenco.
+
+    La lista risultati di AutoScout24 (sort=standard) puo' riordinarsi durante
+    la scansione stessa (annunci sponsorizzati che si spostano tra una pagina e
+    l'altra), quindi un annuncio ancora online puo' non comparire in nessuna
+    pagina fetchata pur essendo ancora in vendita. Controllare direttamente la
+    pagina dell'annuncio elimina questa fonte di falsi positivi.
+
+    In caso di dubbio (errore di rete, risposta ambigua) ritorna True: meglio
+    un giorno di ritardo nel segnare "rimosso" che un falso "venduto"."""
+    if not url:
+        return True
+    try:
+        resp = session.get(url, timeout=20, allow_redirects=True)
+    except requests.RequestException:
+        return True
+    if resp.status_code >= 400:
+        return False
+    if "/annunci/" not in resp.url:
+        # redirect fuori dalla pagina annuncio (es. verso i risultati di ricerca)
+        return False
+    return listing_id in resp.url or listing_id in resp.text
+
+
 def download_cover_image(listing_id: str, image_url: str | None) -> str | None:
     """Scarica la foto di copertina e la salva nel repo (docs/data/images/), cosi'
     la dashboard non dipende dal CDN di AutoScout24 (bloccato da alcuni filtri di
@@ -346,21 +372,29 @@ def main():
             existing.pop("removed_on", None)
             history_listings[item["id"]] = existing
 
-    # non trovato in questa scansione = rimosso subito. La paginazione (vedi
-    # scrape_all_listings) e' stata corretta per non saltare piu' annunci
-    # reali per un riordino dei risultati, quindi qui "assente" significa
-    # davvero assente dal sito.
+    # Non trovato nella lista paginata non basta per dire "rimosso": la lista
+    # puo' riordinarsi durante la scansione stessa (vedi nota in
+    # verify_listing_still_active) e far sparire un annuncio ancora online da
+    # tutte le pagine fetchate. Prima di segnarlo rimosso, verifico
+    # direttamente la sua pagina.
+    confirmed_active_ids = set(scraped_ids)
     for listing_id, existing in history_listings.items():
-        if listing_id not in scraped_ids and existing.get("status") == "active":
+        if listing_id in scraped_ids or existing.get("status") != "active":
+            continue
+        if verify_listing_still_active(listing_id, existing.get("url", "")):
+            existing["last_seen"] = today
+            confirmed_active_ids.add(listing_id)
+        else:
             existing["status"] = "removed"
             existing["removed_on"] = today
             removed_ids.append(listing_id)
+        time.sleep(REQUEST_DELAY_SEC)
 
     history["daily_snapshots"] = history.get("daily_snapshots", [])
     history["daily_snapshots"].append(
         {
             "date": today,
-            "count": len(scraped_ids),
+            "count": len(confirmed_active_ids),
             "new_ids": new_ids,
             "removed_ids": removed_ids,
             "reappeared_ids": reappeared_ids,
@@ -370,7 +404,7 @@ def main():
     history["daily_snapshots"] = history["daily_snapshots"][-365:]
 
     active_listings = []
-    for listing_id in scraped_ids:
+    for listing_id in confirmed_active_ids:
         entry = dict(history_listings[listing_id])
         try:
             first_seen = datetime.strptime(entry["first_seen"], "%Y-%m-%d")
