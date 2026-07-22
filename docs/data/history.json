@@ -477,15 +477,14 @@
       "lat": null,
       "lon": null,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-21",
+      "last_seen": "2026-07-22",
       "status": "active",
       "price_history": [
         {
           "date": "2026-07-21",
           "price": 26000
         }
-      ],
-      "missing_since": "2026-07-22"
+      ]
     },
     "2abaf5a9-cfdd-4d41-be92-db9aa0e73e21": {
       "id": "2abaf5a9-cfdd-4d41-be92-db9aa0e73e21",
@@ -1251,6 +1250,13 @@
     },
     {
       "date": "2026-07-21",
+      "count": 43,
+      "new_ids": [],
+      "removed_ids": [],
+      "reappeared_ids": []
+    },
+    {
+      "date": "2026-07-22",
       "count": 43,
       "new_ids": [],
       "removed_ids": [],
