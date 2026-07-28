@@ -162,5 +162,81 @@
   "12042|bra - cuneo - cn|it": {
     "lat": 44.7009906,
     "lon": 7.847054
+  },
+  "46037|barbasso - mantova - mn|it": {
+    "lat": 45.1208638,
+    "lon": 10.9039069
+  },
+  "00137|roma|it": {
+    "lat": 41.9477937,
+    "lon": 12.5608895
+  },
+  "00012|guidonia montecelio|it": {
+    "lat": 41.9708534,
+    "lon": 12.705019
+  },
+  "20900|monza - monza  brianza - mb|it": {
+    "lat": 45.5798671,
+    "lon": 9.2759623
+  },
+  "10060|frossasco - to|it": {
+    "lat": 44.9329437,
+    "lon": 7.3502181
+  },
+  "00148|roma - rm|it": {
+    "lat": 41.8405059,
+    "lon": 12.4202761
+  },
+  "55100|lucca|it": {
+    "lat": 43.8497281,
+    "lon": 10.5050832
+  },
+  "37135|verona - vr|it": {
+    "lat": 45.3983336,
+    "lon": 10.985279
+  },
+  "71043|manfredonia - foggia - fg -|it": {
+    "lat": 41.6293321,
+    "lon": 15.9204949
+  },
+  "39030|perca - percha - bolzano - bz|it": {
+    "lat": 46.7943067,
+    "lon": 11.982383
+  },
+  "41126|modena|it": {
+    "lat": 44.6196574,
+    "lon": 10.9146371
+  },
+  "10137|torino - to|it": {
+    "lat": 45.0403333,
+    "lon": 7.6346863
+  },
+  "30175|marghera - venezia - ve|it": {
+    "lat": 45.4699099,
+    "lon": 12.2224855
+  },
+  "00191|roma|it": {
+    "lat": 41.9447462,
+    "lon": 12.4747237
+  },
+  "10141|torino - to|it": {
+    "lat": 45.06398,
+    "lon": 7.6388129
+  },
+  "20092|cinisello balsamo - mi|it": {
+    "lat": 45.5553353,
+    "lon": 9.2102205
+  },
+  "37045|legnago - verona - vr|it": {
+    "lat": 45.1890707,
+    "lon": 11.3045194
+  },
+  "20832|desio - monza brianza - mb|it": {
+    "lat": 45.6148485,
+    "lon": 9.211051
+  },
+  "25125|brescia|it": {
+    "lat": 45.5274444,
+    "lon": 10.2009329
   }
 }

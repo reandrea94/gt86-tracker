@@ -1,11 +1,311 @@
 {
-  "updated_at": "2026-07-27T10:07:02.060749+00:00",
-  "count": 41,
-  "new_ids": [],
-  "removed_ids": [
-    "05bfdd06-d81f-4494-bdbd-a870f06aa7e3"
+  "updated_at": "2026-07-28T08:49:38.185931+00:00",
+  "count": 62,
+  "new_ids": [
+    "478f31e3-c15a-4db2-9a37-9203925367ae",
+    "54ff3559-2271-4961-81c0-dc2de010f8d4",
+    "0a210744-eec5-410c-a15d-139c62f9366e",
+    "105d8d99-855b-4639-a318-fe1c94d708b6",
+    "7d58b81c-d006-4e62-afa1-5adf7debae93",
+    "68bb3a63-e3f9-46dc-9223-78bc492b1a28",
+    "65a524fe-4dc6-4f57-b20e-064e63163580",
+    "9e2b1148-8db8-4e2b-99fe-9b13b4235521",
+    "68554246-a98e-4026-9f05-3be785d474f0",
+    "c4467b0e-45c0-491b-b4de-1e75e6028311",
+    "b56d43ce-e412-4d9d-adbc-50e626c802cb",
+    "e2ab4165-5a2a-4ca3-b403-9e00cee8b985",
+    "4bfb8b7e-e1c0-4008-9c15-2b0dcc468755",
+    "732a6607-76a8-430c-b052-078b8e361899",
+    "48e4ac58-e8d1-45b4-a721-d7c8f307572e",
+    "b02de891-fe69-4e1b-bbfb-2ad3a4828c70",
+    "68225f71-0e4c-4040-a895-094ec9ed5b02",
+    "c070b8b7-5aa1-491c-a42b-ceafcf296f82",
+    "b6fbe936-9bc0-4278-b138-d1dfde563188",
+    "748e46b1-c0fb-45bb-b7bf-46b71693a736",
+    "216524f7-4bca-4e17-a51c-e5b75255a920"
   ],
+  "removed_ids": [],
   "listings": [
+    {
+      "id": "b6fbe936-9bc0-4278-b138-d1dfde563188",
+      "title": "Toyota Aygo X Pure 1.0 VVT-i 69 cv",
+      "price": 8500,
+      "currency": "EUR",
+      "year": 2016,
+      "mileage": 45200,
+      "city": "Legnago - Verona - VR",
+      "zip": "37045",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-aygo-x-pure-1-0-vvt-i-69-cv-benzina-rosso-cat_ma70mo18655-b6fbe936-9bc0-4278-b138-d1dfde563188",
+      "image": "data/images/b6fbe936-9bc0-4278-b138-d1dfde563188.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 45.1890707,
+      "lon": 11.3045194,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 8500
+        }
+      ],
+      "days_listed": 1
+    },
+    {
+      "id": "48e4ac58-e8d1-45b4-a721-d7c8f307572e",
+      "title": "Toyota Aygo X Aygo 5p 1.0 x-BLACK",
+      "price": 9000,
+      "currency": "EUR",
+      "year": 2016,
+      "mileage": 40100,
+      "city": "Marghera - Venezia - Ve",
+      "zip": "30175",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-aygo-x-aygo-5p-1-0-x-black-benzina-bianco-cat_ma70mo76240-48e4ac58-e8d1-45b4-a721-d7c8f307572e",
+      "image": "data/images/48e4ac58-e8d1-45b4-a721-d7c8f307572e.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 45.4699099,
+      "lon": 12.2224855,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 9000
+        }
+      ],
+      "days_listed": 1
+    },
+    {
+      "id": "68225f71-0e4c-4040-a895-094ec9ed5b02",
+      "title": "Toyota Aygo X 1.0  Trend",
+      "price": 12890,
+      "currency": "EUR",
+      "year": 2023,
+      "mileage": 57369,
+      "city": "Torino - To",
+      "zip": "10141",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-aygo-x-1-0-trend-benzina-rosso-cat_ma70mo76240-68225f71-0e4c-4040-a895-094ec9ed5b02",
+      "image": "data/images/68225f71-0e4c-4040-a895-094ec9ed5b02.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 45.06398,
+      "lon": 7.6388129,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 12890
+        }
+      ],
+      "days_listed": 1
+    },
+    {
+      "id": "4bfb8b7e-e1c0-4008-9c15-2b0dcc468755",
+      "title": "Toyota RAV 4 2.2 D-CAT (150CV) A/T STYLE",
+      "price": 13900,
+      "currency": "EUR",
+      "year": 2014,
+      "mileage": 134095,
+      "city": "Modena",
+      "zip": "41126",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-rav-4-2-2-d-cat-150cv-a-t-style-diesel-argento-cat_ma70mo2143-4bfb8b7e-e1c0-4008-9c15-2b0dcc468755",
+      "image": "data/images/4bfb8b7e-e1c0-4008-9c15-2b0dcc468755.webp",
+      "transmission": "Automatico",
+      "fuel": "Diesel",
+      "lat": 44.6196574,
+      "lon": 10.9146371,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 13900
+        }
+      ],
+      "days_listed": 1
+    },
+    {
+      "id": "0a210744-eec5-410c-a15d-139c62f9366e",
+      "title": "Toyota Aygo X VV-T Trend 1.0cc 72cv ANDROID/IOS CRUISE C.",
+      "price": 13900,
+      "currency": "EUR",
+      "year": 2025,
+      "mileage": 23073,
+      "city": "Roma",
+      "zip": "00137",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-aygo-x-vv-t-trend-1-0cc-72cv-android-ios-cruise-c-benzina-verde-cat_ma70mo76240-0a210744-eec5-410c-a15d-139c62f9366e",
+      "image": "data/images/0a210744-eec5-410c-a15d-139c62f9366e.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 41.9477937,
+      "lon": 12.5608895,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 13900
+        }
+      ],
+      "days_listed": 1
+    },
+    {
+      "id": "54ff3559-2271-4961-81c0-dc2de010f8d4",
+      "title": "Toyota RAV 4 EX567MP TOYOTA RAV4 4A SERIE ('13'-'19') RAV4 2.0",
+      "price": 14300,
+      "currency": "EUR",
+      "year": 2015,
+      "mileage": 100000,
+      "city": "Firenze",
+      "zip": "50142",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-rav-4-ex567mp-toyota-rav4-4a-serie-13-19-rav4-2-0-diesel-bianco-cat_ma70mo2143-54ff3559-2271-4961-81c0-dc2de010f8d4",
+      "image": "data/images/54ff3559-2271-4961-81c0-dc2de010f8d4.webp",
+      "transmission": "Manuale",
+      "fuel": "Diesel",
+      "lat": 43.7737829,
+      "lon": 11.2047318,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 14300
+        }
+      ],
+      "days_listed": 1
+    },
+    {
+      "id": "105d8d99-855b-4639-a318-fe1c94d708b6",
+      "title": "Toyota Aygo X Aygo X 1.0 Undercover  NO VINCOLO FINANZIAMENTO!!!",
+      "price": 14500,
+      "currency": "EUR",
+      "year": 2023,
+      "mileage": 15000,
+      "city": "Guidonia Montecelio",
+      "zip": "00012",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-aygo-x-aygo-x-1-0-undercover-no-vincolo-finanziamento-benzina-grigio-cat_ma70mo76240-105d8d99-855b-4639-a318-fe1c94d708b6",
+      "image": "data/images/105d8d99-855b-4639-a318-fe1c94d708b6.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 41.9708534,
+      "lon": 12.705019,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 14500
+        }
+      ],
+      "days_listed": 1
+    },
+    {
+      "id": "216524f7-4bca-4e17-a51c-e5b75255a920",
+      "title": "Toyota Yaris Yaris 1.5h Business",
+      "price": 14700,
+      "currency": "EUR",
+      "year": 2022,
+      "mileage": 93000,
+      "city": "Brescia",
+      "zip": "25125",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-yaris-yaris-1-5h-business-elettrica-benzina-grigio-cat_ma70mo15663-216524f7-4bca-4e17-a51c-e5b75255a920",
+      "image": "data/images/216524f7-4bca-4e17-a51c-e5b75255a920.webp",
+      "transmission": "Automatico",
+      "fuel": "Elettrica/Benzina",
+      "lat": 45.5274444,
+      "lon": 10.2009329,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 14700
+        }
+      ],
+      "days_listed": 1
+    },
+    {
+      "id": "c4467b0e-45c0-491b-b4de-1e75e6028311",
+      "title": "Toyota Yaris HYBRID BUSINESS MY21 5 PORTE BERLINA",
+      "price": 14950,
+      "currency": "EUR",
+      "year": 2022,
+      "mileage": 66696,
+      "city": "Verona - Vr",
+      "zip": "37135",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-yaris-hybrid-business-my21-5-porte-berlina-elettrica-benzina-cat_ma70mo15663-c4467b0e-45c0-491b-b4de-1e75e6028311",
+      "image": "data/images/c4467b0e-45c0-491b-b4de-1e75e6028311.webp",
+      "transmission": "Automatico",
+      "fuel": "Elettrica/Benzina",
+      "lat": 45.3983336,
+      "lon": 10.985279,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 14950
+        }
+      ],
+      "days_listed": 1
+    },
+    {
+      "id": "9e2b1148-8db8-4e2b-99fe-9b13b4235521",
+      "title": "Toyota Yaris 1.5h Business  PROMO FINANZIAMENTO",
+      "price": 15400,
+      "currency": "EUR",
+      "year": 2022,
+      "mileage": 65500,
+      "city": "Roma - Rm",
+      "zip": "00148",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-yaris-1-5h-business-promo-finanziamento-elettrica-benzina-grigio-cat_ma70mo15663-9e2b1148-8db8-4e2b-99fe-9b13b4235521",
+      "image": "data/images/9e2b1148-8db8-4e2b-99fe-9b13b4235521.webp",
+      "transmission": "Automatico",
+      "fuel": "Elettrica/Benzina",
+      "lat": 41.8405059,
+      "lon": 12.4202761,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 15400
+        }
+      ],
+      "days_listed": 1
+    },
     {
       "id": "8c660103-6038-4d5e-b6e4-3ac0515ca128",
       "title": "Toyota GT86 2.0 Rock&Road auto",
@@ -24,7 +324,7 @@
       "lat": 41.6750029,
       "lon": 12.6076677,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -32,7 +332,147 @@
           "price": 16500
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
+    },
+    {
+      "id": "b02de891-fe69-4e1b-bbfb-2ad3a4828c70",
+      "title": "Toyota Yaris Hybrid Trend MY20",
+      "price": 16500,
+      "currency": "EUR",
+      "year": 2021,
+      "mileage": 67550,
+      "city": "Roma",
+      "zip": "00191",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-yaris-hybrid-trend-my20-elettrica-benzina-cat_ma70mo15663-b02de891-fe69-4e1b-bbfb-2ad3a4828c70",
+      "image": "data/images/b02de891-fe69-4e1b-bbfb-2ad3a4828c70.webp",
+      "transmission": "Automatico",
+      "fuel": "Elettrica/Benzina",
+      "lat": 41.9447462,
+      "lon": 12.4747237,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 16500
+        }
+      ],
+      "days_listed": 1
+    },
+    {
+      "id": "68bb3a63-e3f9-46dc-9223-78bc492b1a28",
+      "title": "Toyota C-HR Trend 1.8h 122cv(98cv)",
+      "price": 16900,
+      "currency": "EUR",
+      "year": 2019,
+      "mileage": 43803,
+      "city": "Roma",
+      "zip": "00137",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-c-hr-trend-1-8h-122cv-98cv-elettrica-benzina-blu-azzurro-cat_ma70mo74374-68bb3a63-e3f9-46dc-9223-78bc492b1a28",
+      "image": "data/images/68bb3a63-e3f9-46dc-9223-78bc492b1a28.webp",
+      "transmission": "Automatico",
+      "fuel": "Elettrica/Benzina",
+      "lat": 41.9477937,
+      "lon": 12.5608895,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 16900
+        }
+      ],
+      "days_listed": 1
+    },
+    {
+      "id": "b56d43ce-e412-4d9d-adbc-50e626c802cb",
+      "title": "Toyota Corolla Touring Sports 1.8h Business cvt 2 ANNI GARANZIA AYVENS",
+      "price": 17900,
+      "currency": "EUR",
+      "year": 2022,
+      "mileage": 79650,
+      "city": "Manfredonia - Foggia - Fg -",
+      "zip": "71043",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-corolla-touring-sports-1-8h-business-cvt-2-anni-garanzia-ayvens-elettrica-benzina-grigio-cat_ma70mo2052-b56d43ce-e412-4d9d-adbc-50e626c802cb",
+      "image": "data/images/b56d43ce-e412-4d9d-adbc-50e626c802cb.webp",
+      "transmission": "Automatico",
+      "fuel": "Elettrica/Benzina",
+      "lat": 41.6293321,
+      "lon": 15.9204949,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 17900
+        }
+      ],
+      "days_listed": 1
+    },
+    {
+      "id": "68554246-a98e-4026-9f05-3be785d474f0",
+      "title": "Toyota C-HR C-HR I 2020 1.8h e-cvt",
+      "price": 17900,
+      "currency": "EUR",
+      "year": 2022,
+      "mileage": 71242,
+      "city": "Lucca",
+      "zip": "55100",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-c-hr-c-hr-i-2020-1-8h-e-cvt-elettrica-benzina-grigio-cat_ma70mo74374-68554246-a98e-4026-9f05-3be785d474f0",
+      "image": "data/images/68554246-a98e-4026-9f05-3be785d474f0.webp",
+      "transmission": "Automatico",
+      "fuel": "Elettrica/Benzina",
+      "lat": 43.8497281,
+      "lon": 10.5050832,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 17900
+        }
+      ],
+      "days_listed": 1
+    },
+    {
+      "id": "732a6607-76a8-430c-b052-078b8e361899",
+      "title": "Toyota Corolla 1.8 Hybrid Style",
+      "price": 17900,
+      "currency": "EUR",
+      "year": 2020,
+      "mileage": 55400,
+      "city": "Torino - To",
+      "zip": "10137",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-corolla-1-8-hybrid-style-elettrica-benzina-nero-cat_ma70mo2052-732a6607-76a8-430c-b052-078b8e361899",
+      "image": "data/images/732a6607-76a8-430c-b052-078b8e361899.webp",
+      "transmission": "Automatico",
+      "fuel": "Elettrica/Benzina",
+      "lat": 45.0403333,
+      "lon": 7.6346863,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 17900
+        }
+      ],
+      "days_listed": 1
     },
     {
       "id": "699373b1-cc25-48fe-ab94-198cf5a87406",
@@ -52,7 +492,7 @@
       "lat": 46.0081939,
       "lon": 11.8311197,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -60,7 +500,35 @@
           "price": 18500
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
+    },
+    {
+      "id": "7d58b81c-d006-4e62-afa1-5adf7debae93",
+      "title": "Toyota Corolla 1.8h Business cvt TELECAMERA CARPLAY PREZZO REALE",
+      "price": 18900,
+      "currency": "EUR",
+      "year": 2022,
+      "mileage": 60000,
+      "city": "Monza - Monza  Brianza - Mb",
+      "zip": "20900",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-corolla-1-8h-business-cvt-telecamera-carplay-prezzo-reale-elettrica-benzina-argento-cat_ma70mo2052-7d58b81c-d006-4e62-afa1-5adf7debae93",
+      "image": "data/images/7d58b81c-d006-4e62-afa1-5adf7debae93.webp",
+      "transmission": "Automatico",
+      "fuel": "Elettrica/Benzina",
+      "lat": 45.5798671,
+      "lon": 9.2759623,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 18900
+        }
+      ],
+      "days_listed": 1
     },
     {
       "id": "bd7e75c9-1ae9-465b-9136-92c4524078f6",
@@ -80,7 +548,7 @@
       "lat": 39.252864,
       "lon": 9.1812913,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -88,7 +556,7 @@
           "price": 18900
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "facf4b00-97ea-4592-b98d-260e605c5c81",
@@ -108,7 +576,7 @@
       "lat": 43.841413,
       "lon": 13.0177454,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -116,7 +584,7 @@
           "price": 19400
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "e5be80b2-3a8a-4605-aadb-b41c52654b30",
@@ -136,7 +604,7 @@
       "lat": 45.8108647,
       "lon": 11.3460734,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -144,7 +612,7 @@
           "price": 19500
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "831a6f0d-4032-4b05-b056-24c7297647a6",
@@ -164,7 +632,7 @@
       "lat": 44.7009906,
       "lon": 7.847054,
       "first_seen": "2026-07-24",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -172,7 +640,35 @@
           "price": 19900
         }
       ],
-      "days_listed": 4
+      "days_listed": 5
+    },
+    {
+      "id": "478f31e3-c15a-4db2-9a37-9203925367ae",
+      "title": "Toyota GT86 GT 86 2014 2.0",
+      "price": 19900,
+      "currency": "EUR",
+      "year": 2013,
+      "mileage": 160000,
+      "city": "Barbasso - Mantova - MN",
+      "zip": "46037",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-gt-86-2014-2-0-benzina-arancione-cat_ma70mo20150-478f31e3-c15a-4db2-9a37-9203925367ae",
+      "image": "data/images/478f31e3-c15a-4db2-9a37-9203925367ae.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 45.1208638,
+      "lon": 10.9039069,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 19900
+        }
+      ],
+      "days_listed": 1
     },
     {
       "id": "6a37ca18-f553-4530-b398-fe457a09ec51",
@@ -192,7 +688,7 @@
       "lat": 45.907356,
       "lon": 13.3152348,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -200,7 +696,7 @@
           "price": 19900
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "d93a798a-cdba-4022-a4ec-c8889d4bfa33",
@@ -220,7 +716,7 @@
       "lat": 45.4629435,
       "lon": 11.4545974,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -228,35 +724,7 @@
           "price": 20000
         }
       ],
-      "days_listed": 7
-    },
-    {
-      "id": "9421bf44-8c5c-482b-baf4-50cfc081c8da",
-      "title": "Toyota GT86 1 Edizione",
-      "price": 20000,
-      "currency": "EUR",
-      "year": 2011,
-      "mileage": 6000,
-      "city": "udine",
-      "zip": "33100",
-      "country": "IT",
-      "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-1-edizione-benzina-nero-cat_ma70mo20150-9421bf44-8c5c-482b-baf4-50cfc081c8da",
-      "image": "data/images/9421bf44-8c5c-482b-baf4-50cfc081c8da.webp",
-      "transmission": "Manuale",
-      "fuel": "Benzina",
-      "lat": 46.065254,
-      "lon": 13.2397201,
-      "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-07-21",
-          "price": 20000
-        }
-      ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "a402080c-e17c-4cea-96d7-511e5bad391b",
@@ -276,7 +744,7 @@
       "lat": 45.7422895,
       "lon": 9.7593489,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -284,7 +752,35 @@
           "price": 20000
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
+    },
+    {
+      "id": "9421bf44-8c5c-482b-baf4-50cfc081c8da",
+      "title": "Toyota GT86 1 Edizione",
+      "price": 20000,
+      "currency": "EUR",
+      "year": 2011,
+      "mileage": 6000,
+      "city": "udine",
+      "zip": "33100",
+      "country": "IT",
+      "seller_type": "private",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-1-edizione-benzina-nero-cat_ma70mo20150-9421bf44-8c5c-482b-baf4-50cfc081c8da",
+      "image": "data/images/9421bf44-8c5c-482b-baf4-50cfc081c8da.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 46.065254,
+      "lon": 13.2397201,
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-21",
+          "price": 20000
+        }
+      ],
+      "days_listed": 8
     },
     {
       "id": "35285fc0-377f-4be7-8b6b-69169d71b15e",
@@ -304,7 +800,7 @@
       "lat": 43.841413,
       "lon": 13.0177454,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -312,7 +808,7 @@
           "price": 20400
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "e54286f9-82a1-4d8f-8833-e7757a0c94bc",
@@ -332,7 +828,7 @@
       "lat": 46.2313297,
       "lon": 13.1767687,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -340,7 +836,7 @@
           "price": 21000
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "65ad98e1-0b6c-4978-a43f-3537b6e6ce25",
@@ -360,7 +856,7 @@
       "lat": 45.6885572,
       "lon": 9.8040661,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -368,7 +864,7 @@
           "price": 21900
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "d053aa5e-f8d9-46fc-88ef-c6b21672afdc",
@@ -388,7 +884,7 @@
       "lat": 38.0886253,
       "lon": 14.6807917,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -396,7 +892,7 @@
           "price": 22000
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "bc38cc8f-2633-4afa-ae5d-061d68ef1435",
@@ -416,7 +912,7 @@
       "lat": 42.8512968,
       "lon": 13.5687449,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -424,7 +920,7 @@
           "price": 22900
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "09bb6c14-b7e2-4158-8bb5-5642dfa327fe",
@@ -444,7 +940,7 @@
       "lat": 45.9367042,
       "lon": 8.5734675,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -452,7 +948,7 @@
           "price": 22990
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "b5b7b901-e063-4285-bb35-ba5127d336d2",
@@ -472,7 +968,7 @@
       "lat": 46.4857598,
       "lon": 11.3486521,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -480,7 +976,7 @@
           "price": 23500
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "bdbc9987-342e-4299-b4b4-42df1bdf60da",
@@ -500,7 +996,7 @@
       "lat": 44.0311742,
       "lon": 12.5953675,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -508,7 +1004,7 @@
           "price": 23900
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "8b6a20d3-4ce1-4d78-8314-5b3715bdbff1",
@@ -528,7 +1024,7 @@
       "lat": 37.5060407,
       "lon": 15.0508039,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -536,7 +1032,7 @@
           "price": 24000
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "76d8c67f-4949-4e4c-8636-9d33ee092275",
@@ -556,7 +1052,7 @@
       "lat": 43.2588589,
       "lon": 13.5068436,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -564,7 +1060,7 @@
           "price": 24000
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "505d2bd3-649e-4cb6-8401-e54c1c1bf9f4",
@@ -584,7 +1080,7 @@
       "lat": 43.1331981,
       "lon": 12.2088404,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -592,43 +1088,7 @@
           "price": 24900
         }
       ],
-      "days_listed": 7
-    },
-    {
-      "id": "8784c124-a2af-4149-a5df-6ff14dc08199",
-      "title": "Toyota GT86 2.0",
-      "price": 25000,
-      "currency": "EUR",
-      "year": 2013,
-      "mileage": 13000,
-      "city": "Verona",
-      "zip": "37135",
-      "country": "IT",
-      "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-benzina-cat_ma70mo20150-8784c124-a2af-4149-a5df-6ff14dc08199",
-      "image": "data/images/8784c124-a2af-4149-a5df-6ff14dc08199.webp",
-      "transmission": "Manuale",
-      "fuel": "Benzina",
-      "lat": 45.3983336,
-      "lon": 10.985279,
-      "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-07-21",
-          "price": 28000
-        },
-        {
-          "date": "2026-07-25",
-          "price": 26000
-        },
-        {
-          "date": "2026-07-27",
-          "price": 25000
-        }
-      ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "21083cf6-7a0e-4ded-b06e-c59fc98291c8",
@@ -648,7 +1108,7 @@
       "lat": 45.3983336,
       "lon": 10.985279,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -656,7 +1116,71 @@
           "price": 25000
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
+    },
+    {
+      "id": "8784c124-a2af-4149-a5df-6ff14dc08199",
+      "title": "Toyota GT86 2.0",
+      "price": 25000,
+      "currency": "EUR",
+      "year": 2013,
+      "mileage": 13000,
+      "city": "Verona",
+      "zip": "37135",
+      "country": "IT",
+      "seller_type": "private",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-benzina-cat_ma70mo20150-8784c124-a2af-4149-a5df-6ff14dc08199",
+      "image": "data/images/8784c124-a2af-4149-a5df-6ff14dc08199.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 45.3983336,
+      "lon": 10.985279,
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-21",
+          "price": 28000
+        },
+        {
+          "date": "2026-07-25",
+          "price": 26000
+        },
+        {
+          "date": "2026-07-27",
+          "price": 25000
+        }
+      ],
+      "days_listed": 8
+    },
+    {
+      "id": "65a524fe-4dc6-4f57-b20e-064e63163580",
+      "title": "Toyota Yaris Cross 1.5H 130 CV Trend E-CVT PROMO FLEX",
+      "price": 25490,
+      "currency": "EUR",
+      "year": 2026,
+      "mileage": 33,
+      "city": "Frossasco - To",
+      "zip": "10060",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-yaris-cross-1-5h-130-cv-trend-e-cvt-promo-flex-elettrica-benzina-nero-cat_ma70mo75902-65a524fe-4dc6-4f57-b20e-064e63163580",
+      "image": "data/images/65a524fe-4dc6-4f57-b20e-064e63163580.webp",
+      "transmission": "Automatico",
+      "fuel": "Elettrica/Benzina",
+      "lat": 44.9329437,
+      "lon": 7.3502181,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 25490
+        }
+      ],
+      "days_listed": 1
     },
     {
       "id": "4ada6869-3202-47d6-a844-67678a8db2b8",
@@ -676,7 +1200,7 @@
       "lat": 44.663551,
       "lon": 10.8843845,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -684,7 +1208,7 @@
           "price": 25800
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "f3105267-b84b-4fa2-b91f-fed932efe765",
@@ -704,7 +1228,7 @@
       "lat": 45.0833713,
       "lon": 7.6865402,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -712,7 +1236,7 @@
           "price": 26000
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "634e5a41-50a6-41e2-b601-2fe1456feb38",
@@ -732,7 +1256,7 @@
       "lat": null,
       "lon": null,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -740,7 +1264,35 @@
           "price": 26000
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
+    },
+    {
+      "id": "c070b8b7-5aa1-491c-a42b-ceafcf296f82",
+      "title": "Toyota Yaris Cross 1.5 Hybrid 130 CV 5p. E-CVT Trend *PREZZO PROMO*",
+      "price": 26390,
+      "currency": "EUR",
+      "year": 2026,
+      "mileage": 1,
+      "city": "Cinisello Balsamo - MI",
+      "zip": "20092",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-yaris-cross-1-5-hybrid-130-cv-5p-e-cvt-trend-prezzo-promo-elettrica-benzina-nero-cat_ma70mo75902-c070b8b7-5aa1-491c-a42b-ceafcf296f82",
+      "image": "data/images/c070b8b7-5aa1-491c-a42b-ceafcf296f82.webp",
+      "transmission": "Automatico",
+      "fuel": "Elettrica/Benzina",
+      "lat": 45.5553353,
+      "lon": 9.2102205,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 26390
+        }
+      ],
+      "days_listed": 1
     },
     {
       "id": "f6e49049-2de1-496d-ace2-e4ed60aceacb",
@@ -760,7 +1312,7 @@
       "lat": 45.5574791,
       "lon": 10.194365,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -768,7 +1320,35 @@
           "price": 27500
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
+    },
+    {
+      "id": "e2ab4165-5a2a-4ca3-b403-9e00cee8b985",
+      "title": "Toyota Hilux Hilux 2.4 d-4d double cab Base 4wd",
+      "price": 27780,
+      "currency": "EUR",
+      "year": 2020,
+      "mileage": 58200,
+      "city": "Perca - Percha - Bolzano - Bz",
+      "zip": "39030",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-hilux-hilux-2-4-d-4d-double-cab-base-4wd-diesel-bianco-cat_ma70mo14789-e2ab4165-5a2a-4ca3-b403-9e00cee8b985",
+      "image": "data/images/e2ab4165-5a2a-4ca3-b403-9e00cee8b985.webp",
+      "transmission": "Manuale",
+      "fuel": "Diesel",
+      "lat": 46.7943067,
+      "lon": 11.982383,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 27780
+        }
+      ],
+      "days_listed": 1
     },
     {
       "id": "c08651a2-7e2d-41e5-a5c3-c4787eec830b",
@@ -788,7 +1368,7 @@
       "lat": 44.4145638,
       "lon": 12.2031858,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -796,7 +1376,7 @@
           "price": 27900
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "3c1ba207-8928-461a-9a4a-c55d6b16263f",
@@ -816,7 +1396,7 @@
       "lat": null,
       "lon": null,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -824,7 +1404,7 @@
           "price": 28000
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "c5726afb-1a43-4266-b172-f99c645631f4",
@@ -844,7 +1424,7 @@
       "lat": 45.9785297,
       "lon": 10.2795299,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -852,7 +1432,7 @@
           "price": 28000
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "a9fcb9c7-768b-4380-b98d-2254ec644ce7",
@@ -872,7 +1452,7 @@
       "lat": 43.7682876,
       "lon": 11.2948002,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -880,7 +1460,7 @@
           "price": 29000
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "b8fb3590-3581-45ba-a70e-f27780810da8",
@@ -900,7 +1480,7 @@
       "lat": 45.8205722,
       "lon": 8.7084301,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -908,7 +1488,7 @@
           "price": 29300
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "2abaf5a9-cfdd-4d41-be92-db9aa0e73e21",
@@ -928,7 +1508,7 @@
       "lat": 44.8264993,
       "lon": 10.344662,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -936,7 +1516,7 @@
           "price": 30000
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "f83e8640-3b42-4888-ad06-2871c4600a2b",
@@ -956,7 +1536,7 @@
       "lat": 43.7737829,
       "lon": 11.2047318,
       "first_seen": "2026-07-24",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -964,7 +1544,7 @@
           "price": 31000
         }
       ],
-      "days_listed": 4
+      "days_listed": 5
     },
     {
       "id": "3d221826-91aa-4941-811e-b1c721c74200",
@@ -984,7 +1564,7 @@
       "lat": 45.4603082,
       "lon": 11.8565567,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -996,7 +1576,7 @@
           "price": 31900
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "63a91bd9-c06a-4afa-be84-9a5338de10c2",
@@ -1016,7 +1596,7 @@
       "lat": 41.9576157,
       "lon": 12.5281314,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -1024,7 +1604,7 @@
           "price": 32000
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "ba595e36-0c65-49ec-9728-d25106589210",
@@ -1044,7 +1624,7 @@
       "lat": 45.8645299,
       "lon": 10.1836526,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -1052,7 +1632,35 @@
           "price": 33000
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
+    },
+    {
+      "id": "748e46b1-c0fb-45bb-b7bf-46b71693a736",
+      "title": "Toyota Prius Prius Plug-in II 2.0 phev Lounge 223 cv",
+      "price": 33700,
+      "currency": "EUR",
+      "year": 2025,
+      "mileage": 8800,
+      "city": "Desio - Monza Brianza - Mb",
+      "zip": "20832",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-prius-prius-plug-in-ii-2-0-phev-lounge-223-cv-elettrica-benzina-cat_ma70mo16516-748e46b1-c0fb-45bb-b7bf-46b71693a736",
+      "image": "data/images/748e46b1-c0fb-45bb-b7bf-46b71693a736.webp",
+      "transmission": "Automatico",
+      "fuel": "Elettrica/Benzina",
+      "lat": 45.6148485,
+      "lon": 9.211051,
+      "first_seen": "2026-07-28",
+      "last_seen": "2026-07-28",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-28",
+          "price": 33700
+        }
+      ],
+      "days_listed": 1
     },
     {
       "id": "6447bd11-82fc-4943-955f-c2e30efb85c1",
@@ -1072,7 +1680,7 @@
       "lat": 44.9918416,
       "lon": 7.7014146,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -1080,7 +1688,7 @@
           "price": 34500
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "b39a8a00-bd83-47d9-b6d9-17de1d28ac28",
@@ -1100,7 +1708,7 @@
       "lat": 45.6968629,
       "lon": 8.8042733,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -1108,7 +1716,7 @@
           "price": 34900
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "df6510fb-fe14-42e7-9b3a-6d8604744339",
@@ -1128,7 +1736,7 @@
       "lat": 43.1331981,
       "lon": 12.2088404,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -1136,7 +1744,7 @@
           "price": 35000
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     },
     {
       "id": "5c768111-c0bd-42f0-9b3d-ab56fe15c35d",
@@ -1156,7 +1764,7 @@
       "lat": 42.4228198,
       "lon": 14.2781954,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-07-27",
+      "last_seen": "2026-07-28",
       "status": "active",
       "price_history": [
         {
@@ -1164,7 +1772,7 @@
           "price": 35000
         }
       ],
-      "days_listed": 7
+      "days_listed": 8
     }
   ]
 }
