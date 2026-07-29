@@ -340,6 +340,32 @@ def dump_schema():
         print(json.dumps(arrays[0][0], ensure_ascii=False, indent=2))
 
 
+def dump_detail_page_date_hints(url: str):
+    """Scarica la pagina di dettaglio di UN annuncio e salva ogni frammento di
+    testo/JSON che sembra riguardare una data di pubblicazione (creation,
+    insert, publish, "online da", "listed since", ecc.), per verificare se
+    AutoScout24 la espone li' anche se manca nella lista risultati. File
+    temporaneo di debug, da rimuovere una volta ispezionato il risultato."""
+    try:
+        resp = session.get(url, timeout=20)
+        resp.raise_for_status()
+    except requests.RequestException as exc:
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+        (DATA_DIR / "debug_detail_snippets.json").write_text(
+            json.dumps({"url": url, "error": str(exc)}, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        return
+    pattern = re.compile(
+        r".{0,60}(creat|insert|publi|online[\s_-]?(da|since)|first[\s_-]?seen|listed[\s_-]?(on|since)|giorni).{0,60}",
+        re.IGNORECASE,
+    )
+    matches = sorted(set(m.group(0) for m in pattern.finditer(resp.text)))
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    (DATA_DIR / "debug_detail_snippets.json").write_text(
+        json.dumps({"url": url, "matches": matches[:300]}, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+
+
 def main():
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     now_iso = datetime.now(timezone.utc).isoformat()
@@ -463,6 +489,10 @@ def main():
         "removed_ids": removed_ids_today,
         "listings": active_listings,
     }
+
+    sample_url = next((e["url"] for e in active_listings if e.get("url")), None)
+    if sample_url:
+        dump_detail_page_date_hints(sample_url)
 
     save_json(CURRENT_PATH, current)
     save_json(HISTORY_PATH, history)
