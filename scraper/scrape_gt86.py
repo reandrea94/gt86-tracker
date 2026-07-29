@@ -204,6 +204,31 @@ def parse_next_data(html: str):
     return parsed
 
 
+def dump_first_raw_item(html: str):
+    """Salva su disco il primo annuncio grezzo (pre-parsing) della pagina 1,
+    per poter ispezionare i campi disponibili nello schema AutoScout24 senza
+    dover girare --dump-schema a mano (utile perche' l'unico ambiente con
+    accesso libero al sito e' GitHub Actions). Sovrascritto ad ogni scansione;
+    file temporaneo di debug, da rimuovere una volta individuati i campi utili."""
+    soup = BeautifulSoup(html, "lxml")
+    script = soup.find("script", id="__NEXT_DATA__")
+    if not script or not script.string:
+        return
+    try:
+        data = json.loads(script.string)
+    except json.JSONDecodeError:
+        return
+    arrays = []
+    find_listing_arrays(data, arrays)
+    if not arrays:
+        return
+    arrays.sort(key=len, reverse=True)
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    (DATA_DIR / "debug_raw_item.json").write_text(
+        json.dumps(arrays[0][0], ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+
+
 def scrape_all_listings():
     """Scarica tutte le pagine dei risultati.
 
@@ -220,6 +245,8 @@ def scrape_all_listings():
     all_listings = {}
     for page in range(1, MAX_PAGES + 1):
         html = fetch_page(page)
+        if page == 1:
+            dump_first_raw_item(html)
         listings = parse_next_data(html)
         if not listings:
             if page == 1:
