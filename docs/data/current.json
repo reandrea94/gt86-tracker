@@ -32,7 +32,8 @@
           "price": 16500
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "699373b1-cc25-48fe-ab94-198cf5a87406",
@@ -60,7 +61,8 @@
           "price": 18500
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "bd7e75c9-1ae9-465b-9136-92c4524078f6",
@@ -88,7 +90,8 @@
           "price": 18900
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "facf4b00-97ea-4592-b98d-260e605c5c81",
@@ -116,7 +119,8 @@
           "price": 19400
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "e5be80b2-3a8a-4605-aadb-b41c52654b30",
@@ -144,7 +148,8 @@
           "price": 19500
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "831a6f0d-4032-4b05-b056-24c7297647a6",
@@ -172,7 +177,8 @@
           "price": 19900
         }
       ],
-      "days_listed": 6
+      "days_listed": 6,
+      "days_listed_exact": true
     },
     {
       "id": "478f31e3-c15a-4db2-9a37-9203925367ae",
@@ -200,7 +206,8 @@
           "price": 19900
         }
       ],
-      "days_listed": 2
+      "days_listed": 2,
+      "days_listed_exact": true
     },
     {
       "id": "6a37ca18-f553-4530-b398-fe457a09ec51",
@@ -228,7 +235,8 @@
           "price": 19900
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "a402080c-e17c-4cea-96d7-511e5bad391b",
@@ -256,7 +264,8 @@
           "price": 20000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "d93a798a-cdba-4022-a4ec-c8889d4bfa33",
@@ -284,7 +293,8 @@
           "price": 20000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "9421bf44-8c5c-482b-baf4-50cfc081c8da",
@@ -312,7 +322,8 @@
           "price": 20000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "35285fc0-377f-4be7-8b6b-69169d71b15e",
@@ -340,7 +351,8 @@
           "price": 20400
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "e54286f9-82a1-4d8f-8833-e7757a0c94bc",
@@ -368,7 +380,8 @@
           "price": 21000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "65ad98e1-0b6c-4978-a43f-3537b6e6ce25",
@@ -396,7 +409,8 @@
           "price": 21900
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "d053aa5e-f8d9-46fc-88ef-c6b21672afdc",
@@ -424,7 +438,8 @@
           "price": 22000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "bc38cc8f-2633-4afa-ae5d-061d68ef1435",
@@ -452,7 +467,8 @@
           "price": 22900
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "09bb6c14-b7e2-4158-8bb5-5642dfa327fe",
@@ -480,7 +496,8 @@
           "price": 22990
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "b5b7b901-e063-4285-bb35-ba5127d336d2",
@@ -508,7 +525,8 @@
           "price": 23500
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "bdbc9987-342e-4299-b4b4-42df1bdf60da",
@@ -536,7 +554,8 @@
           "price": 23900
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "9d17dfcb-cafc-46e9-9009-df4c579b9b0f",
@@ -564,7 +583,8 @@
           "price": 23990
         }
       ],
-      "days_listed": 1
+      "days_listed": 1,
+      "days_listed_exact": true
     },
     {
       "id": "634e5a41-50a6-41e2-b601-2fe1456feb38",
@@ -596,7 +616,8 @@
           "price": 24000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "8b6a20d3-4ce1-4d78-8314-5b3715bdbff1",
@@ -624,7 +645,8 @@
           "price": 24000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "76d8c67f-4949-4e4c-8636-9d33ee092275",
@@ -652,7 +674,8 @@
           "price": 24000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "505d2bd3-649e-4cb6-8401-e54c1c1bf9f4",
@@ -680,7 +703,8 @@
           "price": 24900
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "8784c124-a2af-4149-a5df-6ff14dc08199",
@@ -716,7 +740,8 @@
           "price": 25000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "21083cf6-7a0e-4ded-b06e-c59fc98291c8",
@@ -744,7 +769,8 @@
           "price": 25000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "4ada6869-3202-47d6-a844-67678a8db2b8",
@@ -772,7 +798,8 @@
           "price": 25800
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "f3105267-b84b-4fa2-b91f-fed932efe765",
@@ -800,7 +827,8 @@
           "price": 26000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "f6e49049-2de1-496d-ace2-e4ed60aceacb",
@@ -828,7 +856,8 @@
           "price": 27500
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "c08651a2-7e2d-41e5-a5c3-c4787eec830b",
@@ -856,7 +885,8 @@
           "price": 27900
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "c5726afb-1a43-4266-b172-f99c645631f4",
@@ -884,7 +914,8 @@
           "price": 28000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "3c1ba207-8928-461a-9a4a-c55d6b16263f",
@@ -912,7 +943,8 @@
           "price": 28000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "a9fcb9c7-768b-4380-b98d-2254ec644ce7",
@@ -940,7 +972,8 @@
           "price": 29000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "b8fb3590-3581-45ba-a70e-f27780810da8",
@@ -968,7 +1001,8 @@
           "price": 29300
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "2abaf5a9-cfdd-4d41-be92-db9aa0e73e21",
@@ -996,7 +1030,8 @@
           "price": 30000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "f83e8640-3b42-4888-ad06-2871c4600a2b",
@@ -1024,7 +1059,8 @@
           "price": 31000
         }
       ],
-      "days_listed": 6
+      "days_listed": 6,
+      "days_listed_exact": true
     },
     {
       "id": "3d221826-91aa-4941-811e-b1c721c74200",
@@ -1056,7 +1092,8 @@
           "price": 31900
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "63a91bd9-c06a-4afa-be84-9a5338de10c2",
@@ -1084,7 +1121,8 @@
           "price": 32000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "ba595e36-0c65-49ec-9728-d25106589210",
@@ -1112,7 +1150,8 @@
           "price": 33000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "6447bd11-82fc-4943-955f-c2e30efb85c1",
@@ -1140,7 +1179,8 @@
           "price": 34500
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "b39a8a00-bd83-47d9-b6d9-17de1d28ac28",
@@ -1168,7 +1208,8 @@
           "price": 34900
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "5c768111-c0bd-42f0-9b3d-ab56fe15c35d",
@@ -1196,7 +1237,8 @@
           "price": 35000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     },
     {
       "id": "df6510fb-fe14-42e7-9b3a-6d8604744339",
@@ -1224,7 +1266,8 @@
           "price": 35000
         }
       ],
-      "days_listed": 9
+      "days_listed": 9,
+      "days_listed_exact": false
     }
   ]
 }

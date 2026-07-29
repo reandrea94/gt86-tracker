@@ -204,31 +204,6 @@ def parse_next_data(html: str):
     return parsed
 
 
-def dump_first_raw_item(html: str):
-    """Salva su disco il primo annuncio grezzo (pre-parsing) della pagina 1,
-    per poter ispezionare i campi disponibili nello schema AutoScout24 senza
-    dover girare --dump-schema a mano (utile perche' l'unico ambiente con
-    accesso libero al sito e' GitHub Actions). Sovrascritto ad ogni scansione;
-    file temporaneo di debug, da rimuovere una volta individuati i campi utili."""
-    soup = BeautifulSoup(html, "lxml")
-    script = soup.find("script", id="__NEXT_DATA__")
-    if not script or not script.string:
-        return
-    try:
-        data = json.loads(script.string)
-    except json.JSONDecodeError:
-        return
-    arrays = []
-    find_listing_arrays(data, arrays)
-    if not arrays:
-        return
-    arrays.sort(key=len, reverse=True)
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    (DATA_DIR / "debug_raw_item.json").write_text(
-        json.dumps(arrays[0][0], ensure_ascii=False, indent=2), encoding="utf-8"
-    )
-
-
 def scrape_all_listings():
     """Scarica tutte le pagine dei risultati.
 
@@ -245,8 +220,6 @@ def scrape_all_listings():
     all_listings = {}
     for page in range(1, MAX_PAGES + 1):
         html = fetch_page(page)
-        if page == 1:
-            dump_first_raw_item(html)
         listings = parse_next_data(html)
         if not listings:
             if page == 1:
@@ -451,6 +424,15 @@ def main():
     # tieni al massimo 365 snapshot giornaliere
     history["daily_snapshots"] = history["daily_snapshots"][-365:]
 
+    # AutoScout24 non espone una data di pubblicazione dell'annuncio (verificato
+    # nello schema JSON: solo firstRegistration, che e' l'anno di immatricolazione
+    # dell'auto, non di inserimento annuncio). "days_listed" e' quindi calcolato
+    # da first_seen (il giorno in cui lo scraper l'ha visto per la prima volta),
+    # che e' un valore esatto SOLO per gli annunci comparsi dopo l'avvio del
+    # tracciamento: quelli gia' presenti al primo giorno di scansione potrebbero
+    # essere online da molto piu' tempo (dato "left-censored").
+    tracking_start_date = min((s["date"] for s in history["daily_snapshots"]), default=today)
+
     active_listings = []
     for listing_id in confirmed_active_ids:
         entry = dict(history_listings[listing_id])
@@ -459,6 +441,7 @@ def main():
             entry["days_listed"] = (datetime.strptime(today, "%Y-%m-%d") - first_seen).days + 1
         except (KeyError, ValueError):
             entry["days_listed"] = None
+        entry["days_listed_exact"] = entry.get("first_seen") != tracking_start_date
         active_listings.append(entry)
     active_listings.sort(key=lambda x: (x["price"] is None, x["price"]))
 

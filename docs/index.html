@@ -1111,7 +1111,7 @@
         <td>${transmissionBadge(l.transmission)}</td>
         <td>${sellerBadge(l.seller_type)}</td>
         <td>${escapeHtml(l.city || '–')}</td>
-        <td class="num">${l.days_listed ?? '–'}</td>
+        <td class="num">${l.days_listed != null ? (l.days_listed_exact === false ? `<span title="Annuncio già presente al primo giorno di tracciamento: online da almeno questo numero di giorni, ma potrebbe essere di più">${l.days_listed}+</span>` : l.days_listed) : '–'}</td>
       `;
       tbody.appendChild(tr);
     });
