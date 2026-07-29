@@ -110,12 +110,22 @@ def parse_listing(raw: dict):
     if not listing_id:
         return None
 
-    price = (raw.get("price") or {}).get("priceRaw")
-
     tracking = raw.get("tracking") or {}
     vehicle = raw.get("vehicle") or {}
     location = raw.get("location") or {}
     seller = raw.get("seller") or {}
+
+    # find_listing_arrays seleziona l'array piu' numeroso che "sembra" una
+    # lista di annunci (ha prezzo+id): a volte AutoScout24 include nella
+    # stessa pagina un array di annunci correlati/consigliati di ALTRI
+    # modelli Toyota (Yaris, RAV4, ecc.), che puo' risultare piu' numeroso
+    # dei risultati veri quando la ricerca GT86 ha pochi annunci. Scartiamo
+    # qui qualsiasi elemento il cui modello non sia effettivamente la GT86.
+    normalized_model = re.sub(r"[^a-z0-9]", "", str(vehicle.get("model") or "").lower())
+    if normalized_model not in ("gt86", "86"):
+        return None
+
+    price = (raw.get("price") or {}).get("priceRaw")
 
     mileage = None
     mileage_raw = tracking.get("mileage") or vehicle.get("mileageInKm")
