@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-29T07:37:00.640765+00:00",
+  "updated_at": "2026-07-29T09:06:57.589810+00:00",
   "count": 43,
   "new_ids": [
     "9d17dfcb-cafc-46e9-9009-df4c579b9b0f"
@@ -620,35 +620,6 @@
       "days_listed": 9
     },
     {
-      "id": "76d8c67f-4949-4e4c-8636-9d33ee092275",
-      "title": "Toyota GT86 2.0",
-      "price": 24000,
-      "currency": "EUR",
-      "year": 2012,
-      "mileage": 130000,
-      "city": "Corridonia",
-      "zip": "62014",
-      "country": "IT",
-      "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-benzina-cat_ma70mo20150-76d8c67f-4949-4e4c-8636-9d33ee092275",
-      "image": "data/images/76d8c67f-4949-4e4c-8636-9d33ee092275.webp",
-      "transmission": "Manuale",
-      "fuel": "Benzina",
-      "lat": 43.2588589,
-      "lon": 13.5068436,
-      "first_seen": "2026-07-21",
-      "last_seen": "2026-07-29",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-07-21",
-          "price": 24000
-        }
-      ],
-      "days_listed_exact": false,
-      "days_listed": 9
-    },
-    {
       "id": "8b6a20d3-4ce1-4d78-8314-5b3715bdbff1",
       "title": "Toyota GT86 2.0",
       "price": 24000,
@@ -665,6 +636,35 @@
       "fuel": "Benzina",
       "lat": 37.5060407,
       "lon": 15.0508039,
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-07-29",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-21",
+          "price": 24000
+        }
+      ],
+      "days_listed_exact": false,
+      "days_listed": 9
+    },
+    {
+      "id": "76d8c67f-4949-4e4c-8636-9d33ee092275",
+      "title": "Toyota GT86 2.0",
+      "price": 24000,
+      "currency": "EUR",
+      "year": 2012,
+      "mileage": 130000,
+      "city": "Corridonia",
+      "zip": "62014",
+      "country": "IT",
+      "seller_type": "private",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-benzina-cat_ma70mo20150-76d8c67f-4949-4e4c-8636-9d33ee092275",
+      "image": "data/images/76d8c67f-4949-4e4c-8636-9d33ee092275.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 43.2588589,
+      "lon": 13.5068436,
       "first_seen": "2026-07-21",
       "last_seen": "2026-07-29",
       "status": "active",
@@ -707,35 +707,6 @@
       "days_listed": 9
     },
     {
-      "id": "21083cf6-7a0e-4ded-b06e-c59fc98291c8",
-      "title": "Toyota GT86 2.0 Rock&Road auto",
-      "price": 25000,
-      "currency": "EUR",
-      "year": 2017,
-      "mileage": 104781,
-      "city": "Verona",
-      "zip": "37135",
-      "country": "IT",
-      "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-rockroad-auto-benzina-cat_ma70mo20150-21083cf6-7a0e-4ded-b06e-c59fc98291c8",
-      "image": "data/images/21083cf6-7a0e-4ded-b06e-c59fc98291c8.webp",
-      "transmission": "Automatico",
-      "fuel": "Benzina",
-      "lat": 45.3983336,
-      "lon": 10.985279,
-      "first_seen": "2026-07-21",
-      "last_seen": "2026-07-29",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-07-21",
-          "price": 25000
-        }
-      ],
-      "days_listed_exact": false,
-      "days_listed": 9
-    },
-    {
       "id": "8784c124-a2af-4149-a5df-6ff14dc08199",
       "title": "Toyota GT86 2.0",
       "price": 25000,
@@ -766,6 +737,35 @@
         },
         {
           "date": "2026-07-27",
+          "price": 25000
+        }
+      ],
+      "days_listed_exact": false,
+      "days_listed": 9
+    },
+    {
+      "id": "21083cf6-7a0e-4ded-b06e-c59fc98291c8",
+      "title": "Toyota GT86 2.0 Rock&Road auto",
+      "price": 25000,
+      "currency": "EUR",
+      "year": 2017,
+      "mileage": 104781,
+      "city": "Verona",
+      "zip": "37135",
+      "country": "IT",
+      "seller_type": "private",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-rockroad-auto-benzina-cat_ma70mo20150-21083cf6-7a0e-4ded-b06e-c59fc98291c8",
+      "image": "data/images/21083cf6-7a0e-4ded-b06e-c59fc98291c8.webp",
+      "transmission": "Automatico",
+      "fuel": "Benzina",
+      "lat": 45.3983336,
+      "lon": 10.985279,
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-07-29",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-21",
           "price": 25000
         }
       ],
