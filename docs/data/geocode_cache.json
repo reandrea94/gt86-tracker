@@ -242,5 +242,9 @@
   "00167|roma|it": {
     "lat": 41.9049944,
     "lon": 12.4287882
+  },
+  "00012|guidonia montecelio - roma - r,m|it": {
+    "lat": null,
+    "lon": null
   }
 }
