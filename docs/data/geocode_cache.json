@@ -246,5 +246,9 @@
   "00012|guidonia montecelio - roma - r,m|it": {
     "lat": null,
     "lon": null
+  },
+  "24124|bergamo - bg|it": {
+    "lat": 45.707691,
+    "lon": 9.6887772
   }
 }
