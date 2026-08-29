@@ -274,5 +274,9 @@
   "20811|cesano maderno - monza brianza - mb|it": {
     "lat": 45.6308266,
     "lon": 9.1456855
+  },
+  "47522|cesena|it": {
+    "lat": 44.1449543,
+    "lon": 12.2226396
   }
 }
