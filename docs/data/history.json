@@ -18,7 +18,7 @@
       "lat": 45.0833713,
       "lon": 7.6865402,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -46,7 +46,7 @@
       "lat": 45.4629435,
       "lon": 11.4545974,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -75,14 +75,15 @@
       "lon": 14.2781954,
       "first_seen": "2026-07-21",
       "last_seen": "2026-09-10",
-      "status": "active",
+      "status": "removed",
       "price_history": [
         {
           "date": "2026-07-21",
           "price": 35000
         }
       ],
-      "days_listed_exact": false
+      "days_listed_exact": false,
+      "removed_on": "2026-09-11"
     },
     "4ada6869-3202-47d6-a844-67678a8db2b8": {
       "id": "4ada6869-3202-47d6-a844-67678a8db2b8",
@@ -102,7 +103,7 @@
       "lat": 44.663551,
       "lon": 10.8843845,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -130,7 +131,7 @@
       "lat": 44.0311742,
       "lon": 12.5953675,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -158,7 +159,7 @@
       "lat": 45.6968629,
       "lon": 8.8042733,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -215,7 +216,7 @@
       "lat": 43.841413,
       "lon": 13.0177454,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -272,7 +273,7 @@
       "lat": 46.4857598,
       "lon": 11.3486521,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -300,7 +301,7 @@
       "lat": 45.907356,
       "lon": 13.3152348,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -361,7 +362,7 @@
       "lat": 44.4145638,
       "lon": 12.2031858,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -447,7 +448,7 @@
       "lat": 41.6750029,
       "lon": 12.6076677,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -475,7 +476,7 @@
       "lat": 45.9367042,
       "lon": 8.5734675,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -536,7 +537,7 @@
       "lat": 44.8264993,
       "lon": 10.344662,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -564,7 +565,7 @@
       "lat": 41.9576157,
       "lon": 12.5281314,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -592,7 +593,7 @@
       "lat": 45.3983336,
       "lon": 10.985279,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -682,7 +683,7 @@
       "lat": 45.6885572,
       "lon": 9.8040661,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -710,7 +711,7 @@
       "lat": 37.5060407,
       "lon": 15.0508039,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -738,7 +739,7 @@
       "lat": 45.8645299,
       "lon": 10.1836526,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -836,7 +837,7 @@
       "lat": 46.2313297,
       "lon": 13.1767687,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -936,7 +937,7 @@
     "3c1ba207-8928-461a-9a4a-c55d6b16263f": {
       "id": "3c1ba207-8928-461a-9a4a-c55d6b16263f",
       "title": "Toyota GT86 2.0",
-      "price": 28000,
+      "price": 26000,
       "currency": "EUR",
       "year": 2015,
       "mileage": 48000,
@@ -951,12 +952,16 @@
       "lat": null,
       "lon": null,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
           "date": "2026-07-21",
           "price": 28000
+        },
+        {
+          "date": "2026-09-11",
+          "price": 26000
         }
       ],
       "days_listed_exact": false
@@ -979,7 +984,7 @@
       "lat": 45.7422895,
       "lon": 9.7593489,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1070,7 +1075,7 @@
       "lat": 45.8205722,
       "lon": 8.7084301,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1098,7 +1103,7 @@
       "lat": 43.2588589,
       "lon": 13.5068436,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1130,7 +1135,7 @@
       "lat": 46.065254,
       "lon": 13.2397201,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1158,7 +1163,7 @@
       "lat": 43.1331981,
       "lon": 12.2088404,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1186,7 +1191,7 @@
       "lat": 38.0886253,
       "lon": 14.6807917,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1251,7 +1256,7 @@
       "lat": 46.0081939,
       "lon": 11.8311197,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1320,7 +1325,7 @@
       "lat": 44.7009906,
       "lon": 7.847054,
       "first_seen": "2026-07-24",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1377,7 +1382,7 @@
       "lat": 46.0081939,
       "lon": 11.8311197,
       "first_seen": "2026-07-29",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1437,7 +1442,7 @@
       "lat": 45.6885572,
       "lon": 9.8040661,
       "first_seen": "2026-08-01",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1464,7 +1469,7 @@
       "lat": null,
       "lon": null,
       "first_seen": "2026-08-01",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1499,7 +1504,7 @@
       "lat": 45.707691,
       "lon": 9.6887772,
       "first_seen": "2026-08-02",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1526,7 +1531,7 @@
       "lat": 43.1572625,
       "lon": 12.460626,
       "first_seen": "2026-08-03",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1553,7 +1558,7 @@
       "lat": 44.7702318,
       "lon": 7.6789073,
       "first_seen": "2026-08-04",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1588,7 +1593,7 @@
       "lat": 45.6885572,
       "lon": 9.8040661,
       "first_seen": "2026-08-05",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1619,7 +1624,7 @@
       "lat": 41.9034852,
       "lon": 12.5938832,
       "first_seen": "2026-08-05",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1650,7 +1655,7 @@
       "lat": 44.4061949,
       "lon": 8.9425704,
       "first_seen": "2026-08-10",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1677,7 +1682,7 @@
       "lat": 45.6885572,
       "lon": 9.8040661,
       "first_seen": "2026-08-19",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1704,7 +1709,7 @@
       "lat": 45.6415895,
       "lon": 13.769247,
       "first_seen": "2026-08-25",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1759,7 +1764,7 @@
       "lat": 44.1449543,
       "lon": 12.2226396,
       "first_seen": "2026-08-29",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1786,7 +1791,7 @@
       "lat": 45.2941779,
       "lon": 12.0326467,
       "first_seen": "2026-08-31",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1813,7 +1818,7 @@
       "lat": 37.5020618,
       "lon": 15.012498,
       "first_seen": "2026-09-03",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1868,7 +1873,7 @@
       "lat": 44.4625625,
       "lon": 10.6223949,
       "first_seen": "2026-09-03",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1895,7 +1900,7 @@
       "lat": 39.2390511,
       "lon": 9.095041,
       "first_seen": "2026-09-04",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1922,7 +1927,7 @@
       "lat": 44.3845972,
       "lon": 11.939741,
       "first_seen": "2026-09-07",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -1949,7 +1954,7 @@
       "lat": 44.9277679,
       "lon": 9.9084695,
       "first_seen": "2026-09-10",
-      "last_seen": "2026-09-10",
+      "last_seen": "2026-09-11",
       "status": "active",
       "price_history": [
         {
@@ -2526,6 +2531,16 @@
       ],
       "removed_ids": [
         "c5726afb-1a43-4266-b172-f99c645631f4"
+      ],
+      "reappeared_ids": []
+    },
+    {
+      "date": "2026-09-11",
+      "count": 45,
+      "median_price": 24999,
+      "new_ids": [],
+      "removed_ids": [
+        "5c768111-c0bd-42f0-9b3d-ab56fe15c35d"
       ],
       "reappeared_ids": []
     }
