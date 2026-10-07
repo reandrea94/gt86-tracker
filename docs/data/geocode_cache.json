@@ -366,5 +366,13 @@
   "36015|schio|it": {
     "lat": 45.7153324,
     "lon": 11.3615978
+  },
+  "33031|basiliano - udine|it": {
+    "lat": 46.0186666,
+    "lon": 13.1034605
+  },
+  "64020|castelnuovo vomano -  teramo - te|it": {
+    "lat": 42.6293977,
+    "lon": 13.847154
   }
 }
