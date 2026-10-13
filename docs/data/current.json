@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-12T15:16:22.973405+00:00",
-  "count": 49,
-  "new_ids": [],
-  "removed_ids": [
-    "0efdd690-0459-4fda-8221-739a8613aef2"
+  "updated_at": "2026-10-13T14:06:31.889241+00:00",
+  "count": 50,
+  "new_ids": [
+    "da3538a5-ddce-4c34-9b76-c5a0423c4cf2"
   ],
+  "removed_ids": [],
   "listings": [
     {
       "id": "699373b1-cc25-48fe-ab94-198cf5a87406",
@@ -24,7 +24,7 @@
       "lat": 46.0081939,
       "lon": 11.8311197,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -37,7 +37,7 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
+      "days_listed": 85
     },
     {
       "id": "a402080c-e17c-4cea-96d7-511e5bad391b",
@@ -57,7 +57,7 @@
       "lat": 45.7422895,
       "lon": 9.7593489,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -70,7 +70,36 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
+      "days_listed": 85
+    },
+    {
+      "id": "831a6f0d-4032-4b05-b056-24c7297647a6",
+      "title": "Toyota GT86 GT86 2.0",
+      "price": 19900,
+      "currency": "EUR",
+      "year": 2012,
+      "mileage": 166691,
+      "city": "Bra - Cuneo - CN",
+      "zip": "12042",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-gt86-2-0-benzina-oro-cat_ma70mo20150-831a6f0d-4032-4b05-b056-24c7297647a6",
+      "image": "data/images/831a6f0d-4032-4b05-b056-24c7297647a6.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 44.7009906,
+      "lon": 7.847054,
+      "first_seen": "2026-07-24",
+      "last_seen": "2026-10-13",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-24",
+          "price": 19900
+        }
+      ],
+      "days_listed_exact": true,
+      "days_listed": 82
     },
     {
       "id": "4e3629b3-9230-41c2-81f7-a9d6f3b5ea97",
@@ -90,7 +119,7 @@
       "lat": 42.6293977,
       "lon": 13.847154,
       "first_seen": "2026-10-07",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -98,7 +127,7 @@
           "price": 19900
         }
       ],
-      "days_listed": 6,
+      "days_listed": 7,
       "days_listed_exact": true
     },
     {
@@ -119,7 +148,7 @@
       "lat": 45.907356,
       "lon": 13.3152348,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -128,7 +157,40 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
+      "days_listed": 85
+    },
+    {
+      "id": "e4d51928-a253-4136-8201-9490ae73dacf",
+      "title": "Toyota GT86 2.0 MANUALE IN SEDE ORIGINALE",
+      "price": 19900,
+      "currency": "EUR",
+      "year": 2013,
+      "mileage": 149900,
+      "city": "San Paolo D'Argon - Bergamo",
+      "zip": "24069",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-manuale-in-sede-originale-benzina-grigio-cat_ma70mo20150-e4d51928-a253-4136-8201-9490ae73dacf",
+      "image": "data/images/e4d51928-a253-4136-8201-9490ae73dacf.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 45.6885572,
+      "lon": 9.8040661,
+      "first_seen": "2026-08-19",
+      "last_seen": "2026-10-13",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-08-19",
+          "price": 20900
+        },
+        {
+          "date": "2026-10-13",
+          "price": 19900
+        }
+      ],
+      "days_listed": 56,
+      "days_listed_exact": true
     },
     {
       "id": "58ae4717-a2b8-4ea2-a5a9-808c621bb520",
@@ -148,7 +210,7 @@
       "lat": 46.0081939,
       "lon": 11.8311197,
       "first_seen": "2026-10-07",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -156,37 +218,8 @@
           "price": 19900
         }
       ],
-      "days_listed": 6,
+      "days_listed": 7,
       "days_listed_exact": true
-    },
-    {
-      "id": "831a6f0d-4032-4b05-b056-24c7297647a6",
-      "title": "Toyota GT86 GT86 2.0",
-      "price": 19900,
-      "currency": "EUR",
-      "year": 2012,
-      "mileage": 166691,
-      "city": "Bra - Cuneo - CN",
-      "zip": "12042",
-      "country": "IT",
-      "seller_type": "dealer",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-gt86-2-0-benzina-oro-cat_ma70mo20150-831a6f0d-4032-4b05-b056-24c7297647a6",
-      "image": "data/images/831a6f0d-4032-4b05-b056-24c7297647a6.webp",
-      "transmission": "Manuale",
-      "fuel": "Benzina",
-      "lat": 44.7009906,
-      "lon": 7.847054,
-      "first_seen": "2026-07-24",
-      "last_seen": "2026-10-12",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-07-24",
-          "price": 19900
-        }
-      ],
-      "days_listed_exact": true,
-      "days_listed": 81
     },
     {
       "id": "aa63a641-fa91-44e3-987c-c781ba802ba3",
@@ -206,7 +239,7 @@
       "lat": null,
       "lon": null,
       "first_seen": "2026-08-01",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -234,7 +267,7 @@
           "price": 19995
         }
       ],
-      "days_listed": 73,
+      "days_listed": 74,
       "days_listed_exact": true
     },
     {
@@ -255,7 +288,7 @@
       "lat": 45.4629435,
       "lon": 11.4545974,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -264,7 +297,7 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
+      "days_listed": 85
     },
     {
       "id": "409f4508-40b6-4683-a3c5-51e3f1e04edd",
@@ -284,7 +317,7 @@
       "lat": 46.110023,
       "lon": 11.1276198,
       "first_seen": "2026-10-08",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -292,36 +325,7 @@
           "price": 20900
         }
       ],
-      "days_listed": 5,
-      "days_listed_exact": true
-    },
-    {
-      "id": "e4d51928-a253-4136-8201-9490ae73dacf",
-      "title": "Toyota GT86 2.0 REALMENTE RIGOROSAMENTE MANUALE",
-      "price": 20900,
-      "currency": "EUR",
-      "year": 2013,
-      "mileage": 149900,
-      "city": "San Paolo D'Argon - Bergamo",
-      "zip": "24069",
-      "country": "IT",
-      "seller_type": "dealer",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-realmente-rigorosamente-manuale-benzina-grigio-cat_ma70mo20150-e4d51928-a253-4136-8201-9490ae73dacf",
-      "image": "data/images/e4d51928-a253-4136-8201-9490ae73dacf.webp",
-      "transmission": "Manuale",
-      "fuel": "Benzina",
-      "lat": 45.6885572,
-      "lon": 9.8040661,
-      "first_seen": "2026-08-19",
-      "last_seen": "2026-10-12",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-08-19",
-          "price": 20900
-        }
-      ],
-      "days_listed": 55,
+      "days_listed": 6,
       "days_listed_exact": true
     },
     {
@@ -342,7 +346,7 @@
       "lat": 45.6885572,
       "lon": 9.8040661,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -351,7 +355,7 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
+      "days_listed": 85
     },
     {
       "id": "bdbc9987-342e-4299-b4b4-42df1bdf60da",
@@ -371,7 +375,7 @@
       "lat": 44.0311742,
       "lon": 12.5953675,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -384,7 +388,7 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
+      "days_listed": 85
     },
     {
       "id": "e303528b-37cc-41c9-90e4-36b2937aece9",
@@ -404,7 +408,7 @@
       "lat": 45.6885572,
       "lon": 9.8040661,
       "first_seen": "2026-08-05",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -416,37 +420,8 @@
           "price": 22900
         }
       ],
-      "days_listed": 69,
+      "days_listed": 70,
       "days_listed_exact": true
-    },
-    {
-      "id": "09bb6c14-b7e2-4158-8bb5-5642dfa327fe",
-      "title": "Toyota GT86 TRD Edition",
-      "price": 22990,
-      "currency": "EUR",
-      "year": 2013,
-      "mileage": 97000,
-      "city": "Verbania ",
-      "zip": "28921",
-      "country": "IT",
-      "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-trd-edition-benzina-cat_ma70mo20150-09bb6c14-b7e2-4158-8bb5-5642dfa327fe",
-      "image": null,
-      "transmission": "Manuale",
-      "fuel": "Benzina",
-      "lat": 45.9367042,
-      "lon": 8.5734675,
-      "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-07-21",
-          "price": 22990
-        }
-      ],
-      "days_listed_exact": false,
-      "days_listed": 84
     },
     {
       "id": "9d17dfcb-cafc-46e9-9009-df4c579b9b0f",
@@ -466,7 +441,7 @@
       "lat": 46.0081939,
       "lon": 11.8311197,
       "first_seen": "2026-07-29",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -483,7 +458,36 @@
         }
       ],
       "days_listed_exact": true,
-      "days_listed": 76
+      "days_listed": 77
+    },
+    {
+      "id": "09bb6c14-b7e2-4158-8bb5-5642dfa327fe",
+      "title": "Toyota GT86 TRD Edition",
+      "price": 22990,
+      "currency": "EUR",
+      "year": 2013,
+      "mileage": 97000,
+      "city": "Verbania ",
+      "zip": "28921",
+      "country": "IT",
+      "seller_type": "private",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-trd-edition-benzina-cat_ma70mo20150-09bb6c14-b7e2-4158-8bb5-5642dfa327fe",
+      "image": null,
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 45.9367042,
+      "lon": 8.5734675,
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-10-13",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-07-21",
+          "price": 22990
+        }
+      ],
+      "days_listed_exact": false,
+      "days_listed": 85
     },
     {
       "id": "76d8c67f-4949-4e4c-8636-9d33ee092275",
@@ -503,7 +507,7 @@
       "lat": 43.2588589,
       "lon": 13.5068436,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -516,7 +520,7 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
+      "days_listed": 85
     },
     {
       "id": "21083cf6-7a0e-4ded-b06e-c59fc98291c8",
@@ -536,7 +540,7 @@
       "lat": 45.3983336,
       "lon": 10.985279,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -549,7 +553,7 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
+      "days_listed": 85
     },
     {
       "id": "b5b7b901-e063-4285-bb35-ba5127d336d2",
@@ -569,7 +573,7 @@
       "lat": 46.4857598,
       "lon": 11.3486521,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -578,7 +582,7 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
+      "days_listed": 85
     },
     {
       "id": "9bf8f854-8afb-48d6-9324-2553f483cdb3",
@@ -598,7 +602,7 @@
       "lat": 46.1428082,
       "lon": 12.2031624,
       "first_seen": "2026-09-14",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -614,7 +618,7 @@
           "price": 23500
         }
       ],
-      "days_listed": 29,
+      "days_listed": 30,
       "days_listed_exact": true
     },
     {
@@ -635,7 +639,7 @@
       "lat": 43.1572625,
       "lon": 12.460626,
       "first_seen": "2026-08-03",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -643,7 +647,7 @@
           "price": 24500
         }
       ],
-      "days_listed": 71,
+      "days_listed": 72,
       "days_listed_exact": true
     },
     {
@@ -664,7 +668,7 @@
       "lat": 44.663551,
       "lon": 10.8843845,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -673,7 +677,7 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
+      "days_listed": 85
     },
     {
       "id": "3c1ba207-8928-461a-9a4a-c55d6b16263f",
@@ -693,7 +697,7 @@
       "lat": null,
       "lon": null,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -706,7 +710,7 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
+      "days_listed": 85
     },
     {
       "id": "92e06da1-a574-40c5-b47f-bad7b58e70d8",
@@ -726,7 +730,7 @@
       "lat": 43.7953447,
       "lon": 11.2212012,
       "first_seen": "2026-10-02",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -734,7 +738,7 @@
           "price": 26500
         }
       ],
-      "days_listed": 11,
+      "days_listed": 12,
       "days_listed_exact": true
     },
     {
@@ -755,7 +759,7 @@
       "lat": 37.5020618,
       "lon": 15.012498,
       "first_seen": "2026-09-03",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -763,7 +767,7 @@
           "price": 26900
         }
       ],
-      "days_listed": 40,
+      "days_listed": 41,
       "days_listed_exact": true
     },
     {
@@ -784,7 +788,7 @@
       "lat": 45.0918865,
       "lon": 7.7021655,
       "first_seen": "2026-09-24",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -796,7 +800,36 @@
           "price": 27000
         }
       ],
-      "days_listed": 19,
+      "days_listed": 20,
+      "days_listed_exact": true
+    },
+    {
+      "id": "da3538a5-ddce-4c34-9b76-c5a0423c4cf2",
+      "title": "Toyota GT86 2.0 Rock&Road",
+      "price": 27500,
+      "currency": "EUR",
+      "year": 2017,
+      "mileage": 49000,
+      "city": "Nerviano",
+      "zip": "20014",
+      "country": "IT",
+      "seller_type": "private",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-rockroad-benzina-cat_ma70mo20150-da3538a5-ddce-4c34-9b76-c5a0423c4cf2",
+      "image": "data/images/da3538a5-ddce-4c34-9b76-c5a0423c4cf2.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 45.5555077,
+      "lon": 8.9767767,
+      "first_seen": "2026-10-13",
+      "last_seen": "2026-10-13",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-10-13",
+          "price": 27500
+        }
+      ],
+      "days_listed": 1,
       "days_listed_exact": true
     },
     {
@@ -817,7 +850,7 @@
       "lat": 44.9277679,
       "lon": 9.9084695,
       "first_seen": "2026-09-10",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -825,7 +858,7 @@
           "price": 27500
         }
       ],
-      "days_listed": 33,
+      "days_listed": 34,
       "days_listed_exact": true
     },
     {
@@ -846,7 +879,7 @@
       "lat": 41.3276787,
       "lon": 13.0167201,
       "first_seen": "2026-10-05",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -854,7 +887,7 @@
           "price": 27800
         }
       ],
-      "days_listed": 8,
+      "days_listed": 9,
       "days_listed_exact": true
     },
     {
@@ -875,7 +908,7 @@
       "lat": 44.4145638,
       "lon": 12.2031858,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -884,7 +917,7 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
+      "days_listed": 85
     },
     {
       "id": "5950e4f1-2721-4a1f-bc22-6756f5b1176d",
@@ -904,7 +937,7 @@
       "lat": 45.707691,
       "lon": 9.6887772,
       "first_seen": "2026-08-02",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -912,7 +945,7 @@
           "price": 27990
         }
       ],
-      "days_listed": 72,
+      "days_listed": 73,
       "days_listed_exact": true
     },
     {
@@ -933,7 +966,7 @@
       "lat": 41.9034852,
       "lon": 12.5938832,
       "first_seen": "2026-08-05",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -949,7 +982,7 @@
           "price": 28400
         }
       ],
-      "days_listed": 69,
+      "days_listed": 70,
       "days_listed_exact": true
     },
     {
@@ -970,7 +1003,7 @@
       "lat": 45.0520481,
       "lon": 9.6913143,
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -978,7 +1011,7 @@
           "price": 28900
         }
       ],
-      "days_listed": 7,
+      "days_listed": 8,
       "days_listed_exact": true
     },
     {
@@ -999,7 +1032,7 @@
       "lat": 45.9785297,
       "lon": 10.2795299,
       "first_seen": "2026-10-03",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -1007,7 +1040,36 @@
           "price": 29000
         }
       ],
-      "days_listed": 10,
+      "days_listed": 11,
+      "days_listed_exact": true
+    },
+    {
+      "id": "d5465bce-fc97-4b0f-a68a-5033bcdc467f",
+      "title": "Toyota GT86 2.0 Rock&Road",
+      "price": 29000,
+      "currency": "EUR",
+      "year": 2018,
+      "mileage": 31000,
+      "city": "Piove di Sacco",
+      "zip": "35028",
+      "country": "IT",
+      "seller_type": "private",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-rockroad-benzina-grigio-cat_ma70mo20150-d5465bce-fc97-4b0f-a68a-5033bcdc467f",
+      "image": "data/images/d5465bce-fc97-4b0f-a68a-5033bcdc467f.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 45.2941779,
+      "lon": 12.0326467,
+      "first_seen": "2026-08-31",
+      "last_seen": "2026-10-13",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-08-31",
+          "price": 29000
+        }
+      ],
+      "days_listed": 44,
       "days_listed_exact": true
     },
     {
@@ -1028,7 +1090,7 @@
       "lat": 45.8645299,
       "lon": 10.1836526,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -1041,36 +1103,7 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
-    },
-    {
-      "id": "d5465bce-fc97-4b0f-a68a-5033bcdc467f",
-      "title": "Toyota GT86 2.0 Rock&Road",
-      "price": 29000,
-      "currency": "EUR",
-      "year": 2018,
-      "mileage": 31000,
-      "city": "Piove di Sacco",
-      "zip": "35028",
-      "country": "IT",
-      "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-rockroad-benzina-grigio-cat_ma70mo20150-d5465bce-fc97-4b0f-a68a-5033bcdc467f",
-      "image": "data/images/d5465bce-fc97-4b0f-a68a-5033bcdc467f.webp",
-      "transmission": "Manuale",
-      "fuel": "Benzina",
-      "lat": 45.2941779,
-      "lon": 12.0326467,
-      "first_seen": "2026-08-31",
-      "last_seen": "2026-10-12",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-08-31",
-          "price": 29000
-        }
-      ],
-      "days_listed": 43,
-      "days_listed_exact": true
+      "days_listed": 85
     },
     {
       "id": "b8fb3590-3581-45ba-a70e-f27780810da8",
@@ -1090,7 +1123,7 @@
       "lat": 45.8205722,
       "lon": 8.7084301,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -1099,7 +1132,7 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
+      "days_listed": 85
     },
     {
       "id": "9de9d50a-15ff-4f04-851c-388bb359ab8d",
@@ -1119,7 +1152,7 @@
       "lat": 44.1391049,
       "lon": 12.2678092,
       "first_seen": "2026-09-14",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -1131,7 +1164,7 @@
           "price": 29500
         }
       ],
-      "days_listed": 29,
+      "days_listed": 30,
       "days_listed_exact": true
     },
     {
@@ -1152,7 +1185,7 @@
       "lat": 45.0390771,
       "lon": 7.6559661,
       "first_seen": "2026-10-01",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -1160,7 +1193,7 @@
           "price": 29900
         }
       ],
-      "days_listed": 12,
+      "days_listed": 13,
       "days_listed_exact": true
     },
     {
@@ -1181,7 +1214,7 @@
       "lat": 45.4360509,
       "lon": 9.3019597,
       "first_seen": "2026-09-15",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -1189,40 +1222,7 @@
           "price": 29900
         }
       ],
-      "days_listed": 28,
-      "days_listed_exact": true
-    },
-    {
-      "id": "56ec1589-e9c9-436e-a49a-755e2b7ebdc1",
-      "title": "Toyota GT86 2.0 Rock&Road AT (leggere descrizione)",
-      "price": 30000,
-      "currency": "EUR",
-      "year": 2018,
-      "mileage": 86200,
-      "city": "Baiso",
-      "zip": "42031",
-      "country": "IT",
-      "seller_type": "private",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-rockroad-at-leggere-descrizione-benzina-cat_ma70mo20150-56ec1589-e9c9-436e-a49a-755e2b7ebdc1",
-      "image": "data/images/56ec1589-e9c9-436e-a49a-755e2b7ebdc1.webp",
-      "transmission": "Automatico",
-      "fuel": "Benzina",
-      "lat": 44.4625625,
-      "lon": 10.6223949,
-      "first_seen": "2026-09-03",
-      "last_seen": "2026-10-12",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-09-03",
-          "price": 26000
-        },
-        {
-          "date": "2026-10-07",
-          "price": 30000
-        }
-      ],
-      "days_listed": 40,
+      "days_listed": 29,
       "days_listed_exact": true
     },
     {
@@ -1243,7 +1243,7 @@
       "lat": 45.7153324,
       "lon": 11.3615978,
       "first_seen": "2026-10-06",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -1251,7 +1251,69 @@
           "price": 30000
         }
       ],
-      "days_listed": 7,
+      "days_listed": 8,
+      "days_listed_exact": true
+    },
+    {
+      "id": "56ec1589-e9c9-436e-a49a-755e2b7ebdc1",
+      "title": "Toyota GT86 2.0 Rock&Road AT (leggere descrizione)",
+      "price": 30000,
+      "currency": "EUR",
+      "year": 2018,
+      "mileage": 86200,
+      "city": "Baiso",
+      "zip": "42031",
+      "country": "IT",
+      "seller_type": "private",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-2-0-rockroad-at-leggere-descrizione-benzina-cat_ma70mo20150-56ec1589-e9c9-436e-a49a-755e2b7ebdc1",
+      "image": "data/images/56ec1589-e9c9-436e-a49a-755e2b7ebdc1.webp",
+      "transmission": "Automatico",
+      "fuel": "Benzina",
+      "lat": 44.4625625,
+      "lon": 10.6223949,
+      "first_seen": "2026-09-03",
+      "last_seen": "2026-10-13",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-09-03",
+          "price": 26000
+        },
+        {
+          "date": "2026-10-07",
+          "price": 30000
+        }
+      ],
+      "days_listed": 41,
+      "days_listed_exact": true
+    },
+    {
+      "id": "9405823f-4852-4370-a383-15f7f7e28117",
+      "title": "Toyota GT86 GT 86 2.0 Rock&Road",
+      "price": 31000,
+      "currency": "EUR",
+      "year": 2019,
+      "mileage": 74000,
+      "city": "Genova - GE",
+      "zip": "16121",
+      "country": "IT",
+      "seller_type": "dealer",
+      "url": "https://www.autoscout24.it/annunci/toyota-gt86-gt-86-2-0-rockroad-benzina-nero-cat_ma70mo20150-9405823f-4852-4370-a383-15f7f7e28117",
+      "image": "data/images/9405823f-4852-4370-a383-15f7f7e28117.webp",
+      "transmission": "Manuale",
+      "fuel": "Benzina",
+      "lat": 44.4061949,
+      "lon": 8.9425704,
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-10-13",
+      "status": "active",
+      "price_history": [
+        {
+          "date": "2026-08-10",
+          "price": 31000
+        }
+      ],
+      "days_listed": 65,
       "days_listed_exact": true
     },
     {
@@ -1272,7 +1334,7 @@
       "lat": 41.9576157,
       "lon": 12.5281314,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -1285,36 +1347,7 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
-    },
-    {
-      "id": "9405823f-4852-4370-a383-15f7f7e28117",
-      "title": "Toyota GT86 GT 86 2.0 Rock&Road",
-      "price": 31000,
-      "currency": "EUR",
-      "year": 2019,
-      "mileage": 74000,
-      "city": "Genova - GE",
-      "zip": "16121",
-      "country": "IT",
-      "seller_type": "dealer",
-      "url": "https://www.autoscout24.it/annunci/toyota-gt86-gt-86-2-0-rockroad-benzina-nero-cat_ma70mo20150-9405823f-4852-4370-a383-15f7f7e28117",
-      "image": "data/images/9405823f-4852-4370-a383-15f7f7e28117.webp",
-      "transmission": "Manuale",
-      "fuel": "Benzina",
-      "lat": 44.4061949,
-      "lon": 8.9425704,
-      "first_seen": "2026-08-10",
-      "last_seen": "2026-10-12",
-      "status": "active",
-      "price_history": [
-        {
-          "date": "2026-08-10",
-          "price": 31000
-        }
-      ],
-      "days_listed": 64,
-      "days_listed_exact": true
+      "days_listed": 85
     },
     {
       "id": "96cd36d1-91d5-4db1-93e3-063ec4099449",
@@ -1334,7 +1367,7 @@
       "lat": 45.2273772,
       "lon": 11.5397614,
       "first_seen": "2026-10-02",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -1342,7 +1375,7 @@
           "price": 31000
         }
       ],
-      "days_listed": 11,
+      "days_listed": 12,
       "days_listed_exact": true
     },
     {
@@ -1363,7 +1396,7 @@
       "lat": 41.7897566,
       "lon": 12.7493942,
       "first_seen": "2026-09-24",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -1371,7 +1404,7 @@
           "price": 32000
         }
       ],
-      "days_listed": 19,
+      "days_listed": 20,
       "days_listed_exact": true
     },
     {
@@ -1392,7 +1425,7 @@
       "lat": 44.3845972,
       "lon": 11.939741,
       "first_seen": "2026-09-07",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -1400,7 +1433,7 @@
           "price": 33900
         }
       ],
-      "days_listed": 36,
+      "days_listed": 37,
       "days_listed_exact": true
     },
     {
@@ -1421,7 +1454,7 @@
       "lat": 44.7702318,
       "lon": 7.6789073,
       "first_seen": "2026-10-04",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -1429,7 +1462,7 @@
           "price": 34500
         }
       ],
-      "days_listed": 9,
+      "days_listed": 10,
       "days_listed_exact": true
     },
     {
@@ -1450,7 +1483,7 @@
       "lat": 45.6968629,
       "lon": 8.8042733,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -1459,7 +1492,7 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
+      "days_listed": 85
     },
     {
       "id": "df6510fb-fe14-42e7-9b3a-6d8604744339",
@@ -1479,7 +1512,7 @@
       "lat": 43.1331981,
       "lon": 12.2088404,
       "first_seen": "2026-07-21",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -1488,7 +1521,7 @@
         }
       ],
       "days_listed_exact": false,
-      "days_listed": 84
+      "days_listed": 85
     },
     {
       "id": "df52d719-ff10-4a97-8ca3-6a0e9c3c837a",
@@ -1508,7 +1541,7 @@
       "lat": 45.303853,
       "lon": 7.744719,
       "first_seen": "2026-09-28",
-      "last_seen": "2026-10-12",
+      "last_seen": "2026-10-13",
       "status": "active",
       "price_history": [
         {
@@ -1516,7 +1549,7 @@
           "price": 37000
         }
       ],
-      "days_listed": 15,
+      "days_listed": 16,
       "days_listed_exact": true
     }
   ]
