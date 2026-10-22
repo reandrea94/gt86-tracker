@@ -386,5 +386,13 @@
   "43124|parma|it": {
     "lat": 44.7640824,
     "lon": 10.3171765
+  },
+  "06023|gualdo tadino|it": {
+    "lat": 43.232317,
+    "lon": 12.7355191
+  },
+  "31040|volpago del monello|it": {
+    "lat": null,
+    "lon": null
   }
 }
