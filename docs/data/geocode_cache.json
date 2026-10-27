@@ -394,5 +394,9 @@
   "31040|volpago del monello|it": {
     "lat": null,
     "lon": null
+  },
+  "20025|legnano|it": {
+    "lat": 45.5944025,
+    "lon": 8.9126373
   }
 }
